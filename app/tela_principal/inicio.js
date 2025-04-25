@@ -17,10 +17,12 @@ export default function teladeinicio(){
       <View style={styles.quadrado1} />
 
       <View>  
-        <TouchableOpacity style = {styles.quadrado}>
-          <Image source={icons.icoprinperfil} style={{width: 80, height: 80, left: 15, marginTop: topo - 20}} resizeMode="contain"/>
-          <Text style = {styles.quatext}> Olá,</Text>
-          <Text style = {{fontWeight: 'bold', color: '#fff', paddingLeft: 50, fontSize: 40, width: 300}} adjustsFontSizeToFit numberOfLines={1} minimumFontScale={0.7}>{nome ? nome: 'Carregando...'}</Text>
+        <TouchableOpacity>
+          <View style = {styles.quadrado}>
+            <Image source={icons.icoprinperfil} style={styles.image_ico_perfil} resizeMode="contain"/>
+            <Text style = {styles.quatext}> Olá,</Text>
+            <Text style = {styles.textodonome} adjustsFontSizeToFit numberOfLines={1} minimumFontScale={0.7}>{nome ? nome: 'Carregando...'}</Text>
+          </View>
         </TouchableOpacity>
       </View>
 {/* VOU MEXER NESSA PARTE, PARTE DE CIMA INTERDITADA */}
@@ -49,7 +51,7 @@ export default function teladeinicio(){
       <View style = {styles.linha}>
         <TouchableOpacity>
           <View style = {styles.opcoes}>
-            <Image source={icons.icomedicam} style = {styles.img_options} resizeMode = 'contain'/>
+            <Image source={icons.icomed} style = {styles.img_options} resizeMode = 'contain'/>
             <View style = {styles.linha2}/>
             <Text style = {styles.texto}>Meus Medicamentos</Text>
           </View>
@@ -73,6 +75,19 @@ const styles = StyleSheet.create({
     backgroundColor: "#1c2c41",
     justifyContent: "flex-start",
     alignItems: "center",
+  },
+  image_ico_perfil: {
+    width: 80,
+    height: 80,
+    marginTop: topo - 20,
+    paddingLeft: 100
+  },
+  textodonome: {
+    fontWeight: "bold",
+    color: "#fff",
+    paddingLeft: 50,
+    fontSize: 40,
+    width: 300,
   },
   quadrado1: {
     position: "absolute",
@@ -123,10 +138,10 @@ const styles = StyleSheet.create({
   },
   texto: {
     fontSize: 15,
-    fontWeight: 'bold',
-    color: '#fff',
+    fontWeight: "bold",
+    color: "#fff",
     marginTop: topo - 25,
-  }
+  },
 });
 
 
