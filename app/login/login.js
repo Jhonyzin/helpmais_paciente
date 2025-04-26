@@ -6,9 +6,11 @@ import NfcManager, {NfcTech} from 'react-native-nfc-manager';
 import { Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native'; 
 const API_URL = __DEV__ ? "http://localhost:3000"  : "https://api.example.com"; 
-export default function LoginScreen() {
+export default function TeladeLogin() {
   const [cpf, setcpf] = useState('');
   const [senha, setSenha] = useState('');
+  const [senhaVisivel, setSenhaVisivel] = useState(false);
+
 
   useEffect(() => {
     NfcManager.start();
@@ -71,19 +73,29 @@ export default function LoginScreen() {
 
 <View style={styles.inputContainer}>
   <Image
-    source={icons.iconsegu} 
+    source={icons.iconsegu}
     style={styles.icon}
     resizeMode="contain"
   />
+  
   <TextInput
     style={styles.input}
     placeholder="Senha"
     placeholderTextColor="#ccc"
     onChangeText={setSenha}
     value={senha}
-    secureTextEntry
+    secureTextEntry={!senhaVisivel} 
   />
+  
+  <TouchableOpacity  onPress={() => setSenhaVisivel(!senhaVisivel)}>
+    <Image
+      source={senhaVisivel ? icons.iconver : icons.iconocul} 
+      style={styles.iconEye}
+      resizeMode="contain"
+    />
+  </TouchableOpacity>
 </View>
+
 
       <TouchableOpacity style={styles.botao} onPress={handleLogin}>
         <Text style={styles.textoBotao}>Entrar</Text>
@@ -97,6 +109,12 @@ export default function LoginScreen() {
 }
 
 const styles = StyleSheet.create({
+
+  iconEye: {
+    width: 24,
+    height: 24,
+  },
+  
   inputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -126,6 +144,7 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   input: {
+    flex: 1,
     width: '100%',
     height: 50,
     backgroundColor: '#fff',

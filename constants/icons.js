@@ -14,7 +14,8 @@ import iconsegu from "../assets/images/seguranca.png"
 import icontag from "../assets/images/tagnfc.png"
 import icontemp from "../assets/images/tempo.png"
 import iconmed from "../assets/images/medicamentos.png"
-
+import iconver from "../assets/images/ver.png"
+import iconocul from "../assets/images/ocultar.png"
 
 export default {
     iconcancelar, 
@@ -33,4 +34,6 @@ export default {
     icontag, 
     icontemp,
     iconmed,
+    iconver,
+    iconocul,
 }

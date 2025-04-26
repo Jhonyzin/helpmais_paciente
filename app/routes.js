@@ -1,6 +1,7 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Teladeinicio from "../app/tela_principal/inicio.js"
 import Medicamentos from "../app/meus_medicamentos/med.js";
+import TeladeLogin from "../app/login/login.js";
 
 const Stack = createNativeStackNavigator();
 
