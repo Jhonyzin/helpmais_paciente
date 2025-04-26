@@ -8,6 +8,11 @@ Este App usa o [Expo](https://expo.dev) e foi projetado e criado com [`create-ex
 
    ```bash
    npm install
+   npm install axios
+   npm install @react-navigation/native
+   npm install @react-navigation/native-stack
+   npm install react-native-screens react-native-safe-area-context
+   npm install react-native-nfc-manager
    ```
 
 2. Inicie o aplicativo:
@@ -16,4 +21,4 @@ Este App usa o [Expo](https://expo.dev) e foi projetado e criado com [`create-ex
     npx expo start
    ```
 
-Este aplicativo tem o intuito de ser de maior facilidade para pacientes hospitalares e médicos. 
+Este aplicativo tem o intuito de fornecer utilidade para pacientes hospitalares e médicos. 

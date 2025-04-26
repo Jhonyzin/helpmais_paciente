@@ -19,7 +19,7 @@ export default function Teladeinicio(props){
       <View>  
         <TouchableOpacity>
           <View style = {styles.quadrado}>
-            <Image source={icons.icoprinperfil} style={styles.image_ico_perfil} resizeMode="contain"/>
+            <Image source={icons.iconprinperfil} style={styles.image_ico_perfil} resizeMode="contain"/>
             <Text style = {styles.quatext}> Olá,</Text>
             <Text style = {styles.textodonome} adjustsFontSizeToFit numberOfLines={1} minimumFontScale={0.7}>{nome ? nome: 'Carregando...'}</Text>
           </View>
@@ -30,7 +30,7 @@ export default function Teladeinicio(props){
         <View style={styles.botaoComImagem}>
           <TouchableOpacity>
             <View style={styles.opcoes}>
-              <Image source={icons.icomedicam} style={styles.img_options} resizeMode="contain"/>
+              <Image source={icons.iconmedicam} style={styles.img_options} resizeMode="contain"/>
               <View style = {styles.linha2}/>
               <Text style = {styles.texto}>Histórico de saúde</Text>
             </View>
@@ -39,7 +39,7 @@ export default function Teladeinicio(props){
   
         <TouchableOpacity>
           <View style = {styles.opcoes}>
-            <Image source = {icons.icopulsiera} style = {styles.img_options} resizeMode = 'contain'/>
+            <Image source = {icons.iconpulsiera} style = {styles.img_options} resizeMode = 'contain'/>
             <View style = {styles.linha2}/>
             <Text style = {styles.texto}>Minha Pulseira</Text>
           </View>
@@ -49,7 +49,7 @@ export default function Teladeinicio(props){
       <View style = {styles.linha}>
         <TouchableOpacity onPress={meusmedi}>
           <View style = {styles.opcoes}>
-            <Image source={icons.icomed} style = {styles.img_options} resizeMode = 'contain'/>
+            <Image source={icons.iconmed} style = {styles.img_options} resizeMode = 'contain'/>
             <View style = {styles.linha2}/>
             <Text style = {styles.texto}>Meus Medicamentos</Text>
           </View>
@@ -57,7 +57,7 @@ export default function Teladeinicio(props){
 
         <TouchableOpacity>
           <View style = {styles.opcoes}>
-            <Image source={icons.icohospital} style = {styles.img_options} resizeMode='contain'/>
+            <Image source={icons.iconhospital} style = {styles.img_options} resizeMode='contain'/>
             <View style={styles.linha2}/>
             <Text style={styles.texto}>Hospitas Perto</Text>
           </View>
