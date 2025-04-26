@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, StatusBar, TouchableOpacity, Image, Text, Dimensions } from 'react-native';
+import { View, StatusBar, TouchableOpacity, Image, Text, Dimensions } from 'react-native';
 import icons from '../../constants/icons.js'
-import Constants from 'expo-constants'
+import { styles  } from './styles.js';
 
-const { width, height } = Dimensions.get('window')
-const topo = Constants.statusBarHeight;
-
-
-export default function teladeinicio(){
+export default function Teladeinicio(props){
   const [nome] = useState('JOAO PAULO SANTOS BOTELHO')
   
+  function meusmedi(){
+    props.navigation.navigate("meusmedicamentos");
+  }
+
   return (
     
     <View style={styles.container}> 
@@ -25,8 +25,6 @@ export default function teladeinicio(){
           </View>
         </TouchableOpacity>
       </View>
-{/* VOU MEXER NESSA PARTE, PARTE DE CIMA INTERDITADA */}
-
 
       <View style = {styles.linha}>
         <View style={styles.botaoComImagem}>
@@ -49,7 +47,7 @@ export default function teladeinicio(){
       </View>
 
       <View style = {styles.linha}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={meusmedi}>
           <View style = {styles.opcoes}>
             <Image source={icons.icomed} style = {styles.img_options} resizeMode = 'contain'/>
             <View style = {styles.linha2}/>
@@ -68,82 +66,3 @@ export default function teladeinicio(){
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#1c2c41",
-    justifyContent: "flex-start",
-    alignItems: "center",
-  },
-  image_ico_perfil: {
-    width: 80,
-    height: 80,
-    marginTop: topo - 20,
-    paddingLeft: 100
-  },
-  textodonome: {
-    fontWeight: "bold",
-    color: "#fff",
-    paddingLeft: 50,
-    fontSize: 40,
-    width: 300,
-  },
-  quadrado1: {
-    position: "absolute",
-    width: width,
-    height: 110,
-    backgroundColor: "#004aad",
-    marginTop: topo - 70,
-  },
-  quadrado: {
-    width: width * 0.9,
-    height: 150,
-    backgroundColor: "#7cb4ff99",
-    borderRadius: 20,
-    marginTop: topo - 20,
-  },
-  quatext: {
-    fontSize: 20,
-    paddingLeft: 20,
-    fontWeight: "bold",
-    color: "#fff",
-  },
-  opcoes: {
-    width: width * 0.4,
-    height: 160,
-    borderRadius: 20,
-    backgroundColor: "#004aad",
-    alignContent: "center",
-    alignItems: "center",
-  },
-  linha: {
-    marginTop: topo,
-    flexDirection: "row",
-    gap: 30,
-  },
-  img_options: {
-    width: 150,
-    height: 105,
-    marginTop: topo - 35,
-  },
-  botaoComImagem: {
-    alignItems: "center",
-  },
-  linha2: {
-    width: 135,
-    height: 5,
-    backgroundColor: "#80a6a6a6",
-    borderRadius: 20,
-  },
-  texto: {
-    fontSize: 15,
-    fontWeight: "bold",
-    color: "#fff",
-    marginTop: topo - 25,
-  },
-});
-
-
-// o que fazer?
-// terminar o principal botão e depois criar os outros. Por fim, tirar todos os styles e passar para um componets. Terminar os últimos dois botões
