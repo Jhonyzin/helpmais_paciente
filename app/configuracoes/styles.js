@@ -5,7 +5,6 @@ const { width, height } = Dimensions.get("window");
 const topo = Constants.statusBarHeight;
 
 export const styles = StyleSheet.create({
-
   cor: {
     flex: 1,
     backgroundColor: "#1c2c41",

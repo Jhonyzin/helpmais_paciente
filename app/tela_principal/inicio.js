@@ -3,13 +3,11 @@ import { View, StatusBar, TouchableOpacity, Image, Text, Dimensions } from 'reac
 import icons from '../../constants/icons.js'
 import { styles  } from './styles.js';
 
-export default function Teladeinicio(props){
+
+
+export default function Teladeinicio( { navigation } ){
   const [nome] = useState('JOAO PAULO SANTOS BOTELHO')
   
-  function meusmedi(){
-    props.navigation.navigate("meusmedicamentos");
-  }
-
   return (
     
     <View style={styles.container}> 
@@ -17,7 +15,7 @@ export default function Teladeinicio(props){
       <View style={styles.quadrado1} />
 
       <View>  
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Config')}>
           <View style = {styles.quadrado}>
             <Image source={icons.iconprinperfil} style={styles.image_ico_perfil} resizeMode="contain"/>
             <Text style = {styles.quatext}> Olá,</Text>
@@ -28,7 +26,7 @@ export default function Teladeinicio(props){
 
       <View style = {styles.linha}>
         <View style={styles.botaoComImagem}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Histo')}>
             <View style={styles.opcoes}>
               <Image source={icons.iconmedicam} style={styles.img_options} resizeMode="contain"/>
               <View style = {styles.linha2}/>
@@ -37,7 +35,7 @@ export default function Teladeinicio(props){
           </TouchableOpacity>
         </View> 
   
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Pulseira')}>
           <View style = {styles.opcoes}>
             <Image source = {icons.iconpulsiera} style = {styles.img_options} resizeMode = 'contain'/>
             <View style = {styles.linha2}/>
@@ -47,7 +45,7 @@ export default function Teladeinicio(props){
       </View>
 
       <View style = {styles.linha}>
-        <TouchableOpacity onPress={meusmedi}>
+        <TouchableOpacity onPress={ () => navigation.navigate('Medicamentos')}>
           <View style = {styles.opcoes}>
             <Image source={icons.iconmed} style = {styles.img_options} resizeMode = 'contain'/>
             <View style = {styles.linha2}/>
@@ -55,11 +53,11 @@ export default function Teladeinicio(props){
           </View>
         </TouchableOpacity>
 
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Hospit')}>
           <View style = {styles.opcoes}>
             <Image source={icons.iconhospital} style = {styles.img_options} resizeMode='contain'/>
             <View style={styles.linha2}/>
-            <Text style={styles.texto}>Hospitas Perto</Text>
+            <Text style={styles.texto}>Hospitais Perto</Text>
           </View>
         </TouchableOpacity>
       </View>

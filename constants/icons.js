@@ -16,6 +16,10 @@ import icontemp from "../assets/images/tempo.png"
 import iconmed from "../assets/images/medicamentos.png"
 import iconver from "../assets/images/ver.png"
 import iconocul from "../assets/images/ocultar.png"
+import logo1 from "../assets/images/slide1.png"
+import logo2 from "../assets/images/slide2.png"
+import logo3 from "../assets/images/slide3.png"
+
 
 export default {
     iconcancelar, 
@@ -36,4 +40,7 @@ export default {
     iconmed,
     iconver,
     iconocul,
+    logo1,
+    logo2,
+    logo3,
 }

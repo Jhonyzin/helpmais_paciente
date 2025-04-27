@@ -6,6 +6,9 @@ import NfcManager, {NfcTech} from 'react-native-nfc-manager';
 import { Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native'; 
 const API_URL = __DEV__ ? "http://localhost:3000"  : "https://api.example.com"; 
+
+
+
 export default function TeladeLogin() {
   const [cpf, setcpf] = useState('');
   const [senha, setSenha] = useState('');
