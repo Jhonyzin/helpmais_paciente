@@ -13,3 +13,5 @@ export const styles = StyleSheet.create({
     alignContent: "center",
   },
 });
+
+export default styles;

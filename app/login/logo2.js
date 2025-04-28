@@ -2,7 +2,7 @@ import { View, Text, Image, StyleSheet, StatusBar, TouchableNativeFeedback } fro
 import Swiper from "react-native-swiper";
 import icons from "../../constants/icons.js"
 
-export default function Swipers () {
+export default function Swipers ( {navigation} ) {
     return (
     <>
         <StatusBar barStyle={'dark-content'} backgroundColor = "#004aad"  TouchableOpacity={0.1}/>
@@ -18,18 +18,22 @@ export default function Swipers () {
             </View>
         </Swiper>
         
+        
         <View style = {styles.containers}>
-            <TouchableNativeFeedback style = {styles.butons}>
-                <View style = {styles.butoncontante}>
-                    <Text style = {styles.texte}>Iniciar Sessão</Text>
-                </View>
-            </TouchableNativeFeedback>
-            <View style={styles.spacer} />
-            <TouchableNativeFeedback style = {styles.butons}>
-                <View style = {styles.butoncontante}>
-                    <Text style = {styles.texte}>Criar uma conta</Text>
-                </View>
-            </TouchableNativeFeedback>
+          <Text style = {styles.title}>Vamos começar?</Text>
+          <View style = {styles.botaobom}>
+              <TouchableNativeFeedback onPress={ () => navigation.navigate('TeladeLogin')}>
+                  <View style = {styles.butons}>
+                      <Text style = {styles.texte}>Iniciar Sessão</Text>
+                  </View>
+              </TouchableNativeFeedback>
+              <View style={styles.spacer} />
+              <TouchableNativeFeedback>
+                  <View style = {styles.butons}>
+                      <Text style = {styles.texte}>Criar uma conta</Text>
+                  </View>
+              </TouchableNativeFeedback>
+            </View>
         </View>
     </>
     );
@@ -40,39 +44,38 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
   },
+  botaobom: {
+    flexDirection: "row",
+    marginTop: 20,
+  },
   containers: {
-    flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: "center",
     position: "absolute",
-    top: "50%",
-    left: '50%',
-    width: "40%",
+    top: "40%",
+    width: "100%",
     alignItems: "center",
-    backgroundColor: "#FFF",
-
   },
   texte: {
-    fontSize: 20,
+    fontSize: 16,
     fontWeight: "bold",
+    color: "#FFF",
   },
   butons: {
-    width: 10,
-    height: "20%",
-    marginBottom: 10,
+    width: "40%",
+    height: 70,
+    backgroundColor: "#002855",
     borderWidth: 2,
     borderColor: "#004aad",
-    borderRadius: 5,
-    backgroundColor: "transparent", 
-    alignItems: "center",
+    borderRadius: 8,
     justifyContent: "center",
+    alignItems: "center",
   },
-  butoncontante: {
-    alignContent: 'center',
-    justifyContent: 'center',
-    width: '100%'
+  spacer: {
+    width: 20,
   },
-spacer: {
-    width: 30,
+  title: {
+    fontSize: 35,
+    fontWeight: "bold",
+    color: "#FFF",
   },
 });
-

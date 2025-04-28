@@ -2,8 +2,8 @@ import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer, NavigationIndependentTree } from "@react-navigation/native";
 
-
-import logo2 from "./login/logo2.js"
+import Logo1 from "./login/logo1.js"
+import Logo2 from "./login/logo2.js"
 import Teladeinicio from "./tela_principal/inicio.js";
 import Medicamentos from "./meus_medicamentos/med.js";
 import TeladeLogin from "./login/login.js";
@@ -20,6 +20,33 @@ export default function App() {
       <NavigationIndependentTree>
         <NavigationContainer>
           <Stack.Navigator>
+            <Stack.Screen
+              name="Logo1"
+              component={Logo1}
+              options={{
+                headerShown: false,
+              }}
+            />
+            <Stack.Screen 
+              name="Logo2"
+              component={Logo2}
+              options={{
+                headerShown: false,
+              }}
+            />
+            <Stack.Screen
+              name="TeladeLogin"
+              component={TeladeLogin}
+              options={{
+                title: "Login",
+                headerShown: true,
+                headerStyle: {
+                  backgroundColor: "#004aad",
+                },
+                headerTintColor: "#FFF",
+                statusBarBackgroundColor: "#004aad",
+              }}
+            />
             <Stack.Screen
               name="Teladeinicio"
               component={Teladeinicio}
@@ -92,7 +119,6 @@ export default function App() {
                 statusBarBackgroundColor: "#004aad",
               }}
             />
-            <Stack.Screen name="TeladeLogin" component={TeladeLogin} />
           </Stack.Navigator>
         </NavigationContainer>
       </NavigationIndependentTree>

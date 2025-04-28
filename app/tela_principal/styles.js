@@ -78,3 +78,6 @@ export const styles = {
     marginTop: topo - 25,
   },
 };
+
+
+export default styles;
