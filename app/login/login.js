@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState,useEffect  } from 'react';
-import { View, Image, StyleSheet, StatusBar, TextInput, TouchableOpacity, Text } from 'react-native';
+import { styles } from "./styles";
+import { View, Image, StatusBar, TextInput, TouchableOpacity, Text } from 'react-native';
 import icons from '../../constants/icons';
 import NfcManager, {NfcTech} from 'react-native-nfc-manager';
 import { Alert } from 'react-native';
@@ -8,8 +9,8 @@ import { useNavigation } from '@react-navigation/native';
 const API_URL = __DEV__ ? "http://localhost:3000"  : "https://api.example.com"; 
 
 
-
-export default function TeladeLogin() {
+export default function Teladelogin() {
+  const navigation = useNavigation();
   const [cpf, setcpf] = useState('');
   const [senha, setSenha] = useState('');
   const [senhaVisivel, setSenhaVisivel] = useState(false);
@@ -27,7 +28,7 @@ export default function TeladeLogin() {
       });
       const { token } = response.data;
       Alert.alert('Login realizado', `Token: ${token}`);
-      navigation.navigate('Home');
+      navigation.navigate('Teladeinicio'); 
     } catch (error) {
       console.warn('Erro ao logar:', error);
       Alert.alert('Erro no login', error.response?.data || 'Falha na requisição');
@@ -110,64 +111,3 @@ export default function TeladeLogin() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-
-  iconEye: {
-    width: 24,
-    height: 24,
-  },
-  
-  inputContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    width: '100%',
-    height: 50,
-    backgroundColor: '#fff',
-    borderRadius: 10,
-    paddingHorizontal: 15,
-    marginVertical: 10,
-  },
-  icon: {
-    width: 24,
-    height: 24,
-    marginRight: 10,
-    tintColor: '#666'
-  },
-  container: {
-    flex: 1,
-    backgroundColor: '#004aad',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingHorizontal: 20,
-  },
-  imagem: {
-    width: 250,
-    height: 250,
-    marginBottom: 30,
-  },
-  input: {
-    flex: 1,
-    width: '100%',
-    height: 50,
-    backgroundColor: '#fff',
-    borderRadius: 10,
-    paddingHorizontal: 15,
-    marginVertical: 10,
-    fontSize: 16,
-  },
-  botao: {
-    width: '100%',
-    height: 50,
-    backgroundColor: '#002b80',
-    borderRadius: 10,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 20,
-  },
-  textoBotao: {
-    color: '#fff',
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-});
