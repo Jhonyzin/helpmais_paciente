@@ -1,16 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import { View, StatusBar, TouchableOpacity, Image, Text } from 'react-native';
-import icons from '../../constants/icons.js';
-import { styles } from './styles.js';
-import { useNavigation } from '@react-navigation/native';
+import icons from '../constants/icons.js';
+import { styles } from './styles';
+import { useRouter } from 'expo-router';
 import axios from 'axios';
 
 const API_URL = __DEV__ ? "http://localhost:3000" : "https://api.example.com";
 
 export default function Teladeinicio() {
-  const navigation = useNavigation(); 
+  const router = useRouter();
   const [nome, setNome] = useState('');
 
+  const navigateToconfig = () => {
+    router.push('/config'); 
+  };
+  const navigateTohist = () => {
+    router.push('/hist'); 
+  };
+  const navigateToPulseira = () => {
+    router.push('/pulseira'); 
+  }
+  const navigateToMed = () => {
+    router.push('/med'); 
+  }
+  const navigateToHospit = () => {
+    router.push('/hospit'); 
+  }
+  
   useEffect(() => {
     async function buscarUsuario() {
       try {
@@ -36,7 +52,7 @@ export default function Teladeinicio() {
       <View style={styles.quadrado1} />
 
       <View>  
-        <TouchableOpacity onPress={() => navigation.navigate('Config')}>
+        <TouchableOpacity onPress={navigateToconfig}>
           <View style={styles.quadrado}>
             <Image source={icons.iconprinperfil} style={styles.image_ico_perfil} resizeMode="contain" />
             <Text style={styles.quatext}> Olá,</Text>
@@ -49,7 +65,7 @@ export default function Teladeinicio() {
 
       <View style={styles.linha}>
         <View style={styles.botaoComImagem}>
-          <TouchableOpacity onPress={() => navigation.navigate('Histo')}>
+          <TouchableOpacity onPress={navigateTohist}> 
             <View style={styles.opcoes}>
               <Image source={icons.iconmedicam} style={styles.img_options} resizeMode="contain" />
               <View style={styles.linha2} />
@@ -58,7 +74,7 @@ export default function Teladeinicio() {
           </TouchableOpacity>
         </View>
 
-        <TouchableOpacity onPress={() => navigation.navigate('Pulseira')}>
+        <TouchableOpacity onPress={navigateToPulseira}>
           <View style={styles.opcoes}>
             <Image source={icons.iconpulsiera} style={styles.img_options} resizeMode="contain" />
             <View style={styles.linha2} />
@@ -68,7 +84,8 @@ export default function Teladeinicio() {
       </View>
 
       <View style={styles.linha}>
-        <TouchableOpacity onPress={() => navigation.navigate('Medicamentos')}>
+        <TouchableOpacity onPress={navigateToMed}>
+          
           <View style={styles.opcoes}>
             <Image source={icons.iconmed} style={styles.img_options} resizeMode="contain" />
             <View style={styles.linha2} />
@@ -76,7 +93,7 @@ export default function Teladeinicio() {
           </View>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => navigation.navigate('Hospit')}>
+        <TouchableOpacity onPress={navigateToHospit}>
           <View style={styles.opcoes}>
             <Image source={icons.iconhospital} style={styles.img_options} resizeMode="contain" />
             <View style={styles.linha2} />

@@ -3,6 +3,12 @@ import Constants from "expo-constants";
 
 export const styles = StyleSheet.create({
 
+   logos: {
+    width: "100%",
+    height: "100%",
+
+    },
+    
     iconEye: {
       width: 24,
       height: 24,
@@ -36,6 +42,13 @@ export const styles = StyleSheet.create({
       height: 250,
       marginBottom: 30,
     },
+    containers: {
+      justifyContent: "center",
+      position: "absolute",
+      top: "40%",
+      width: "100%",
+      alignItems: "center",
+    },
     input: {
       flex: 1,
       width: '100%',
@@ -55,10 +68,28 @@ export const styles = StyleSheet.create({
       justifyContent: 'center',
       marginTop: 20,
     },
+    botaobom: {
+      flexDirection: "row",
+      marginTop: 20,
+    },
+    texte: {
+      fontSize: 16,
+      fontWeight: "bold",
+      color: "#FFF",
+    },
     textoBotao: {
       color: '#fff',
       fontSize: 18,
       fontWeight: 'bold',
     },
-  });
+    spacer: {
+      width: 20,
+    linkTexto: {
+      color: '#fff',
+      marginTop: 15,
+      textDecorationLine: 'underline',
+    },
+  }
+});
+  
   export default styles;

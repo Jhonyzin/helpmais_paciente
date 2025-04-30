@@ -1,5 +1,5 @@
 import { View } from "react-native";
-import { styles } from "../historico/styles.js";
+import { styles } from "./styles";
 
 export default function Historico() {
     return(

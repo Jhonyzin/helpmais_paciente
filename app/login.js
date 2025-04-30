@@ -2,18 +2,22 @@ import axios from 'axios';
 import React, { useState,useEffect  } from 'react';
 import { styles } from "./styles";
 import { View, Image, StatusBar, TextInput, TouchableOpacity, Text } from 'react-native';
-import icons from '../../constants/icons';
+import icons from '../constants/icons';
 import NfcManager, {NfcTech} from 'react-native-nfc-manager';
 import { Alert } from 'react-native';
-import { useNavigation } from '@react-navigation/native'; 
+import { useRouter } from 'expo-router';
 const API_URL = __DEV__ ? "http://localhost:3000"  : "https://api.example.com"; 
 
 
 export default function Teladelogin() {
-  const navigation = useNavigation();
+  const router = useRouter();
   const [cpf, setcpf] = useState('');
   const [senha, setSenha] = useState('');
   const [senhaVisivel, setSenhaVisivel] = useState(false);
+  
+  const navigateToinicio = () => {
+    router.push('/inicio'); 
+  };
 
 
   useEffect(() => {
@@ -28,7 +32,7 @@ export default function Teladelogin() {
       });
       const { token } = response.data;
       Alert.alert('Login realizado', `Token: ${token}`);
-      navigation.navigate('Teladeinicio'); 
+      navigateToinicio(); 
     } catch (error) {
       console.warn('Erro ao logar:', error);
       Alert.alert('Erro no login', error.response?.data || 'Falha na requisição');

@@ -1,7 +1,9 @@
 {
-  "expo": {
-    "name": "historico",
-    "slug": "historico",
+  "name": "main",
+  "displayName": "Help Mais",
+   "expo": {
+    "name": "help mais",
+    "slug": "help-mais",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",

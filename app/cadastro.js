@@ -2,16 +2,21 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Alert, StatusBar, ScrollView } from 'react-native';
 import { styles } from './styles'; 
 import axios from 'axios';
-import icons from '../../constants/icons';
+import icons from '../constants/icons';
 import { Image } from 'react-native';
+import { useRouter } from 'expo-router';
 
-import { useNavigation } from '@react-navigation/native';
 
 const API_URL = __DEV__ ? "http://localhost:3000" : "https://api.example.com";
 
 export default function TelaCadastro() {
-  const navigation = useNavigation();
-  
+
+   const router = useRouter();
+
+   const navigateToLogin = () => {
+    router.push('/login'); 
+  };
+
   const [nome, setNome] = useState('');
   const [cpf, setCpf] = useState('');
   const [senha, setSenha] = useState('');
@@ -39,7 +44,7 @@ export default function TelaCadastro() {
       });
 
       Alert.alert('Sucesso', 'Cadastro realizado com sucesso!');
-      navigation.navigate('TelaLogin'); 
+      {navigateToLogin}
     } catch (error) {
       console.warn('Erro no cadastro:', error);
       Alert.alert('Erro', error.response?.data || 'Falha no cadastro');
