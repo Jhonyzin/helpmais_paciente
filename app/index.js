@@ -6,6 +6,9 @@ import icons from "../constants/icons.js"
 export default function Home() {
   const router = useRouter();
 
+  const navigateToinicio = () => {
+    router.push('/inicio'); 
+  };
   const navigateToLogin = () => {
     router.push('/login'); 
   };
@@ -42,7 +45,13 @@ export default function Home() {
               <Text style={styles.texte}>Criar uma conta</Text>
             </View>
           </TouchableNativeFeedback>
-        </View>
+          <View style={styles.spacer} />
+          <TouchableNativeFeedback onPress={navigateToinicio}>
+            <View style={styles.butons}>
+              <Text style={styles.texte}>Inicio para testes</Text>
+            </View>
+          </TouchableNativeFeedback>
+          </View>
       </View>
     </>
   );
