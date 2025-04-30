@@ -1,6 +1,7 @@
-import { View, Text, Image, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, Image, TextInput, TouchableOpacity, StyleSheet,Dimensions  } from 'react-native';
 import Constants from "expo-constants";
-
+const { width } = Dimensions.get('window');
+const topo = 40;
 export const styles = StyleSheet.create({
 
    logos: {
@@ -68,6 +69,15 @@ export const styles = StyleSheet.create({
       justifyContent: 'center',
       marginTop: 20,
     },
+    botaoComImagem: {
+      alignItems: "center",
+    },
+    linha2: {
+      width: 135,
+      height: 5,
+      backgroundColor: "#80a6a6a6",
+      borderRadius: 20,
+    },
     botaobom: {
       flexDirection: "row",
       marginTop: 20,
@@ -81,6 +91,50 @@ export const styles = StyleSheet.create({
       color: '#fff',
       fontSize: 18,
       fontWeight: 'bold',
+    },
+    image_ico_perfil: {
+      width: 80,
+      height: 80,
+      marginTop: topo - 20,
+      paddingLeft: 100,
+    },
+    textodonome: {
+      fontWeight: "bold",
+      color: "#fff",
+      paddingLeft: 50,
+      fontSize: 40,
+      width: 300,
+    },
+    quadrado: {
+      width: width * 0.9,
+      height: 150,
+      backgroundColor: "#7cb4ff99",
+      borderRadius: 20,
+      marginTop: topo - 20,
+    },
+    quatext: {
+      fontSize: 20,
+      paddingLeft: 20,
+      fontWeight: "bold",
+      color: "#fff",
+    },
+    opcoes: {
+      width: width * 0.4,
+      height: 160,
+      borderRadius: 20,
+      backgroundColor: "#004aad",
+      alignContent: "center",
+      alignItems: "center",
+    },
+    linha: {
+      marginTop: topo,
+      flexDirection: "row",
+      gap: 30,
+    },
+    img_options: {
+      width: 150,
+      height: 105,
+      marginTop: topo - 35,
     },
     spacer: {
       width: 20,
