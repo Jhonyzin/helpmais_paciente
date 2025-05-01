@@ -8,7 +8,7 @@ import { useRouter } from 'expo-router';
 
 
 
-const API_URL = 'https://dashboard.render.com/d/dpg-d07rhlqdbo4c73br45fg-a'
+const API_URL = 'https://backend-811v.onrender.com'
 export default function TelaCadastro() {
 
    const router = useRouter();
