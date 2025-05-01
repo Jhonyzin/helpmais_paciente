@@ -8,7 +8,7 @@ const app = express();
 const port = 3000;
 
 const pool = new Pool({
-  connectionString: 'postgresql://help_mais:mZiUrEICNiNYDIoIFbvXBLOdJHia1EtR@dpg-d07rhlqdbo4c73br45fg-a.oregon-postgres.render.com/help_mais',
+  connectionString: process.env.DATABASE_URL,
   ssl: {
     rejectUnauthorized: false
   }
@@ -19,7 +19,7 @@ app.use(cors());
 app.use(express.json());
 
 
-const SECRET = 'seuSegredoJWT';
+const SECRET = process.env.JWT_SECRET;
 
 app.post('/login', async (req, res) => {
   const { cpf, password } = req.body;
@@ -29,13 +29,15 @@ app.post('/login', async (req, res) => {
     const user = queryResult.rows[0];
 
     if (!user) {
-      return res.status(400).json('CPF não encontrado.');
+      return res.status(400).json('CPF ou senha inválidos.');
+
     }
 
     const senhaCorreta = await bcrypt.compare(password, user.senha);
 
     if (!senhaCorreta) {
-      return res.status(400).json('Senha incorreta.');
+      return res.status(400).json('CPF ou senha inválidos.');
+
     }
 
     const token = jwt.sign({ id: user.id, nome: user.nome }, SECRET, { expiresIn: '1h' });

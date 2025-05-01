@@ -6,7 +6,9 @@ import icons from '../constants/icons';
 import NfcManager, {NfcTech} from 'react-native-nfc-manager';
 import { Alert } from 'react-native';
 import { useRouter } from 'expo-router';
-const API_URL = __DEV__ ? "http://localhost:3000"  : "https://api.example.com"; 
+
+const API_URL = 'https://dashboard.render.com/d/dpg-d07rhlqdbo4c73br45fg-a'
+
 
 
 export default function Teladelogin() {

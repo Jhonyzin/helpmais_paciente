@@ -7,8 +7,8 @@ import { Image } from 'react-native';
 import { useRouter } from 'expo-router';
 
 
-const API_URL = __DEV__ ? "http://localhost:3000" : "https://api.example.com";
 
+const API_URL = 'https://dashboard.render.com/d/dpg-d07rhlqdbo4c73br45fg-a'
 export default function TelaCadastro() {
 
    const router = useRouter();
@@ -24,7 +24,7 @@ export default function TelaCadastro() {
   const [email, setEmail] = useState('');
   const [telefone, setTelefone] = useState('');
   const [dataNascimento, setDataNascimento] = useState('');
-  const [endereco, setEndereco] = useState('');
+ 
 
   const handleCadastro = async () => {
     if (senha !== confirmarSenha) {
@@ -40,7 +40,7 @@ export default function TelaCadastro() {
         email,
         telefone,
         dataNascimento,
-        endereco,
+      
       });
 
       Alert.alert('Sucesso', 'Cadastro realizado com sucesso!');
@@ -106,14 +106,7 @@ export default function TelaCadastro() {
           onChangeText={setDataNascimento}
         />
 
-        <TextInput
-          style={styles.input}
-          placeholder="Endereço"
-          placeholderTextColor="#ccc"
-          value={endereco}
-          onChangeText={setEndereco}
-        />
-
+        
         <TextInput
           style={styles.input}
           placeholder="Senha"
@@ -136,7 +129,7 @@ export default function TelaCadastro() {
           <Text style={styles.textoBotao}>Cadastrar</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => navigation.navigate('TelaLogin')}>
+        <TouchableOpacity onPress={navigateToLogin}>
           <Text style={styles.linkTexto}>Já tem conta? Fazer login</Text>
         </TouchableOpacity>
       </View>
