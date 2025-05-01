@@ -5,7 +5,7 @@ import { styles } from './styles';
 import { useRouter } from 'expo-router';
 import axios from 'axios';
 
-const API_URL = __DEV__ ? "http://localhost:3000" : "https://api.example.com";
+const API_URL = 'https://backend-811v.onrender.com'
 
 export default function Teladeinicio() {
   const router = useRouter();

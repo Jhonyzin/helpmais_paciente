@@ -44,7 +44,7 @@ export default function TelaCadastro() {
       });
 
       Alert.alert('Sucesso', 'Cadastro realizado com sucesso!');
-      {navigateToLogin}
+      navigateToLogin();
     } catch (error) {
       console.warn('Erro no cadastro:', error);
       Alert.alert('Erro', error.response?.data || 'Falha no cadastro');
