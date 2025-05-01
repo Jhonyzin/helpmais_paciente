@@ -8,6 +8,14 @@ import { Alert } from 'react-native';
 import { useRouter } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+const formatarCPF = (texto) => {
+  const numeros = texto.replace(/\D/g, '');
+
+  if (numeros.length <= 3) return numeros;
+  if (numeros.length <= 6) return `${numeros.slice(0, 3)}.${numeros.slice(3)}`;
+  if (numeros.length <= 9) return `${numeros.slice(0, 3)}.${numeros.slice(3, 6)}.${numeros.slice(6)}`;
+  return `${numeros.slice(0, 3)}.${numeros.slice(3, 6)}.${numeros.slice(6, 9)}-${numeros.slice(9, 11)}`;
+};
 
 const API_URL = 'https://backend-811v.onrender.com'
 
@@ -21,6 +29,9 @@ export default function Teladelogin() {
   
   const navigateToinicio = () => {
     router.push('/inicio'); 
+  };
+  const navigateTocadastro = () => {
+    router.push('/cadastro'); 
   };
 
 
@@ -77,10 +88,10 @@ export default function Teladelogin() {
     style={styles.input}
     placeholder="CPF"
     placeholderTextColor="#ccc"
-    onChangeText={setcpf}
+    onChangeText={(text) => setcpf(formatarCPF(text))}
     value={cpf}
     keyboardType="numeric"
-    maxLength={11}
+    maxLength={14}
   />
 </View>
 
@@ -113,10 +124,16 @@ export default function Teladelogin() {
       <TouchableOpacity style={styles.botao} onPress={handleLogin}>
         <Text style={styles.textoBotao}>Entrar</Text>
       </TouchableOpacity>
+
       
       <TouchableOpacity style={styles.botao} onPress={readNfc}>
         <Text style={styles.textoBotao}>NFC</Text>
       </TouchableOpacity>
+
+      <TouchableOpacity onPress={navigateTocadastro}>
+                <Text style={styles.linkTexto}>não tem conta? Fazer cadastro</Text>
+              </TouchableOpacity>
     </View>
+    
   );
 }
