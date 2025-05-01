@@ -4,12 +4,13 @@ import icons from '../constants/icons.js';
 import { styles } from './styles';
 import { useRouter } from 'expo-router';
 import axios from 'axios';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 const API_URL = 'https://backend-811v.onrender.com'
 
 export default function Teladeinicio() {
   const router = useRouter();
   const [nome, setNome] = useState('');
+  const [token, setToken] = useState(''); 
 
   const navigateToconfig = () => {
     router.push('/config'); 
@@ -28,13 +29,22 @@ export default function Teladeinicio() {
   }
   
   useEffect(() => {
+
     async function buscarUsuario() {
       try {
+        // Obter o token dinamicamente dentro do useEffect
+        const userToken = await AsyncStorage.getItem('userToken');
+        if (!userToken) {
+          console.warn('Token não encontrado');
+          return;
+        }
+        setToken(userToken);
         const response = await axios.get(`${API_URL}/nome`, {
           headers: {
-            Authorization: `Bearer SEU_TOKEN_AQUI`, 
+            Authorization: `Bearer ${userToken}`,
           },
         });
+
         setNome(response.data.nome || 'Usuário');
       } catch (error) {
         console.warn('Erro ao buscar usuário:', error);

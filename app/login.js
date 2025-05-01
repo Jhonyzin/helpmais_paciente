@@ -6,6 +6,8 @@ import icons from '../constants/icons';
 import NfcManager, {NfcTech} from 'react-native-nfc-manager';
 import { Alert } from 'react-native';
 import { useRouter } from 'expo-router';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 const API_URL = 'https://backend-811v.onrender.com'
 
@@ -33,6 +35,7 @@ export default function Teladelogin() {
         password: senha,
       });
       const { token } = response.data;
+      await AsyncStorage.setItem('userToken', token);
       Alert.alert('Login realizado', `Token: ${token}`);
       navigateToinicio(); 
     } catch (error) {
