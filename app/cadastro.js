@@ -99,7 +99,7 @@ if (!regexCpf.test(cpf)) {
         senha,
         email,
         telefone,
-        dataNascimento,
+        dataNascimento: dataFormatada,
       
       });
 
