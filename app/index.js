@@ -45,16 +45,20 @@ export default function Home() {
               <Text style={styles.texte}>Criar uma conta</Text>
             </View>
           </TouchableNativeFeedback>
-          <View style={styles.spacer} />
-          <TouchableNativeFeedback onPress={navigateToinicio}>
-            <View style={styles.butons}>
-              <Text style={styles.texte}>Inicio para testes</Text>
-            </View>
-          </TouchableNativeFeedback>
           </View>
       </View>
+      
+
+      {/* Aqui é temporário, depois que terminar as funções e tiver um login fixo, tirar. */}
+      <View style = {styles.temp}>
+        <TouchableNativeFeedback onPress={navigateToinicio}>
+          <View style={styles.butons}>
+            <Text style={styles.texte}>Inicio para Teste</Text>
+          </View>
+        </TouchableNativeFeedback>
+      </View>
+      {/* Aqui é temporário, depois que terminar as funções e tiver um login fixo, tirar. */}
     </>
   );
 
 }
-

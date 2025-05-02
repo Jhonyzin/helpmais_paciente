@@ -57,10 +57,8 @@ export default function Teladeinicio() {
 
   return (
     <View style={styles.container}>
-      <StatusBar barStyle="dark-content" backgroundColor="#004aad" hidden={false} />
-
-      <View style={styles.quadrado1} />
-
+      <StatusBar barStyle="dark-content" backgroundColor="#1c2c41" hidden={false} />
+      
       <View>  
         <TouchableOpacity onPress={navigateToconfig}>
           <View style={styles.quadrado}>
