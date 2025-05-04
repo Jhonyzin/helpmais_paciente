@@ -1,39 +1,37 @@
 {
   "name": "main",
   "displayName": "Help Mais",
-   "expo": {
+  "expo": {
     "name": "help mais",
     "slug": "help-mais",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/icon_logo.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "extra": {
       "API_URL": "https://seu-backend.onrender.com",
-      "JWT_SECRET": "suaChaveSuperSecreta"
+      "JWT_SECRET": "suaChaveSuperSecreta",
+      "router": {},
+      "eas": {
+        "projectId": "718b6ff7-4bb3-4268-a245-7c31044e093e"
+      }
     },
     "ios": {
       "supportsTablet": true
     },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      }
-    },
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./assets/images/icon_logo.png"
     },
     "plugins": [
       "expo-router",
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/splash-icon.png",
+          "image": "./assets/images/slide1.png",
           "imageWidth": 200,
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
@@ -42,6 +40,10 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "owner": "talescouti",
+    "android": {
+      "package": "com.talescouti.helpmais"
     }
   }
 }

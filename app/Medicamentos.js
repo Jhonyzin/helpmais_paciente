@@ -1,6 +1,6 @@
 import { View, StatusBar, Text } from "react-native";
 import { styles } from "./styles";
-import { useRouter } from "expo-router";
+import { useNavigation } from '@react-navigation/native';
 
 export default function Medicamentos (){
 

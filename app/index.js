@@ -1,19 +1,17 @@
 import { View, Text, Image, StyleSheet, StatusBar, TouchableNativeFeedback } from "react-native";
 import Swiper from "react-native-swiper";
-import { useRouter } from 'expo-router';
-import { styles } from './styles'; 
+import { styles } from './styles.js'; 
 import icons from "../constants/icons.js"
-export default function Home() {
-  const router = useRouter();
+import { useNavigation } from '@react-navigation/native';
 
-  const navigateToinicio = () => {
-    router.push('/inicio'); 
-  };
+export default function  Index() {
+const navigation = useNavigation();
+  
   const navigateToLogin = () => {
-    router.push('/login'); 
+    navigation.navigate('Login'); 
   };
   const navigateTocadastro = () => {
-    router.push('/cadastro'); 
+    navigation.navigate('Cadastro'); 
   };
 
   return (
@@ -46,18 +44,9 @@ export default function Home() {
             </View>
           </TouchableNativeFeedback>
           </View>
+      
       </View>
       
-
-      {/* Aqui é temporário, depois que terminar as funções e tiver um login fixo, tirar. */}
-      <View style = {styles.temp}>
-        <TouchableNativeFeedback onPress={navigateToinicio}>
-          <View style={styles.butons}>
-            <Text style={styles.texte}>Inicio para Teste</Text>
-          </View>
-        </TouchableNativeFeedback>
-      </View>
-      {/* Aqui é temporário, depois que terminar as funções e tiver um login fixo, tirar. */}
     </>
   );
 

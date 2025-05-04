@@ -1,5 +1,7 @@
 import { View, Image, StyleSheet, StatusBar } from "react-native";
 import { useEffect } from "react";
+import { useNavigation } from '@react-navigation/native';
+
 import icons from "../constants/icons.js"
 
 export default function Logo( {navigation} ){

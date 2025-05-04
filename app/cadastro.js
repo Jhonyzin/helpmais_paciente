@@ -4,7 +4,9 @@ import { styles } from './styles';
 import axios from 'axios';
 import icons from '../constants/icons';
 import { Image } from 'react-native';
-import { useRouter } from 'expo-router';
+import {react};
+import { useNavigation } from '@react-navigation/native';
+
 
 const formatarCPF = (texto) => {
   const numeros = texto.replace(/\D/g, '');
@@ -61,10 +63,10 @@ export default function TelaCadastro() {
   const [telefone, setTelefone] = useState('');
   const [dataNascimento, setDataNascimento] = useState('');
 
-  const router = useRouter();
+    const navigation = useNavigation();
 
-  const navigateToLogin = () => {
-    router.push('/login'); 
+ const navigateToLogin = () => {
+    navigation.navigate('Inicio'); 
   };
 
   const handleCadastro = async () => {

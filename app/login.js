@@ -7,6 +7,8 @@ import NfcManager, {NfcTech} from 'react-native-nfc-manager';
 import { Alert } from 'react-native';
 import { useRouter } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useNavigation } from '@react-navigation/native';
+
 
 const formatarCPF = (texto) => {
   const numeros = texto.replace(/\D/g, '');
@@ -22,16 +24,17 @@ const API_URL = 'https://backend-811v.onrender.com'
 
 
 export default function Teladelogin() {
-  const router = useRouter();
+  const navigation = useNavigation();
+
   const [cpf, setcpf] = useState('');
   const [senha, setSenha] = useState('');
   const [senhaVisivel, setSenhaVisivel] = useState(false);
   
   const navigateToinicio = () => {
-    router.push('/inicio'); 
+    navigation.navigate('Inicio'); 
   };
   const navigateTocadastro = () => {
-    router.push('/cadastro'); 
+    router.push('Cadastro'); 
   };
 
 

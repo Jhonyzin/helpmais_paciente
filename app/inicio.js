@@ -2,30 +2,31 @@ import React, { useState, useEffect } from 'react';
 import { View, StatusBar, TouchableOpacity, Image, Text } from 'react-native';
 import icons from '../constants/icons.js';
 import { styles } from './styles';
-import { useRouter } from 'expo-router';
+import { useNavigation } from '@react-navigation/native';
+
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 const API_URL = 'https://backend-811v.onrender.com'
 
 export default function Teladeinicio() {
-  const router = useRouter();
+  const navigation = useNavigation();
   const [nome, setNome] = useState('');
   const [token, setToken] = useState(''); 
 
   const navigateToconfig = () => {
-    router.push('/config'); 
+    navigation.navigate('Config'); 
   };
   const navigateTohist = () => {
-    router.push('/hist'); 
+    navigation.navigate('Historico'); 
   };
   const navigateToPulseira = () => {
-    router.push('/pulseira'); 
+    navigation.navigate('Pulseira'); 
   }
   const navigateToMed = () => {
-    router.push('/med'); 
+    navigation.navigate('Medicamentos'); 
   }
   const navigateToHospit = () => {
-    router.push('/hospit'); 
+    navigation.navigate('Hospital'); 
   }
   
   useEffect(() => {
