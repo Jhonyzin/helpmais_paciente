@@ -1,16 +1,15 @@
-<<<<<<< HEAD
-import { View, Text, Image, TextInput, TouchableOpacity, StyleSheet,Dimensions  } from 'react-native';
-=======
-<<<<<<< HEAD
-import { View, Text, Image, TextInput, TouchableOpacity, StyleSheet,Dimensions  } from 'react-native';
-=======
-import { StyleSheet, Dimensions  } from 'react-native';
->>>>>>> 360772c (historicao)
->>>>>>> 9c7331c (historicaoss)
+
+import { StyleSheet,Dimensions  } from 'react-native';
+
 const { width } = Dimensions.get('window');
 const topo = 40;
 
 export const styles = StyleSheet.create({
+  fundo :{
+    flex: 1,
+    backgroundColor : '#ffff'
+  },
+
   logos: {
     width: "100%",
     height: "100%",
@@ -39,17 +38,10 @@ export const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: "#1c2c41",
+    backgroundColor: "#fff",
     alignItems: "center",
-<<<<<<< HEAD
+
     paddingHorizontal: 20,
-=======
-<<<<<<< HEAD
-    paddingHorizontal: 20,
-=======
-    
->>>>>>> 360772c (historicao)
->>>>>>> 9c7331c (historicaoss)
   },
   imagem: {
     width: 250,
@@ -84,7 +76,7 @@ export const styles = StyleSheet.create({
     borderRadius: 10,
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 20,
+    marginTop: 0,
   },
   botaoComImagem: {
     alignItems: "center",
@@ -99,24 +91,16 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     marginTop: 20,
   },
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 9c7331c (historicaoss)
-  texte: {
+    texto: {
     fontSize: 16,
     fontWeight: "bold",
     color: "#FFF",
   },
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 360772c (historicao)
->>>>>>> 9c7331c (historicaoss)
-  texto: {
+   textocinza: {
     fontSize: 16,
+    marginVertical: 0,
     fontWeight: "bold",
-    color: "#FFF",
+    color: "#000",
   },
   textoBotao: {
     color: "#fff",
@@ -172,25 +156,13 @@ export const styles = StyleSheet.create({
   },
   spacer: {
     width: 20,
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 9c7331c (historicaoss)
-    linkTexto: {
-      color: "#fff",
-      marginTop: 15,
-      textDecorationLine: "underline",
-    },
-<<<<<<< HEAD
-=======
-=======
+   
   },
   linkTexto: {
-    color: "#fff",
+    color: "#0000	",
     marginTop: 15,
     textDecorationLine: "underline",
->>>>>>> 360772c (historicao)
->>>>>>> 9c7331c (historicaoss)
+
   },
   title: {
     color: "#FFF",
@@ -212,10 +184,6 @@ export const styles = StyleSheet.create({
     top: "10%",
     width: "100%",
   },
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
   historicocontainer: {
     justifyContent: 'center',
     alignItems: 'center',
@@ -286,8 +254,7 @@ imghisto: {
   marginTop: -70,
   marginLeft: -30,
 }
->>>>>>> 360772c (historicao)
->>>>>>> 9c7331c (historicaoss)
+
 });
   
   export default styles;

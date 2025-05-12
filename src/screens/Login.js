@@ -1,7 +1,8 @@
 import axios from 'axios';
 import React, { useState,useEffect  } from 'react';
 import { styles } from "./styles";
-import { View, Image, StatusBar, TextInput, TouchableOpacity, Text } from 'react-native';
+import { View, Image, StatusBar,TouchableOpacity, Text } from 'react-native';
+import {TextInput} from 'react-native-paper';
 import icons from '../constants/icons';
 import NfcManager, {NfcTech} from 'react-native-nfc-manager';
 import { Alert } from 'react-native';
@@ -23,8 +24,8 @@ const API_URL = 'https://backend-811v.onrender.com'
 
 export default function Login() {
   const navigation = useNavigation();
-
   const [cpf, setcpf] = useState('');
+
   const [senha, setSenha] = useState('');
   const [senhaVisivel, setSenhaVisivel] = useState(false);
   
@@ -32,7 +33,7 @@ export default function Login() {
     navigation.navigate('Inicio'); 
   };
   const navigateTocadastro = () => {
-    router.push('Cadastro'); 
+    navigation.navigate('Cadastro'); 
   };
 
 
@@ -48,7 +49,6 @@ export default function Login() {
       });
       const { token } = response.data;
       await AsyncStorage.setItem('userToken', token);
-      Alert.alert('Login realizado', `Token: ${token}`);
       navigateToinicio(); 
     } catch (error) {
       console.warn('Erro ao logar:', error);
@@ -70,15 +70,10 @@ export default function Login() {
     }
   };
   return (
-<<<<<<< HEAD
-    <View style={styles.container}>
-=======
-<<<<<<< HEAD
-    <View style={styles.container}>
-=======
-    <View style={[styles.container, paddingHorizontal = 20]}>
->>>>>>> 360772c (historicao)
->>>>>>> 9c7331c (historicaoss)
+
+
+    <View style={[styles.container, paddingHorizontal = 20, styles.fundo]}>
+
       <StatusBar barStyle="light-content" backgroundColor="#004aad" />
 
       <Image
@@ -112,13 +107,13 @@ export default function Login() {
   />
   
   <TextInput
-    style={styles.input}
-    placeholder="Senha"
-    placeholderTextColor="#ccc"
-    onChangeText={setSenha}
-    value={senha}
-    secureTextEntry={!senhaVisivel} 
-  />
+  style={[styles.input, { fontFamily: 'monospace ' }]} 
+  placeholder="Senha"
+  placeholderTextColor="#ccc"
+  onChangeText={setSenha}
+  value={senha}
+  secureTextEntry={!senhaVisivel}
+/>
   
   <TouchableOpacity  onPress={() => setSenhaVisivel(!senhaVisivel)}>
     <Image
@@ -131,14 +126,18 @@ export default function Login() {
 
 
       <TouchableOpacity style={styles.botao} onPress={handleLogin}>
-        <Text style={styles.textoBotao}>Entrar</Text>
-      </TouchableOpacity>
+  <Text style={styles.textoBotao}>Entrar</Text>
+</TouchableOpacity>
 
-      
-      <TouchableOpacity style={styles.botao} onPress={readNfc}>
-        <Text style={styles.textoBotao}>NFC</Text>
-      </TouchableOpacity>
+{/* Texto "OU" centralizado e com espaçamento controlado */}
+<View style={{ alignItems: 'center', marginVertical: 0 }}>
+  <Text style={styles.textocinza}>OU</Text>
+</View>
 
+<TouchableOpacity style={styles.botao} onPress={readNfc}>
+  <Text style={styles.textoBotao}>NFC</Text>
+</TouchableOpacity>
+       
       <TouchableOpacity onPress={navigateTocadastro}>
                 <Text style={styles.linkTexto}>não tem conta? Fazer cadastro</Text>
               </TouchableOpacity>

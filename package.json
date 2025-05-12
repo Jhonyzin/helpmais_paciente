@@ -12,13 +12,7 @@
   "dependencies": {
     "@react-native-async-storage/async-storage": "^2.1.2",
     "@react-native-community/cli": "^18.0.0",
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
     "@react-navigation/material-top-tabs": "^7.2.12",
->>>>>>> 360772c (historicao)
->>>>>>> 9c7331c (historicaoss)
     "@react-navigation/native": "^7.1.7",
     "@react-navigation/native-stack": "^7.3.11",
     "axios": "^1.9.0",
@@ -28,24 +22,14 @@
     "react-native-gesture-handler": "^2.25.0",
     "react-native-get-random-values": "^1.11.0",
     "react-native-nfc-manager": "^3.16.1",
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
     "react-native-pager-view": "^6.7.1",
->>>>>>> 360772c (historicao)
->>>>>>> 9c7331c (historicaoss)
+    "react-native-paper": "^5.14.1",
     "react-native-reanimated": "^3.17.5",
     "react-native-safe-area-context": "^5.4.0",
     "react-native-screens": "^4.10.0",
     "react-native-swiper": "^1.6.0",
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
     "react-native-tab-view": "^4.0.12",
->>>>>>> 360772c (historicao)
->>>>>>> 9c7331c (historicaoss)
+    "react-native-vector-icons": "^10.2.0",
     "typescript": "^5.8.3"
   },
   "devDependencies": {

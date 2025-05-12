@@ -1,15 +1,12 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, Alert, StatusBar, ScrollView } from 'react-native';
+import { View, Text, TouchableOpacity, Alert, StatusBar, ScrollView } from 'react-native';
 import { styles } from './styles'; 
 import axios from 'axios';
 import icons from '../constants/icons';
 import { Image } from 'react-native';
+import {TextInput} from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 9c7331c (historicaoss)
 function validarCPF(cpf) {
   cpf = cpf.replace(/[^\d]+/g, ''); // remove pontos e traços
 
@@ -41,12 +38,7 @@ function validarCPF(cpf) {
 
   return true;
 }
-<<<<<<< HEAD
-=======
-=======
 
->>>>>>> 360772c (historicao)
->>>>>>> 9c7331c (historicaoss)
 const formatarCPF = (texto) => {
   const numeros = texto.replace(/\D/g, '');
 
@@ -96,16 +88,17 @@ const API_URL = 'https://backend-811v.onrender.com';
 export default function Cadastro() {
   const [nome, setNome] = useState('');
   const [cpf, setCpf] = useState('');
+  const [senhaVisivel, setSenhaVisivel] = useState(false);
   const [senha, setSenha] = useState('');
   const [confirmarSenha, setConfirmarSenha] = useState('');
   const [email, setEmail] = useState('');
   const [telefone, setTelefone] = useState('');
   const [dataNascimento, setDataNascimento] = useState('');
 
-    const navigation = useNavigation();
+  const navigation = useNavigation();
 
- const navigateToLogin = () => {
-    navigation.navigate('Inicio'); 
+  const navigateToLogin = () => {
+    navigation.navigate('Login'); 
   };
 
   const handleCadastro = async () => {
@@ -121,21 +114,11 @@ export default function Cadastro() {
       Alert.alert('Erro', 'CPF inválido. Use o formato XXX.XXX.XXX-XX.');
       return;
     }
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 9c7331c (historicaoss)
-    
+
     if (!validarCPF(cpf)) {
       Alert.alert('Erro', 'CPF inválido. Dígitos verificadores incorretos.');
       return;
     }
-    
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 360772c (historicao)
->>>>>>> 9c7331c (historicaoss)
 
     if (!dataValida(dataNascimento)) {
       Alert.alert('Erro', 'Data de nascimento inválida.');
@@ -148,7 +131,6 @@ export default function Cadastro() {
     }
 
     try {
-      // Formatar a data para o padrão YYYY-MM-DD antes de enviar
       const partesData = dataNascimento.split('/');
       const dataFormatada = `${partesData[2]}-${partesData[1]}-${partesData[0]}`;
 
@@ -157,7 +139,7 @@ export default function Cadastro() {
         cpf,
         senha,
         email,
-        telefone: telefone.replace(/\D/g, ''), // Enviar apenas números
+        telefone: telefone.replace(/\D/g, ''), 
         dataNascimento: dataFormatada,
       });
 
@@ -170,90 +152,110 @@ export default function Cadastro() {
   };
 
   return (
-    <ScrollView style={{ flex: 1, backgroundColor: '#ffffff' }}>
-      <StatusBar barStyle="dark-content" backgroundColor="#004aad" />
-      <View style={styles.container}>
-        <Image
-          source={icons.iconlogo}
-          style={styles.imagem}
-          resizeMode="contain"
-        />
-        <Text style={styles.titulo}>Cadastro</Text>
+    <View style={styles.fundo}>
+      <ScrollView contentContainerStyle={{ flexGrow: 1 }} style={{ backgroundColor: '#004aad' }} >
+        <StatusBar barStyle="dark-content" backgroundColor="#004aad" />
+        <View style={styles.container}>
+          <Image
+            source={icons.iconlogo}
+            style={styles.imagem}
+            resizeMode="contain"
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Nome Completo"
+            placeholderTextColor="#ccc"
+            value={nome}
+            onChangeText={setNome}
+          />
 
-        <TextInput
-          style={styles.input}
-          placeholder="Nome Completo"
-          placeholderTextColor="#ccc"
-          value={nome}
-          onChangeText={setNome}
-        />
+          <TextInput
+            style={styles.input}
+            placeholder="CPF"
+            placeholderTextColor="#ccc"
+            value={cpf}
+            onChangeText={(text) => setCpf(formatarCPF(text))}
+            keyboardType="numeric"
+            maxLength={14}
+          />
 
-        <TextInput
-          style={styles.input}
-          placeholder="CPF"
-          placeholderTextColor="#ccc"
-          value={cpf}
-          onChangeText={(text) => setCpf(formatarCPF(text))}
-          keyboardType="numeric"
-          maxLength={14}
-        />
+          <TextInput
+            style={styles.input}
+            placeholder="Email"
+            placeholderTextColor="#ccc"
+            value={email}
+            onChangeText={setEmail}
+            keyboardType="email-address"
+            autoCapitalize="none"
+          />
 
-        <TextInput
-          style={styles.input}
-          placeholder="Email"
-          placeholderTextColor="#ccc"
-          value={email}
-          onChangeText={setEmail}
-          keyboardType="email-address"
-          autoCapitalize="none"
-        />
+          <TextInput
+            style={styles.input}
+            placeholder="Telefone"
+            placeholderTextColor="#ccc"
+            value={telefone}
+            onChangeText={(text) => setTelefone(formatarTelefone(text))}
+            keyboardType="phone-pad"
+            maxLength={15}
+          />
 
-        <TextInput
-          style={styles.input}
-          placeholder="Telefone"
-          placeholderTextColor="#ccc"
-          value={telefone}
-          onChangeText={(text) => setTelefone(formatarTelefone(text))}
-          keyboardType="phone-pad"
-          maxLength={15}
-        />
+          <TextInput
+            style={styles.input}
+            placeholder="Data de Nascimento (DD/MM/AAAA)"
+            placeholderTextColor="#ccc"
+            value={dataNascimento}
+            onChangeText={(text) => setDataNascimento(formatarData(text))}
+            keyboardType="numeric"
+            maxLength={10}
+          />
 
-        <TextInput
-          style={styles.input}
-          placeholder="Data de Nascimento (DD/MM/AAAA)"
-          placeholderTextColor="#ccc"
-          value={dataNascimento}
-          onChangeText={(text) => setDataNascimento(formatarData(text))}
-          keyboardType="numeric"
-          maxLength={10}
-        />
+          <View style={styles.inputContainer}>
+            
+            <TextInput
+              style={[styles.input, { fontFamily: 'monospace' }]} 
+              placeholder="Senha"
+              placeholderTextColor="#ccc"
+              onChangeText={setSenha}
+              value={senha}
+              secureTextEntry={!senhaVisivel}
+            />
+            <TouchableOpacity onPress={() => setSenhaVisivel(!senhaVisivel)}>
+              <Image
+                source={senhaVisivel ? icons.iconver : icons.iconocul} 
+                style={styles.iconEye}
+                resizeMode="contain"
+              />
+            </TouchableOpacity>
+          </View>
 
-        <TextInput
-          style={styles.input}
-          placeholder="Senha"
-          placeholderTextColor="#ccc"
-          value={senha}
-          onChangeText={setSenha}
-          secureTextEntry={true}
-        />
+          <View style={styles.inputContainer}>
+           
+            <TextInput
+              style={[styles.input, { fontFamily: 'monospace' }]} 
+              placeholder="Confirmar Senha"
+              placeholderTextColor="#ccc"
+              onChangeText={setConfirmarSenha}
+              value={confirmarSenha}
+              secureTextEntry={!senhaVisivel}
+            />
+            <TouchableOpacity onPress={() => setSenhaVisivel(!senhaVisivel)}>
+              <Image
+                source={senhaVisivel ? icons.iconver : icons.iconocul} 
+                style={styles.iconEye}
+                resizeMode="contain"
+              />
+            </TouchableOpacity>
+          </View>
 
-        <TextInput
-          style={styles.input}
-          placeholder="Confirmar Senha"
-          placeholderTextColor="#ccc"
-          value={confirmarSenha}
-          onChangeText={setConfirmarSenha}
-          secureTextEntry={true}
-        />
+          <TouchableOpacity style={styles.botao} onPress={handleCadastro}>
+            <Text style={styles.textoBotao}>Cadastrar</Text>
+          </TouchableOpacity>
 
-        <TouchableOpacity style={styles.botao} onPress={handleCadastro}>
-          <Text style={styles.textoBotao}>Cadastrar</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity onPress={navigateToLogin}>
-          <Text style={styles.linkTexto}>Já tem conta? Fazer login</Text>
-        </TouchableOpacity>
-      </View>
-    </ScrollView>
+          <TouchableOpacity onPress={navigateToLogin}>
+            <Text style={styles.linkTexto}>Já tem conta? Fazer login</Text>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
+    </View>
   );
 }
