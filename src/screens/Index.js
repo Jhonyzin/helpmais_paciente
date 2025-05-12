@@ -4,6 +4,14 @@ import { useNavigation } from '@react-navigation/native';
 import React from "react";
 import { styles } from './styles'; 
 import icons from "../constants/icons.js"
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 360772c (historicao)
+>>>>>>> 9c7331c (historicaoss)
 export default function Index() {
   const navigation = useNavigation();
 
@@ -37,13 +45,29 @@ export default function Index() {
         <View style={styles.botaobom}>
           <TouchableNativeFeedback onPress={navigateToLogin}>
             <View style={styles.butons}>
+<<<<<<< HEAD
               <Text style={styles.texte}>Iniciar Sessão</Text>
+=======
+<<<<<<< HEAD
+              <Text style={styles.texte}>Iniciar Sessão</Text>
+=======
+              <Text style={styles.texto}>Iniciar Sessão</Text>
+>>>>>>> 360772c (historicao)
+>>>>>>> 9c7331c (historicaoss)
             </View>
           </TouchableNativeFeedback>
           <View style={styles.spacer} />
           <TouchableNativeFeedback onPress={navigateTocadastro}>
             <View style={styles.butons}>
+<<<<<<< HEAD
               <Text style={styles.texte}>Criar uma conta</Text>
+=======
+<<<<<<< HEAD
+              <Text style={styles.texte}>Criar uma conta</Text>
+=======
+              <Text style={styles.texto}>Criar uma conta</Text>
+>>>>>>> 360772c (historicao)
+>>>>>>> 9c7331c (historicaoss)
             </View>
           </TouchableNativeFeedback>
           </View>

@@ -16,6 +16,13 @@ import icontemp from "../assets/images/tempo.png"
 import iconmed from "../assets/images/medicamentos.png"
 import iconver from "../assets/images/ver.png"
 import iconocul from "../assets/images/ocultar.png"
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+import iconrelohisto from "../assets/images/relogiohistorico.png"
+>>>>>>> 360772c (historicao)
+>>>>>>> 9c7331c (historicaoss)
 import logo1 from "../assets/images/slide1.png"
 import logo2 from "../assets/images/slide2.png"
 import logo3 from "../assets/images/slide3.png"
@@ -40,6 +47,13 @@ export default {
     iconmed,
     iconver,
     iconocul,
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+    iconrelohisto,
+>>>>>>> 360772c (historicao)
+>>>>>>> 9c7331c (historicaoss)
     logo1,
     logo2,
     logo3,

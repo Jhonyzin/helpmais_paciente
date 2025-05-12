@@ -70,7 +70,15 @@ export default function Login() {
     }
   };
   return (
+<<<<<<< HEAD
     <View style={styles.container}>
+=======
+<<<<<<< HEAD
+    <View style={styles.container}>
+=======
+    <View style={[styles.container, paddingHorizontal = 20]}>
+>>>>>>> 360772c (historicao)
+>>>>>>> 9c7331c (historicaoss)
       <StatusBar barStyle="light-content" backgroundColor="#004aad" />
 
       <Image

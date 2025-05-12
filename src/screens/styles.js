@@ -1,4 +1,12 @@
+<<<<<<< HEAD
 import { View, Text, Image, TextInput, TouchableOpacity, StyleSheet,Dimensions  } from 'react-native';
+=======
+<<<<<<< HEAD
+import { View, Text, Image, TextInput, TouchableOpacity, StyleSheet,Dimensions  } from 'react-native';
+=======
+import { StyleSheet, Dimensions  } from 'react-native';
+>>>>>>> 360772c (historicao)
+>>>>>>> 9c7331c (historicaoss)
 const { width } = Dimensions.get('window');
 const topo = 40;
 
@@ -33,7 +41,15 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#1c2c41",
     alignItems: "center",
+<<<<<<< HEAD
     paddingHorizontal: 20,
+=======
+<<<<<<< HEAD
+    paddingHorizontal: 20,
+=======
+    
+>>>>>>> 360772c (historicao)
+>>>>>>> 9c7331c (historicaoss)
   },
   imagem: {
     width: 250,
@@ -83,11 +99,20 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     marginTop: 20,
   },
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 9c7331c (historicaoss)
   texte: {
     fontSize: 16,
     fontWeight: "bold",
     color: "#FFF",
   },
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 360772c (historicao)
+>>>>>>> 9c7331c (historicaoss)
   texto: {
     fontSize: 16,
     fontWeight: "bold",
@@ -147,11 +172,25 @@ export const styles = StyleSheet.create({
   },
   spacer: {
     width: 20,
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 9c7331c (historicaoss)
     linkTexto: {
       color: "#fff",
       marginTop: 15,
       textDecorationLine: "underline",
     },
+<<<<<<< HEAD
+=======
+=======
+  },
+  linkTexto: {
+    color: "#fff",
+    marginTop: 15,
+    textDecorationLine: "underline",
+>>>>>>> 360772c (historicao)
+>>>>>>> 9c7331c (historicaoss)
   },
   title: {
     color: "#FFF",
@@ -173,6 +212,82 @@ export const styles = StyleSheet.create({
     top: "10%",
     width: "100%",
   },
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+  historicocontainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#1c2c41',
+    flex: 1,
+
+  },
+  botaconsu: {
+    width: '80%',
+    height: '20%',
+    overflow: 'hidden',
+    flexDirection: 'row',
+    borderRadius: 15,
+  },
+  dentrodobota: {
+    flexDirection: 'row'
+  },
+  imgconsul: {
+    height: 90,
+    width: 90,
+    marginTop: topo - 40,
+  },
+  
+  Bar: {
+    width: 10,
+    height: '100%',
+    borderTopLeftRadius: 10,
+    borderBottomLeftRadius: 10,
+  },
+  textoconsul: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginTop: topo - 35,
+    color: '#FFF'
+  },
+  cargotext: {
+    color: '#a6a6a6',
+    fontSize: 12,
+  },
+  tempo: {
+    height: 20,
+    width: 20,
+    marginTop: 10,
+    marginLeft: 100,
+
+  },
+  botaodentro: {
+    backgroundColor: '#004aad',
+    flex: 1,
+  },
+  tempo2: {
+    height: 20,
+    width: 20,
+    marginLeft: 10,
+    marginTop: 20,
+  },
+  textos: {
+    marginTop: 17,
+    marginLeft: 5
+  },
+  textosDistantes: {
+  marginTop: 17, 
+  marginLeft: 55,
+},
+imghisto: {
+  width: '45%',
+  height: '45%',
+  marginTop: -70,
+  marginLeft: -30,
+}
+>>>>>>> 360772c (historicao)
+>>>>>>> 9c7331c (historicaoss)
 });
   
   export default styles;

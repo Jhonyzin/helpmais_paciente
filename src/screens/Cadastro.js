@@ -6,6 +6,10 @@ import icons from '../constants/icons';
 import { Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 9c7331c (historicaoss)
 function validarCPF(cpf) {
   cpf = cpf.replace(/[^\d]+/g, ''); // remove pontos e traços
 
@@ -37,6 +41,12 @@ function validarCPF(cpf) {
 
   return true;
 }
+<<<<<<< HEAD
+=======
+=======
+
+>>>>>>> 360772c (historicao)
+>>>>>>> 9c7331c (historicaoss)
 const formatarCPF = (texto) => {
   const numeros = texto.replace(/\D/g, '');
 
@@ -111,12 +121,21 @@ export default function Cadastro() {
       Alert.alert('Erro', 'CPF inválido. Use o formato XXX.XXX.XXX-XX.');
       return;
     }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 9c7331c (historicaoss)
     
     if (!validarCPF(cpf)) {
       Alert.alert('Erro', 'CPF inválido. Dígitos verificadores incorretos.');
       return;
     }
     
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 360772c (historicao)
+>>>>>>> 9c7331c (historicaoss)
 
     if (!dataValida(dataNascimento)) {
       Alert.alert('Erro', 'Data de nascimento inválida.');

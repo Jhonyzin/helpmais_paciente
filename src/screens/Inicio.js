@@ -26,7 +26,15 @@ export default function Inicio() {
     navigation.navigate('Medicamentos'); 
   }
   const navigateToHospit = () => {
+<<<<<<< HEAD
     navigation.navigate('Hospital'); 
+=======
+<<<<<<< HEAD
+    navigation.navigate('Hospital'); 
+=======
+    navigation.navigate('Hospitais'); 
+>>>>>>> 360772c (historicao)
+>>>>>>> 9c7331c (historicaoss)
   }
   
   useEffect(() => {
@@ -57,7 +65,15 @@ export default function Inicio() {
   }, []);
 
   return (
+<<<<<<< HEAD
     <View style={styles.container}>
+=======
+<<<<<<< HEAD
+    <View style={styles.container}>
+=======
+    <View style={[styles.container, paddingHorizontal = 20]}>
+>>>>>>> 360772c (historicao)
+>>>>>>> 9c7331c (historicaoss)
       <StatusBar barStyle="dark-content" backgroundColor="#1c2c41" hidden={false} />
       
       <View>  

@@ -13,7 +13,15 @@ export default function Logo(){
         return () => clearTimeout(timer);
       }, []);
     return (
+<<<<<<< HEAD
       <View style={styles.container}>
+=======
+<<<<<<< HEAD
+      <View style={styles.container}>
+=======
+      <View style={[styles.container, paddingHorizontal = 20]}>
+>>>>>>> 360772c (historicao)
+>>>>>>> 9c7331c (historicaoss)
         <StatusBar backgroundColor="#004aad" />
         <Image source={icons.iconlogo} style={styles.imagem} resizeMode="contain"/>
       </View>
