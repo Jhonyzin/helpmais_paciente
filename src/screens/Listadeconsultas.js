@@ -64,7 +64,7 @@ export default function HistoricoConsultas({ filtro }) {
               consulta.status === 'realizada' ? '#7ed957' :
               consulta.status === 'cancelada' ? '#ff0000' :
               consulta.status === 'andamento' ? '#ffde59' :
-              '#cccccc' // em casso de null ou undefined no status
+              '#cccccc' // em casso de null ou undefined no status, se acontecer tem algum bug.
             }
           />
         ))
