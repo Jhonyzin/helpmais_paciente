@@ -72,76 +72,76 @@ export default function Login() {
   return (
 
 
-    <View style={[styles.container, paddingHorizontal = 20, styles.fundo]}>
+<View style={[styles.container, paddingHorizontal = 20, styles.fundo]}>
 
-      <StatusBar barStyle="light-content" backgroundColor="#004aad" />
+<StatusBar barStyle="light-content" backgroundColor="#004aad" />
 
-      <Image
-        source={icons.iconlogo}
-        style={styles.imagem}
-        resizeMode="contain"
-      />
-
-<View style={styles.inputContainer}>
   <Image
-    source={icons.iconperfil} 
-    style={styles.icon}
+    source={icons.iconlogo}
+    style={styles.imagem}
     resizeMode="contain"
   />
-  <TextInput
-    style={styles.input}
-    placeholder="CPF"
-    placeholderTextColor="#ccc"
-    onChangeText={(text) => setcpf(formatarCPF(text))}
-    value={cpf}
-    keyboardType="numeric"
-    maxLength={14}
-  />
-</View>
 
-<View style={styles.inputContainer}>
-  <Image
-    source={icons.iconsegu}
-    style={styles.icon}
-    resizeMode="contain"
-  />
-  
-  <TextInput
-  style={[styles.input, { fontFamily: 'monospace ' }]} 
-  placeholder="Senha"
-  placeholderTextColor="#ccc"
-  onChangeText={setSenha}
-  value={senha}
-  secureTextEntry={!senhaVisivel}
-/>
-  
-  <TouchableOpacity  onPress={() => setSenhaVisivel(!senhaVisivel)}>
+  <View style={styles.inputContainer}>
     <Image
-      source={senhaVisivel ? icons.iconver : icons.iconocul} 
-      style={styles.iconEye}
+      source={icons.iconperfil} 
+      style={styles.icon}
       resizeMode="contain"
     />
+    <TextInput
+      style={styles.input}
+      placeholder="CPF"
+      placeholderTextColor="#ccc"
+      onChangeText={(text) => setcpf(formatarCPF(text))}
+      value={cpf}
+      keyboardType="numeric"
+      maxLength={14}
+    />
+  </View>
+
+  <View style={styles.inputContainer}>
+    <Image
+      source={icons.iconsegu}
+      style={styles.icon}
+      resizeMode="contain"
+    />
+    
+    <TextInput
+    style={[styles.input, { fontFamily: 'monospace ' }]} 
+    placeholder="Senha"
+    placeholderTextColor="#ccc"
+    onChangeText={setSenha}
+    value={senha}
+    secureTextEntry={!senhaVisivel}
+    />
+    
+    <TouchableOpacity  onPress={() => setSenhaVisivel(!senhaVisivel)}>
+      <Image
+        source={senhaVisivel ? icons.iconver : icons.iconocul} 
+        style={styles.iconEye}
+        resizeMode="contain"
+      />
+    </TouchableOpacity>
+  </View>
+
+
+  <TouchableOpacity style={styles.botao} onPress={handleLogin}>
+    <Text style={styles.textoBotao}>Entrar</Text>
+  </TouchableOpacity>
+
+  {/* Texto "OU" centralizado e com espaçamento controlado */}
+  <View style={{ alignItems: 'center', marginVertical: 0 }}>
+    <Text style={styles.textocinza}>OU</Text>
+  </View>
+
+  <TouchableOpacity style={styles.botao} onPress={readNfc}>
+    <Text style={styles.textoBotao}>NFC</Text>
+  </TouchableOpacity>
+       
+  <TouchableOpacity onPress={navigateTocadastro}>
+    <Text style={styles.linkTexto}>não tem conta? Fazer cadastro</Text>
   </TouchableOpacity>
 </View>
-
-
-      <TouchableOpacity style={styles.botao} onPress={handleLogin}>
-  <Text style={styles.textoBotao}>Entrar</Text>
-</TouchableOpacity>
-
-{/* Texto "OU" centralizado e com espaçamento controlado */}
-<View style={{ alignItems: 'center', marginVertical: 0 }}>
-  <Text style={styles.textocinza}>OU</Text>
-</View>
-
-<TouchableOpacity style={styles.botao} onPress={readNfc}>
-  <Text style={styles.textoBotao}>NFC</Text>
-</TouchableOpacity>
-       
-      <TouchableOpacity onPress={navigateTocadastro}>
-                <Text style={styles.linkTexto}>não tem conta? Fazer cadastro</Text>
-              </TouchableOpacity>
-    </View>
     
   );
 }

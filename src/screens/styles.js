@@ -38,9 +38,7 @@ export const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: "#fff",
     alignItems: "center",
-
     paddingHorizontal: 20,
   },
   imagem: {
@@ -150,7 +148,7 @@ export const styles = StyleSheet.create({
     gap: 30,
   },
   img_options: {
-    width: 150,
+    width: 120,
     height: 105,
     marginTop: topo - 35,
   },
@@ -162,7 +160,6 @@ export const styles = StyleSheet.create({
     color: "#0000	",
     marginTop: 15,
     textDecorationLine: "underline",
-
   },
   title: {
     color: "#FFF",
@@ -189,7 +186,6 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#1c2c41',
     flex: 1,
-
   },
   botaconsu: {
     width: '80%',
@@ -254,7 +250,6 @@ imghisto: {
   marginTop: -70,
   marginLeft: -30,
 }
-
 });
   
   export default styles;

@@ -70,4 +70,3 @@ function Encerradas( filtro ){
         <Listadeconsultas filtro="encerradas"/>
     )
 }
-

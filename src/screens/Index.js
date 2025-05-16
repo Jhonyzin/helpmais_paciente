@@ -37,7 +37,7 @@ export default function Index() {
           <TouchableNativeFeedback onPress={navigateToLogin}>
             <View style={styles.butons}>
 
-            <Text style={styles.texte}>Iniciar Sessão</Text>
+            <Text style={styles.texto}>Iniciar Sessão</Text>
 
             </View>
           </TouchableNativeFeedback>
@@ -45,12 +45,10 @@ export default function Index() {
           <TouchableNativeFeedback onPress={navigateTocadastro}>
             <View style={styles.butons}>
               <Text style={styles.texto}>Criar uma conta</Text>
-
             </View>
           </TouchableNativeFeedback>
           </View>
       </View>
-      
     </>
   );
 
