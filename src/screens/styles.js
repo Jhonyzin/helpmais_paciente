@@ -38,7 +38,6 @@ export const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: "#fff",
     alignItems: "center",
     paddingHorizontal: 20,
   },
@@ -149,7 +148,7 @@ export const styles = StyleSheet.create({
     gap: 30,
   },
   img_options: {
-    width: 150,
+    width: 120,
     height: 105,
     marginTop: topo - 35,
   },

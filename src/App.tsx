@@ -21,14 +21,17 @@ export default function App() {
 
   return (  
     <NavigationContainer>
-      <Stack.Navigator id="mainStack" initialRouteName="Login" screenOptions={{ headerShown: false }}>
+      <Stack.Navigator id="mainStack" initialRouteName="Inicio" screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Logo1" component={Logo1} />
         <Stack.Screen name="Index" component={Index} />
         <Stack.Screen name="Login" component={Login}
         options={{
-            
+            headerShown: true,
             headerStyle: { 
               backgroundColor: '#004aad'
-        }}}
+            }
+          
+          }}
         />
 
         <Stack.Screen 
@@ -44,7 +47,7 @@ export default function App() {
         }}}/>
 
         <Stack.Screen name="Inicio" component={Inicio} />
-        <Stack.Screen name="Logo1" component={Logo1} />
+        
         <Stack.Screen 
           name="Config" 
           component={Config}

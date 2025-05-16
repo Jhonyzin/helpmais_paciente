@@ -4,10 +4,8 @@ import { useNavigation } from '@react-navigation/native';
 export default function Pulseira() {
    
     return (
-        <View style={styles.container}>
-
-            <View style={[styles.container, { paddingHorizontal: 20 }]}>
-
+        <View style={[styles.container , {backgroundColor: "#1c2c41"}]}>
+            <View style={[styles.container, { paddingHorizontal: 20}]}>
             <Text>pulseira</Text>
             </View>
         </View>

@@ -56,7 +56,7 @@ export default function Inicio() {
   }, []);
 
   return (
-    <View style={[styles.container, paddingHorizontal = 20]}>
+    <View style={[styles.container, {paddingHorizontal: 20, backgroundColor: "#1c2c41"}]}>
       <StatusBar barStyle="dark-content" backgroundColor="#1c2c41" hidden={false} />
       
       <View>  
@@ -84,7 +84,7 @@ export default function Inicio() {
 
         <TouchableOpacity onPress={navigateToPulseira}>
           <View style={styles.opcoes}>
-            <Image source={icons.iconpulsiera} style={styles.img_options} resizeMode="contain" />
+            <Image source={icons.iconpulsiera} style={styles.img_options}/>
             <View style={styles.linha2} />
             <Text style={styles.texto}>Minha Pulseira</Text>
           </View>
@@ -95,7 +95,7 @@ export default function Inicio() {
         <TouchableOpacity onPress={navigateToMed}>
           
           <View style={styles.opcoes}>
-            <Image source={icons.iconmed} style={styles.img_options} resizeMode="contain" />
+            <Image source={icons.iconmed} style={styles.img_options}/>
             <View style={styles.linha2} />
             <Text style={styles.texto}>Meus Medicamentos</Text>
           </View>

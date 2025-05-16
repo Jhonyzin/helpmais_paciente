@@ -7,7 +7,7 @@ export default function Hospitais() {
     const navigation = useNavigation();
 
     return(
-    <View style = {[styles.container, paddingHorizontal = 20]}>
+    <View style = {[styles.container, {paddingHorizontal: 20, backgroundColor: "#1c2c41"}]}>
         <Text style={styles.texto}>hospitais</Text>
 
     </View>
