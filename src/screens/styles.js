@@ -215,7 +215,7 @@ export const styles = StyleSheet.create({
     marginTop: topo - 35,
     color: '#FFF'
   },
-  cargotext: {
+  especialidadetext: {
     color: '#a6a6a6',
     fontSize: 12,
   },
