@@ -45,7 +45,7 @@ export default function Login() {
     try {
       const response = await axios.post(`${API_URL}/login`, {
         cpf,
-        password: senha,
+        senha: senha,
       });
       const { token } = response.data;
       await AsyncStorage.setItem('userToken', token);
