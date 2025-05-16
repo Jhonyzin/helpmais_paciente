@@ -61,14 +61,21 @@ export default function Inicio() {
       
       <View>  
         <TouchableOpacity onPress={navigateToconfig}>
-          <View style={styles.quadrado}>
-            <Image source={icons.iconprinperfil} style={styles.image_ico_perfil} resizeMode="contain" />
-            <Text style={styles.quatext}> Olá,</Text>
-            <Text style={styles.textodonome} adjustsFontSizeToFit numberOfLines={1} minimumFontScale={0.7}>
-              {nome ? nome : 'Carregando...'}
-            </Text>
-          </View>
-        </TouchableOpacity>
+  <View style={[styles.quadrado, { flexDirection: 'row', alignItems: 'center' }]}>
+    <Image source={icons.iconprinperfil} style={styles.image_ico_perfil} resizeMode="contain" />
+
+    <View style={{ marginLeft: -40 }}>
+      <Text
+        style={styles.textodonome}
+        adjustsFontSizeToFit
+        numberOfLines={1}
+        minimumFontScale={0.7}
+      >
+        {nome ? nome : 'Carregando...'}
+      </Text>
+    </View>
+  </View>
+</TouchableOpacity>
       </View>
 
       <View style={styles.linha}>
