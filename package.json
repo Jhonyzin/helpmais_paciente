@@ -23,11 +23,13 @@
     "react-native-get-random-values": "^1.11.0",
     "react-native-nfc-manager": "^3.16.1",
     "react-native-pager-view": "^6.7.1",
+    "react-native-paper": "^5.14.1",
     "react-native-reanimated": "^3.17.5",
     "react-native-safe-area-context": "^5.4.0",
     "react-native-screens": "^4.10.0",
     "react-native-swiper": "^1.6.0",
     "react-native-tab-view": "^4.0.12",
+    "react-native-vector-icons": "^10.2.0",
     "typescript": "^5.8.3"
   },
   "devDependencies": {

@@ -38,7 +38,6 @@ export default function Historico() {
 };
 
 
-
 function Todas(){
     return(
     <View style={styles.historicocontainer}>
@@ -55,7 +54,6 @@ function Todas(){
     </View>
     )
 }
-
 function Emandamento(){
     const navigation = useNavigation();
     const navigateTohisto = () => {
@@ -67,7 +65,6 @@ function Emandamento(){
     </View>
     )
 }
-
 function Encerradas( filtro ){
     return (
         <Listadeconsultas filtro="encerradas"/>

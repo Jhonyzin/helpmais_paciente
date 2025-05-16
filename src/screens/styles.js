@@ -1,4 +1,6 @@
-import { StyleSheet, Dimensions  } from 'react-native';
+
+import { StyleSheet,Dimensions  } from 'react-native';
+
 const { width } = Dimensions.get('window');
 const topo = 40;
 
@@ -38,7 +40,6 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
-    paddingHorizontal: 20,
     paddingHorizontal: 20,
   },
   imagem: {
@@ -89,11 +90,16 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     marginTop: 20,
   },
-  texto: {
+    texto: {
+    fontSize: 16,
+    fontWeight: "bold",
+    color: "#FFF",
+  },
+   textocinza: {
     fontSize: 16,
     marginVertical: 0,
     fontWeight: "bold",
-    color: "#FFF",
+    color: "#000",
   },
   textoBotao: {
     color: "#fff",
@@ -149,6 +155,7 @@ export const styles = StyleSheet.create({
   },
   spacer: {
     width: 20,
+   
   },
   linkTexto: {
     color: "#0000	",

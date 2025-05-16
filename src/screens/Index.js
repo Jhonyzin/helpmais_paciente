@@ -18,7 +18,7 @@ export default function Index() {
 
   return (
     <>
-      <StatusBar barStyle={'dark-content'} backgroundColor="#004aad"/>
+      <StatusBar barStyle={'dark-content'} backgroundColor="#004aad" />
       <Swiper autoplay={true} loop={true}>
         <View>
           <Image source={icons.logo1} style={styles.logos} resizeMode="stretch" />
@@ -36,7 +36,9 @@ export default function Index() {
         <View style={styles.botaobom}>
           <TouchableNativeFeedback onPress={navigateToLogin}>
             <View style={styles.butons}>
-              <Text style={styles.texto}>Iniciar Sessão</Text>
+
+            <Text style={styles.texte}>Iniciar Sessão</Text>
+
             </View>
           </TouchableNativeFeedback>
           <View style={styles.spacer} />

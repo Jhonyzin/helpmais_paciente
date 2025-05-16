@@ -119,7 +119,6 @@ export default function Cadastro() {
       Alert.alert('Erro', 'CPF inválido. Dígitos verificadores incorretos.');
       return;
     }
-    
     if (!dataValida(dataNascimento)) {
       Alert.alert('Erro', 'Data de nascimento inválida.');
       return;

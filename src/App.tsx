@@ -1,7 +1,8 @@
-import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+
+import React from 'react';
 import Cadastro from './screens/Cadastro';
 import Config from './screens/Config';
 import Historico from './screens/Historico';
@@ -17,19 +18,18 @@ import Informacoes from './screens/Informacoes';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+
   return (  
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Logo1" screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="Logo1" component={Logo1} />
+      <Stack.Navigator id="mainStack" initialRouteName="Login" screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Index" component={Index} />
-        <Stack.Screen 
-          name="Login" 
-          component={Login}
-          options={{
-            headerShown: true,
+        <Stack.Screen name="Login" component={Login}
+        options={{
+            
             headerStyle: { 
               backgroundColor: '#004aad'
-        }}}/>
+        }}}
+        />
 
         <Stack.Screen 
           name="Cadastro" 
@@ -38,11 +38,13 @@ export default function App() {
           options={{
             headerShown: true, 
             title: 'Cadastro', 
+            backgroundColor : '#FFF',
             headerStyle: { 
               backgroundColor: '#004aad'
         }}}/>
 
         <Stack.Screen name="Inicio" component={Inicio} />
+        <Stack.Screen name="Logo1" component={Logo1} />
         <Stack.Screen 
           name="Config" 
           component={Config}

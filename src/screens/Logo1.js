@@ -7,8 +7,9 @@ export default function Logo(){
       const navigation = useNavigation();
       useEffect(() => {
         const timer = setTimeout(() => {
-          navigation.replace("Index");
+          navigation.replace("Logo2");
         }, 3000);
+
         return () => clearTimeout(timer);
       }, []);
     return (
