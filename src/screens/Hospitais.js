@@ -8,7 +8,7 @@ export default function Hospitais() {
 
     return(
     <View style = {[styles.container, paddingHorizontal = 20]}>
-        <Text style={styles.texto}>hospitais</Text>
+        <Text style={styles.texto}>mudar depois por gentileza</Text>
     </View>
     );
 }
