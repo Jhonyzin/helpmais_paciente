@@ -6,7 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-const API_URL = 'https://backend-811v.onrender.com'
+const API_URL = 'https://backend-811v.onrender.com/usuario';
 
 export default function Inicio() {
   const navigation = useNavigation();
@@ -39,7 +39,7 @@ export default function Inicio() {
           return;
         }
         setToken(userToken);
-        const response = await axios.get(`${API_URL}/nome`, {
+        const response = await axios.get(`${API_URL}`, {
           headers: {
             Authorization: `Bearer ${userToken}`,
           },

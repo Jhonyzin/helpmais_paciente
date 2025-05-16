@@ -44,7 +44,7 @@ export default function Login() {
   const handleLogin = async () => {
     try {
       const response = await axios.post(`${API_URL}/login`, {
-        cpf,
+        cpf:  cpf.replace(/\D/g, ''),
         senha: senha,
       });
       const { token } = response.data;
