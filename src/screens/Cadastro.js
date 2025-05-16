@@ -18,7 +18,7 @@ import {
   validarEmail
 } from '../utils/validacao';
 
-const API_URL = 'https://backend-811v.onrender.com';
+const API_URL = 'https://backend-811v.onrender.com/usuario';
 
 export default function Cadastro() {
   const [form, setForm] = useState({

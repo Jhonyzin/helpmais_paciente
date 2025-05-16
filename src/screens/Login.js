@@ -18,7 +18,7 @@ const formatarCPF = (texto) => {
   return `${numeros.slice(0, 3)}.${numeros.slice(3, 6)}.${numeros.slice(6, 9)}-${numeros.slice(9, 11)}`;
 };
 
-const API_URL = 'https://backend-811v.onrender.com'
+const API_URL = 'https://backend-811v.onrender.com/usuario'
 
 
 
