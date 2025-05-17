@@ -1,72 +1,97 @@
-import { View ,Text, Button} from "react-native";
-import { styles } from "./styles";
-import { useNavigation } from "@react-navigation/native";
-import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
-import Botaoconsultas from "../components/consultas";
 import React, { useState, useEffect } from 'react';
-import Listadeconsultas from "./Listadeconsultas";
-
-const { Navigator, Screen } = createMaterialTopTabNavigator()
-
+import { View, ScrollView, ActivityIndicator } from 'react-native';
+import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import Botaoconsultas from '../components/consultas';
+import { styles } from './styles';
 
 export default function Historico() {
-    const navigation = useNavigation();
+  const [consultas, setConsultas] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-    return(
-        
-        <Navigator screenOptions={{
-            tabBarInactiveTintColor: '#b8b8b8',
-            tabBarActiveTintColor: '#FFF',
-            tabBarLabelStyle: {
-                fontSize: 15,
-                fontWeight: 'bold',
-            },
-            tabBarIndicatorContainerStyle: {
-                backgroundColor: '#004aad'
-            },
-            tabBarIndicatorStyle: {
-                backgroundColor: '#7ed957',
-                height: 4
-            },
-        }}>
-            <Screen name="Todas" component={Todas}/>
-            <Screen name="Em andamento" component={Emandamento}/>
-            <Screen name="Encerradas" component={Encerradas}/>
-            <Screen name="Encerradas" component={Encerradas}/>
-        </Navigator>
-    );
-};
+  useEffect(() => {
+    async function carregarConsultas() {
+      try {
+        const token = await AsyncStorage.getItem('userToken');
+        if (!token) {
+          console.warn('Token não encontrado');
+          setLoading(false);
+          return;
+        }
 
+        const response = await axios.get(
+          'https://backend-811v.onrender.com/consultas',
+          { headers: { Authorization: `Bearer ${token}` } }
+        );
 
-function Todas(){
-    return(
-    <View style={styles.historicocontainer}>
-        <Botaoconsultas
-        nome="Jaime"
-        cargo="Cardiologista"
-        tempo="1 mês"
-        horario="14:20"
-        valor="R$10000"
-        imagemdeendamento={true}
-        corbarra="#7ed957"
-        />
-        
-    </View>
-    )
+        const dados = response.data.map(item => ({
+          nome: item.nome,
+          especialidade: item.especialidade,
+          imagem_perfil: item.imagem_perfil ? { uri: item.imagem_perfil } : null,
+          status: item.status,
+          horario: formatarHorario(item.data_hora),
+          tempo: calcularTempoPassado(item.data_hora),
+          valor: 'R$ 300,00', // ajustar se quiser pegar do backend
+          corbarra: getCorBarra(item.status),
+        }));
+
+        setConsultas(dados);
+      } catch (error) {
+        console.error('Erro ao carregar consultas:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    carregarConsultas();
+  }, []);
+
+  if (loading) {
+    return <ActivityIndicator style={{ flex: 1 }} size="large" color="#004aad" />;
+  }
+
+  return (
+    <ScrollView contentContainerStyle={styles.historicocontainer}>
+      {consultas.map((consulta, index) => (
+        <Botaoconsultas key={index} {...consulta} />
+      ))}
+    </ScrollView>
+  );
 }
-function Emandamento(){
-    const navigation = useNavigation();
-    const navigateTohisto = () => {
-            navigation.navigate('Informacoes')
-        };
-    return (
-    <View style={styles.historicocontainer}>
-        <Button title="Ir para Info" onPress={navigateTohisto}/>
-    </View>
-    )
+
+// Funções auxiliares
+
+function formatarHorario(dataHoraStr) {
+  const data = new Date(dataHoraStr);
+  const horas = data.getHours().toString().padStart(2, '0');
+  const minutos = data.getMinutes().toString().padStart(2, '0');
+  return `${horas}:${minutos}`;
 }
-function Encerradas( filtro ){
-    return (
-        <Listadeconsultas filtro="encerradas"/>
-    )
+
+function calcularTempoPassado(dataHoraStr) {
+  const agora = new Date();
+  const dataConsulta = new Date(dataHoraStr);
+  const diffMs = agora - dataConsulta;
+  const diffDias = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+
+  if (diffDias < 1) return 'Hoje';
+  if (diffDias === 1) return 'Ontem';
+  if (diffDias < 30) return `${diffDias} dias`;
+  const meses = Math.floor(diffDias / 30);
+  return `${meses} ${meses === 1 ? 'mês' : 'meses'}`;
+}
+
+function getCorBarra(status) {
+  switch (status?.toLowerCase()) {
+    case 'concluida':
+      return '#7ed957';
+    case 'em andamento':
+      return '#ffde59';
+    case 'encerrada':
+      return '#ff0000';
+    case 'cancelada':
+      return '#808080';
+    default:
+      return '#a6a6a6';
+  }
 }

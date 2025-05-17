@@ -16,7 +16,7 @@ export default function Inicio() {
   const navigateToconfig = () => {
     navigation.navigate('Config'); 
   };
-  const navigateTohist = () => {
+  const navigateToHistorico = () => {
     navigation.navigate('Historico'); 
   };
   const navigateToPulseira = () => {
@@ -80,7 +80,7 @@ export default function Inicio() {
 
       <View style={styles.linha}>
         <View style={styles.botaoComImagem}>
-          <TouchableOpacity onPress={navigateTohist}> 
+          <TouchableOpacity onPress={navigateToHistorico}>
             <View style={styles.opcoes}>
               <Image source={icons.iconmedicam} style={styles.img_options} resizeMode="contain" />
               <View style={styles.linha2} />
