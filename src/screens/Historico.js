@@ -20,7 +20,7 @@ export default function Historico() {
         }
 
         const response = await axios.get(
-          'https://backend-811v.onrender.com/consultas',
+          'https://backend-811v.onrender.com/consulta',
           { headers: { Authorization: `Bearer ${token}` } }
         );
 
@@ -31,7 +31,7 @@ export default function Historico() {
           status: item.status,
           horario: formatarHorario(item.data_hora),
           tempo: calcularTempoPassado(item.data_hora),
-          valor: 'R$ 300,00', // ajustar se quiser pegar do backend
+          valor: item.valor || 'gratuita',
           corbarra: getCorBarra(item.status),
         }));
 
@@ -59,7 +59,7 @@ export default function Historico() {
   );
 }
 
-// Funções auxiliares
+
 
 function formatarHorario(dataHoraStr) {
   const data = new Date(dataHoraStr);
