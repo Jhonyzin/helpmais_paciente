@@ -249,7 +249,31 @@ imghisto: {
   height: '45%',
   marginTop: -70,
   marginLeft: -30,
-}
+},
+ tipoBotao: {
+  flex: 1,
+  borderWidth: 1,
+  borderColor: '#004aad',
+  paddingVertical: 10,
+  borderRadius: 5,
+  marginHorizontal: 5,
+  alignItems: 'center',
+  backgroundColor: '#fff',
+},
+
+tipoBotaoAtivo: {
+  backgroundColor: '#004aad',
+},
+
+tipoTexto: {
+  color: '#004aad',
+  fontWeight: 'bold',
+},
+
+tipoTextoAtivo: {
+  color: '#fff',
+},
+
 });
   
   export default styles;
