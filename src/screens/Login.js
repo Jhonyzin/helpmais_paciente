@@ -28,6 +28,8 @@ export default function Login() {
   const [senhaVisivel, setSenhaVisivel] = useState(false);
 
   const navigateToinicio = () => navigation.navigate('Inicio');
+  const navigateToinicioMedico = () => navigation.navigate('InicioMedico');
+
   const navigateTocadastro = () => navigation.navigate('Cadastro');
 
   useEffect(() => {

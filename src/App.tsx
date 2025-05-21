@@ -9,6 +9,7 @@ import Historico from './screens/Historico';
 import Hospitais from './screens/Hospitais';
 import Index from './screens/Index';
 import Inicio from './screens/Inicio';
+import InicioMedico from './screens/InicioMedico';
 import Login from './screens/Login';
 import Logo1 from './screens/Logo1';
 import Medicamentos from './screens/Medicamentos';
@@ -47,7 +48,9 @@ export default function App() {
         }}}/>
 
         <Stack.Screen name="Inicio" component={Inicio} />
-        
+
+        <Stack.Screen name="InicioMedico" component={InicioMedico} />
+
         <Stack.Screen 
           name="Config" 
           component={Config}
