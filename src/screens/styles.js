@@ -105,7 +105,7 @@ export const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold",
   },
-  image_ico_perfil: {
+   image_ico_perfil: {
     width: 80,
     height: 80,
     marginTop: topo - 20,
@@ -115,7 +115,7 @@ export const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "#fff",
     paddingLeft: 50,
-    fontSize: 40,
+    fontSize: 20,
     width: 300,
     maxWidth: "100%",
   },

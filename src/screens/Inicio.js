@@ -11,6 +11,9 @@ const API_URL = 'https://backend-811v.onrender.com/usuario';
 export default function Inicio() {
   const navigation = useNavigation();
   const [nome, setNome] = useState('');
+  const [imagem_perfil, setimagemperfil] = useState('null');
+
+
   const [token, setToken] = useState(''); 
 
   const navigateToconfig = () => {
@@ -46,6 +49,7 @@ export default function Inicio() {
         });
 
         setNome(response.data.nome || 'Usuário');
+        setimagemperfil(response.data.imagem_perfil || null);
       } catch (error) {
         console.warn('Erro ao buscar usuário:', error);
         setNome('Usuário');
@@ -62,8 +66,19 @@ export default function Inicio() {
       <View>  
         <TouchableOpacity onPress={navigateToconfig}>
   <View style={[styles.quadrado, { flexDirection: 'row', alignItems: 'center' }]}>
-    <Image source={icons.iconprinperfil} style={styles.image_ico_perfil} resizeMode="contain" />
-
+    {imagem_perfil ? (
+  <Image
+    source={{ uri: imagem_perfil }}
+    style={styles.image_ico_perfil}
+    resizeMode="cover"
+  />
+) : (
+  <Image
+    source={icons.iconprinperfil}
+    style={styles.image_ico_perfil}
+    resizeMode="contain"
+  />
+)}
     <View style={{ marginLeft: -40 }}>
       <Text
         style={styles.textodonome}

@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import React from 'react';
 import Cadastro from './screens/Cadastro';
+import CadastroMedico from './screens/CadastroMedico';
 import Config from './screens/Config';
 import Historico from './screens/Historico';
 import Hospitais from './screens/Hospitais';
@@ -50,8 +51,8 @@ export default function App() {
         <Stack.Screen name="Inicio" component={Inicio} />
 
         <Stack.Screen name="InicioMedico" component={InicioMedico} />
-
-        <Stack.Screen 
+        <Stack.Screen name="CadastroMedico" component={CadastroMedico}/>
+        <Stack.Screen
           name="Config" 
           component={Config}
           options={{

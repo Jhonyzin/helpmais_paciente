@@ -23,7 +23,7 @@ export default function Login() {
   const navigation = useNavigation();
 
   const [login, setLogin] = useState('');
-  const [tipoUsuario, setTipoUsuario] = useState('paciente');
+  const [tipoUsuario, setTipoUsuario] = useState('usuario');
   const [senha, setSenha] = useState('');
   const [senhaVisivel, setSenhaVisivel] = useState(false);
 
@@ -31,14 +31,15 @@ export default function Login() {
   const navigateToinicioMedico = () => navigation.navigate('InicioMedico');
 
   const navigateTocadastro = () => navigation.navigate('Cadastro');
+  const navigateTocadastroMedico = () => navigation.navigate('CadastroMedico');
 
   useEffect(() => {
     NfcManager.start();
   }, []);
 
-  const alternarPaciente = () => {
+  const alternarusuario = () => {
     setLogin('');
-    setTipoUsuario('paciente');
+    setTipoUsuario('usuario');
   };
   const alternarMedico = () => {
     setLogin('');
@@ -48,16 +49,20 @@ export default function Login() {
   const handleLogin = async () => {
     try {
       const payload =
-        tipoUsuario === 'paciente'
+        tipoUsuario === 'usuario'
           ? { cpf: login.replace(/\D/g, ''), senha }
           : { crm: login.trim(), senha };
 
-      const endpoint = tipoUsuario === 'paciente' ? '/usuario/login' : '/medico/login';
+      const endpoint = tipoUsuario === 'usuario' ? '/usuario/login' : '/medico/login';
 
       const response = await axios.post(`${API_URL}${endpoint}`, payload);
       const { token } = response.data;
       await AsyncStorage.setItem('userToken', token);
-      navigateToinicio();
+      if (tipoUsuario === 'usuario') {
+        navigateToinicio();
+      } else {
+        navigateToinicioMedico();
+}
     } catch (error) {
       console.warn('Erro ao logar:', error);
       Alert.alert('Erro no login', error.response?.data || 'Falha na requisição');
@@ -77,7 +82,6 @@ export default function Login() {
     }
   };
 
-  // ... (importações e demais funções continuam iguais)
 
   return (
     <View style={[styles.container, { paddingHorizontal: 20 }, styles.fundo]}>
@@ -85,19 +89,18 @@ export default function Login() {
 
       <Image source={icons.iconlogo} style={styles.imagem} resizeMode="contain" />
 
-      {/* Botões Paciente / Médico */}
       <View style={{ flexDirection: 'row', justifyContent: 'center', marginBottom: 20 }}>
         <TouchableOpacity
           style={[
             styles.tipoBotao,
-            tipoUsuario === 'paciente' && styles.tipoBotaoAtivo
+            tipoUsuario === 'usuario' && styles.tipoBotaoAtivo
           ]}
-          onPress={alternarPaciente}
+          onPress={alternarusuario}
         >
           <Text
             style={[
               styles.tipoTexto,
-              tipoUsuario === 'paciente' && styles.tipoTextoAtivo
+              tipoUsuario === 'usuario' && styles.tipoTextoAtivo
             ]}
           >
             Paciente
@@ -122,7 +125,6 @@ export default function Login() {
         </TouchableOpacity>
       </View>
 
-      {/* Campo de login */}
       <View style={styles.inputContainer}>
         <Image source={icons.iconperfil} style={styles.icon} resizeMode="contain" />
         <TextInput
@@ -130,15 +132,14 @@ export default function Login() {
           placeholder="Usuário"
           placeholderTextColor="#ccc"
           onChangeText={(text) =>
-            setLogin(tipoUsuario === 'paciente' ? formatarCPF(text) : text)
+            setLogin(tipoUsuario === 'usuario' ? formatarCPF(text) : text)
           }
           value={login}
-          keyboardType={tipoUsuario === 'paciente' ? 'numeric' : 'default'}
-          maxLength={tipoUsuario === 'paciente' ? 14 : 15}
+          keyboardType={tipoUsuario === 'usuario' ? 'numeric' : 'default'}
+          maxLength={tipoUsuario === 'usuario' ? 14 : 15}
         />
       </View>
 
-      {/* Campo de senha */}
       <View style={styles.inputContainer}>
         <Image source={icons.iconsegu} style={styles.icon} resizeMode="contain" />
         <TextInput
@@ -158,7 +159,6 @@ export default function Login() {
         </TouchableOpacity>
       </View>
 
-      {/* Botão Entrar */}
       <TouchableOpacity style={styles.botao} onPress={handleLogin}>
         <Text style={styles.textoBotao}>Entrar</Text>
       </TouchableOpacity>
@@ -171,7 +171,9 @@ export default function Login() {
         <Text style={styles.textoBotao}>NFC</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={navigateTocadastro}>
+      <TouchableOpacity onPress={
+        tipoUsuario === 'usuario' ? navigateTocadastro : navigateTocadastroMedico
+      }>
         <Text style={styles.linkTexto}>Não tem conta? Fazer cadastro</Text>
       </TouchableOpacity>
     </View>
