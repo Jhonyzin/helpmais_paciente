@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { View, StatusBar, TouchableOpacity, Image, Text } from 'react-native';
-import icons from '../constants/icons.js';
-import { styles } from './styles.js';
+import icons from '../../constants/icons.js';
+import { styles } from '../styles.js';
 import { useNavigation } from '@react-navigation/native';
 
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-const API_URL = 'https://backend-811v.onrender.com/usuario';
+const API_URL = 'https://backend-811v.onrender.com/medico';
 
 export default function Inicio() {
   const navigation = useNavigation();
   const [nome, setNome] = useState('');
   const [imagem_perfil, setimagemperfil] = useState('null');
+  const [especialidade, setEspecialidade] = useState('');
 
 
   const [token, setToken] = useState(''); 
@@ -80,15 +81,23 @@ export default function Inicio() {
   />
 )}
     <View style={{ marginLeft: -40 }}>
-      <Text
-        style={styles.textodonome}
-        adjustsFontSizeToFit
-        numberOfLines={1}
-        minimumFontScale={0.7}
-      >
-        {nome ? nome : 'Carregando...'}
-      </Text>
-    </View>
+  <Text
+    style={styles.textodonome}
+    adjustsFontSizeToFit
+    numberOfLines={1}
+    minimumFontScale={0.7}
+  >
+    {nome ? nome : 'Carregando...'}
+  </Text>
+  <Text
+    style={[styles.textodonome, { fontSize: 14 }]} // Adjust font size as needed
+    adjustsFontSizeToFit
+    numberOfLines={1}
+    minimumFontScale={0.7}
+  >
+    {especialidade ? especialidade : 'Carregando...'}
+  </Text>
+</View>
   </View>
 </TouchableOpacity>
       </View>

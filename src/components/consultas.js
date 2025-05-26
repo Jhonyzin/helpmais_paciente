@@ -2,13 +2,13 @@ import { Text, View, TouchableOpacity, Image } from "react-native";
 import { styles } from "../screens/styles";
 import icons from "../constants/icons";
 
-export default function Botaoconsultas({nome,especialidade, tempo, horario, valor, imagem_perfil, status, corbarra}) {
+export default function Botaoconsultas({nome, especialidade, tempo, horario, valor, imagem_perfil, status, corbarra}) {
     return(
         <TouchableOpacity style = {styles.botaconsu}>
             <View style={[styles.Bar, {backgroundColor: corbarra}]}/>
 
             <View style={styles.botaodentro}>
-                <View style={styles.dentrodobota}>
+                <View style={[styles.dentrodobota, {gap: 10}]}>
                     <Image source={imagem_perfil || icons.iconprinperfil} resizeMode="contain" style={styles.imgconsul}/>
 
                     <View>
@@ -17,8 +17,8 @@ export default function Botaoconsultas({nome,especialidade, tempo, horario, valo
                     </View>
                     
                     {status && (
-                        <View style={[styles.container, { backgroundColor: cor(status)}]}>
-                            <Text style={styles.texto}>{texto(status)}</Text>
+                        <View style={[styles.status, { backgroundColor: cor(status)}]}>
+                            <Text style={styles.texto} adjustsFontSizeToFit numberOfLines={1}>{texto(status)}</Text>
                         </View>
                         )}
                 </View>

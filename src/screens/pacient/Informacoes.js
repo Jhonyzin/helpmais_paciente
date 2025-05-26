@@ -1,7 +1,7 @@
 import { View,Text, Image } from "react-native";
-import { styles } from "./styles";
+import { styles } from "../styles";
 import { useNavigation } from '@react-navigation/native';
-import icons from "../constants/icons";
+import icons from "../../constants/icons";
 
 export default function Informacoes() {
     const navigation = useNavigation();

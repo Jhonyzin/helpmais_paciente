@@ -1,21 +1,23 @@
+import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-
-import React from 'react';
 import Cadastro from './screens/Cadastro';
 import CadastroMedico from './screens/CadastroMedico';
-import Config from './screens/Config';
-import Historico from './screens/Historico';
-import Hospitais from './screens/Hospitais';
+import Config from './screens/pacient/Config';
+import Historico from './screens/pacient/Historico';
+import Hospitais from './screens/pacient/Hospitais';
 import Index from './screens/Index';
-import Inicio from './screens/Inicio';
-import InicioMedico from './screens/InicioMedico';
+import Inicio from './screens/pacient/Inicio';
+import InicioMedico from './screens/medic/iniciomedico';
 import Login from './screens/Login';
 import Logo1 from './screens/Logo1';
-import Medicamentos from './screens/Medicamentos';
-import Pulseira from './screens/Pulseira';
-import Informacoes from './screens/Informacoes';
+import Medicamentos from './screens/pacient/Medicamentos';
+import Pulseira from './screens/pacient/Pulseira';
+import Informacoes from './screens/pacient/Informacoes';
+import Dados from './screens/pacient/Dados';
+import Seguranca from './screens/pacient/Seguranca';
+import Assec from './screens/pacient/Assec';
 
 const Stack = createNativeStackNavigator();
 
@@ -23,16 +25,17 @@ export default function App() {
 
   return (  
     <NavigationContainer>
-      <Stack.Navigator id="mainStack" initialRouteName="Login" screenOptions={{ headerShown: false }}>
+      <Stack.Navigator id="mainStack" initialRouteName="Logo1" screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Logo1" component={Logo1} />
         <Stack.Screen name="Index" component={Index} />
         <Stack.Screen name="Login" component={Login}
         options={{
             headerShown: true,
+            title: 'Login',
+            headerTintColor: "#FFF",
             headerStyle: { 
               backgroundColor: '#004aad'
             }
-          
           }}
         />
 
@@ -43,7 +46,7 @@ export default function App() {
           options={{
             headerShown: true, 
             title: 'Cadastro', 
-            backgroundColor : '#FFF',
+            headerTintColor : '#FFF',
             headerStyle: { 
               backgroundColor: '#004aad'
         }}}/>
@@ -52,7 +55,8 @@ export default function App() {
 
         <Stack.Screen name="InicioMedico" component={InicioMedico} />
         <Stack.Screen name="CadastroMedico" component={CadastroMedico}/>
-        <Stack.Screen
+        
+        <Stack.Screen 
           name="Config" 
           component={Config}
           options={{
@@ -127,6 +131,46 @@ export default function App() {
               headerTintColor: '#FFF',              
             }}
           />
+
+          <Stack.Screen
+            name='Dados'
+            component={Dados}
+            options={{
+              headerShown: true,
+              title: 'Dados Pessoais',
+              headerStyle: {
+                backgroundColor: '#004aad',
+              },
+              headerTintColor: '#FFF',
+            }}
+          />
+
+          <Stack.Screen
+            name='Assec'
+            component={Assec}
+            options={{
+              headerShown: true,
+              title: 'Acessibilidade',
+              headerStyle: {
+                backgroundColor: '#004aad',
+              },
+              headerTintColor: '#FFF',
+            }}
+          />
+
+          <Stack.Screen
+            name='Seguranca'
+            component={Seguranca}
+            options={{
+              headerShown: true,
+              title: 'Segurança',
+              headerStyle: {
+                backgroundColor: '#004aad',
+              },
+              headerTintColor: '#FFF'
+            }}
+          />
+
       </Stack.Navigator>
     </NavigationContainer>
   );

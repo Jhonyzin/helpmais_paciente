@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { View, ScrollView, ActivityIndicator } from 'react-native';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import Botaoconsultas from '../components/consultas';
-import { styles } from './styles';
+import Botaoconsultas from '../../components/consultas';
+import { styles } from '../styles';
 
 export default function Historico() {
   const [consultas, setConsultas] = useState([]);
