@@ -42,7 +42,7 @@ export default function Hospitais() {
   }
     
   async function borabuscar(lat, lng) {
-    const key = 'AIzaSyCFfwmr1Knx1geRlD4eipzbQ-GqLJQFmpE';
+    const key = 'por questões de ética, retirada';
     const radius = 3000;
     const tipo = 'hospital';
 
