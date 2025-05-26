@@ -27,7 +27,7 @@
     <!-- Se alguém ver isso, saiba que o que tem aqui, você conseguirá pegar todas as informações que eu tenho, meus dados de cartão, cpf, e todas as informações, mas saiba que isso é ilegal ok? Fique a vontade para ver meus dados do cartão -->
       <meta-data 
         android:name="com.google.android.geo.API_KEY"
-        android:value="AIzaSyCFfwmr1Knx1geRlD4eipzbQ-GqLJQFmpE" />
+        android:value="chavinha" />
 
     </application>
 </manifest>
