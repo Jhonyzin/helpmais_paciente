@@ -94,8 +94,11 @@ android {
         applicationId "com.help_mais"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
+       
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
+
     }
     signingConfigs {
         debug {
@@ -124,6 +127,7 @@ dependencies {
     implementation("com.facebook.react:react-android")
     implementation('com.google.android.gms:play-services-base:18.1.0')
     implementation('com.google.android.gms:play-services-maps:18.1.0' )
+    implementation('com.google.android.gms:play-services-location:21.0.1')
     
     if (hermesEnabled.toBoolean()) {
         implementation("com.facebook.react:hermes-android")

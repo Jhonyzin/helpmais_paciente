@@ -3,7 +3,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-
+    <uses-permission android:name="android.permission.ACCESS_NFC" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />    
     <application
       android:name=".MainApplication"
       android:label="@string/app_name"
@@ -24,10 +25,8 @@
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
       </activity>
-    <!-- Se alguém ver isso, saiba que o que tem aqui, você conseguirá pegar todas as informações que eu tenho, meus dados de cartão, cpf, e todas as informações, mas saiba que isso é ilegal ok? Fique a vontade para ver meus dados do cartão -->
       <meta-data 
         android:name="com.google.android.geo.API_KEY"
-        android:value="chavinha" />
-
+        android:value="AIzaSyCFfwmr1Knx1geRlD4eipzbQ-GqLJQFmpE" />
     </application>
 </manifest>

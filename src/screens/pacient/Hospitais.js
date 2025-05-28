@@ -1,33 +1,33 @@
-import { View,Text } from "react-native";
+import { View, Text, PermissionsAndroid, Platform } from "react-native";
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import { styles } from "../styles";
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
-import { PermissionsAndroid, Platform } from 'react-native';
 import Geolocation from 'react-native-geolocation-service';
 
 export default function Hospitais() {
   const [location, setLocation] = useState(null);
-  const [hospitais, setHospitais] = useState();
+  const [hospitais, setHospitais] = useState([]);
   const navigation = useNavigation();
-  
 
+  useEffect(() => {
+    requestLocationPermission();
+  }, []);
 
-    
-  
   async function requestLocationPermission() {
     if (Platform.OS === 'android') {
       const granted = await PermissionsAndroid.request(
         PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
       );
       if (granted !== PermissionsAndroid.RESULTS.GRANTED) {
-        console.log('não vai');
+        console.log('Permissão de localização negada');
+        return;
       }
 
       Geolocation.getCurrentPosition(
         async position => {
           const coords = position.coords;
-          borabuscar(coords.latitude, coords.longitude);
+          buscarHospitaisProximos(coords.latitude, coords.longitude);
           setLocation({
             latitude: coords.latitude,
             longitude: coords.longitude,
@@ -36,78 +36,60 @@ export default function Hospitais() {
         error => {
           console.log(error.code, error.message);
         },
-        {enableHighAccuracy: true, timeout: 15000, maximumAge: 10000},
+        { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 },
       );
     }
   }
-    
-  async function borabuscar(lat, lng) {
-    const key = 'por questões de ética, retirada';
-    const radius = 3000;
-    const tipo = 'hospital';
 
-    const url =
-      `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${lng}&radius=${radius}&type=${tipo}&key=${key}`;
-
+  async function buscarHospitaisProximos(lat, lng) {
+    const url = `https://backend-811v.onrender.com/localizacao/hospitais?lat=${lat}&lng=${lng}`;
     try {
       const response = await fetch(url);
       const data = await response.json();
-
-      if (data.results) {
-        setHospitais(data.results);
+      if (Array.isArray(data)) {
+        setHospitais(data);
       }
     } catch (error) {
-      console.error(
-        'Tivemos um erro ao buscar os hospitais, o erro é o:',
-        error,
-      );
+      console.error('Erro ao buscar hospitais:', error);
     }
   }
 
-  useEffect(() => {
-    requestLocationPermission();
-  }, []);
-
-
-    return (
-      <View
-        style={[
-          styles.container,
-          {paddingHorizontal: 20, backgroundColor: '#1c2c41'},
-        ]}>
-        {location && (
-          <MapView
-            style={styles.maps}
-            provider={PROVIDER_GOOGLE}
-            initialRegion={{
-              latitude: location.latitude,
-              longitude: location.longitude,
-              latitudeDelta: 1,
-              longitudeDelta: 1,
-            }}
-            zoomEnabled={true}
-            zoomControlEnabled={true}>
-            {Array.isArray(hospitais) &&
-              hospitais.map((hosp, index) => {
-                if (
-                  hosp?.geometry?.location?.lat != null &&
-                  hosp?.geometry?.location?.lng != null
-                ) {
-                  return (
-                    <Marker
-                      key={index}
-                      coordinate={{
-                        latitude: hosp.geometry.location.lat,
-                        longitude: hosp.geometry.location.lng,
-                      }}
-                      title={hosp.name}
-                      description={hosp.vicinity}
-                    />
-                  );
-                }
-              })}
-          </MapView>
-        )}
-      </View>
-    );
+  return (
+    <View
+      style={[
+        styles.container,
+        { paddingHorizontal: 20, backgroundColor: '#1c2c41' },
+      ]}
+    >
+      {location && (
+        <MapView
+          style={styles.maps}
+          provider={PROVIDER_GOOGLE}
+          initialRegion={{
+            latitude: location.latitude,
+            longitude: location.longitude,
+            latitudeDelta: 1,
+            longitudeDelta: 1,
+          }}
+          zoomEnabled={true}
+          zoomControlEnabled={true}
+        >
+          {hospitais.map((hosp, index) => {
+            const lat = hosp?.geometry?.location?.lat;
+            const lng = hosp?.geometry?.location?.lng;
+            if (lat != null && lng != null) {
+              return (
+                <Marker
+                  key={index}
+                  coordinate={{ latitude: lat, longitude: lng }}
+                  title={hosp.name}
+                  description={hosp.vicinity}
+                />
+              );
+            }
+          })}
+        </MapView>
+      )}
+    </View>
+  );
 }
