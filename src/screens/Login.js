@@ -87,7 +87,7 @@ export default function Login() {
     <View style={[styles.container, { paddingHorizontal: 20 }, styles.fundo]}>
       <StatusBar barStyle="light-content" backgroundColor="#004aad" />
 
-      <Image source={icons.iconlogo} style={styles.imagem} resizeMode="contain" />
+      <Image source={icons.iconlogo1} style={styles.imagem} resizeMode="contain" />
 
       <View style={{ flexDirection: 'row', justifyContent: 'center', marginBottom: 20 }}>
         <TouchableOpacity

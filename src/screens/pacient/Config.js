@@ -17,24 +17,24 @@ export default function Config() {
     }
 
      return (
-        <View style={styles.configura}>
-            <Botaoconfig
-                texto="Dados Pessoais"
-                imagem={icons.iconperfil}
-                press={navigateTodados}
-            />
+       <View style={styles.configura}>
+           <Botaoconfig
+             texto="Dados Pessoais"
+             imagem={icons.iconperfil}
+             press={navigateTodados}
+           />
 
-            <Botaoconfig
-                texto="Acessibilidade"
-                imagem={icons.iconasse}
-                press={navigateToAssec}
-            />
+           <Botaoconfig
+             texto="Acessibilidade"
+             imagem={icons.iconasse}
+             press={navigateToAssec}
+           />
 
-            <Botaoconfig
-                texto="Segurança"
-                imagem={icons.iconsegu}
-                press={navigateToSegu}
-            />
-        </View>
-    );
+           <Botaoconfig
+             texto="Segurança"
+             imagem={icons.iconsegu}
+             press={navigateToSegu}
+           />
+       </View>
+     );
 }

@@ -322,6 +322,35 @@ export const styles = StyleSheet.create({
     paddingTop: 15,
     paddingHorizontal: 15,
   },
+  medbot: {
+    alignItems: 'center',
+    height: 100,
+    width: '100%',
+    borderRadius: 15,
+    flexDirection: 'row',
+    backgroundColor: '#0658c6',
+    paddingHorizontal: 10,
+  },
+  medview: {
+    flexDirection: 'column',
+    marginLeft: 10,
+    marginTop: -20,
+  },
+  medtext: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    color: '#FFF',
+  },
+  medcontai: {
+    justifyContent: 'flex-start',
+    alignContent: 'center',
+    flex: 1,
+    backgroundColor: '#FFF',
+    borderTopLeftRadius: 25,
+    borderTopRightRadius: 25,
+    padding: 10,
+    marginTop: 20,
+  },
 });
   
 

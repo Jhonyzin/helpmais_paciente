@@ -5,6 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 
 export default function Logo(){
       const navigation = useNavigation();
+
       useEffect(() => {
         const timer = setTimeout(() => {
           navigation.replace("Index");
@@ -12,6 +13,8 @@ export default function Logo(){
 
         return () => clearTimeout(timer);
       }, []);
+
+    
     return (
       <View style={[styles.container, paddingHorizontal = 20]}>
         <StatusBar backgroundColor="#004aad" />
