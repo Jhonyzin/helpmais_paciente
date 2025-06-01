@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity, Alert } from 'react-native';
 import NfcManager, { NfcTech } from 'react-native-nfc-manager';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import styles from './styles';
+import styles from '../styles';
 
 const API_URL = 'https://backend-811v.onrender.com';
 
