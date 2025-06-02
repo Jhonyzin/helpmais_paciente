@@ -69,18 +69,93 @@ export default function Login() {
     }
   };
 
-  const readNfc = async () => {
-    try {
-      await NfcManager.requestTechnology(NfcTech.Ndef);
-      const tag = await NfcManager.getTag();
-      console.log('Tag NFC lida:', tag);
-      Alert.alert('NFC Detectado', JSON.stringify(tag));
-    } catch (ex) {
-      console.warn('Erro ao ler NFC', ex);
-    } finally {
-      NfcManager.cancelTechnologyRequest();
+ const readNfc = async () => {
+  try {
+    // 1. Verificar suporte NFC
+    if (!await NfcManager.isSupported()) {
+      Alert.alert('Erro', 'Seu dispositivo não suporta NFC');
+      return;
     }
-  };
+
+    if (!await NfcManager.isEnabled()) {
+      Alert.alert('Erro', 'Ative o NFC nas configurações');
+      return;
+    }
+
+    // 2. Configurar timeout
+    const timeoutPromise = new Promise((_, reject) => 
+      setTimeout(() => reject(new Error('Tempo excedido')), 15000)
+    );
+
+    // 3. Ler tag NFC
+    await NfcManager.start();
+    const techRequest = NfcManager.requestTechnology(NfcTech.NfcA);
+    
+    const tag = await Promise.race([techRequest, timeoutPromise])
+      .then(async () => {
+        const tag = await NfcManager.getTag();
+        await NfcManager.cancelTechnologyRequest();
+        return tag;
+      });
+
+    console.log('Tag NFC:', JSON.stringify(tag, null, 2));
+
+    // 4. Processar UID
+    if (!tag?.id) throw new Error('UID não encontrado');
+
+    let uid;
+    if (Array.isArray(tag.id)) {
+      uid = tag.id.map(b => b.toString(16).padStart(2, '0')).join('').toUpperCase();
+    } else if (typeof tag.id === 'string') {
+      uid = tag.id.replace(/[^0-9A-F]/g, '').toUpperCase();
+    } else {
+      throw new Error('Formato de UID inválido');
+    }
+
+    if (!uid || uid.length < 4) throw new Error('UID muito curto');
+
+    console.log('UID processado:', uid);
+
+    // 5. Enviar para o backend com tratamento especial
+    const response = await axios.post(`${API_URL}/usuario/loginNfc`, {
+      uid: uid
+    }, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      timeout: 10000
+    });
+
+    if (!response.data?.token) throw new Error('Token não recebido');
+
+    await AsyncStorage.setItem('userToken', response.data.token);
+    navigateToinicio();
+
+  } catch (err) {
+    console.error('Erro completo:', err);
+    
+    let message = 'Erro na leitura';
+    if (err.response) {
+      // Erros do servidor (500, etc)
+      message = `Erro no servidor: ${err.response.status}`;
+      if (err.response.data?.message) {
+        message = err.response.data.message;
+      }
+    } else if (err.message) {
+      message = err.message;
+    }
+
+    Alert.alert('Erro', message);
+  } finally {
+    try {
+      await NfcManager.cancelTechnologyRequest();
+    } catch (e) {
+      console.warn('Erro ao cancelar NFC:', e);
+    }
+  }
+};
+
 
 
   return (
