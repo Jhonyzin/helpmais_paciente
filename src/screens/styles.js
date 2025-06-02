@@ -50,6 +50,10 @@ export const styles = StyleSheet.create({
     alignContent: 'center',
     justifyContent: 'center',
   },
+  botaoDesabilitado: {
+  backgroundColor: '#cccccc',
+  opacity: 0.7,
+},
   imagem: {
     width: 250,
     height: 250,
