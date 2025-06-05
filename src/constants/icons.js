@@ -24,19 +24,21 @@ import iconwifi from "../assets/images/wifi.png"
 import logo1 from "../assets/images/slide1.png"
 import logo2 from "../assets/images/slide2.png"
 import logo3 from "../assets/images/slide3.png"
+import adicionar from "../assets/images/adicionar.png";
 
 export default {
-    iconcancelar, 
-    iconlogo, 
-    iconmedicam, 
-    iconperfil, 
-    iconprinperfil, 
-    iconpulseiranfc, 
-    iconsenha, 
-    iconrelogio, 
-    iconlogodeitada, 
-    iconpulsiera, 
-    iconasse, 
+    iconcancelar,
+    iconlogo,
+    iconmedicam,
+    iconperfil,
+    iconprinperfil,
+    iconpulseiranfc,
+    iconsenha,
+    iconrelogio,
+    iconlogodeitada,
+    iconpulsiera,
+    iconasse,
+    adicionar,
     iconhospital, 
     iconsegu, 
     icontag, 

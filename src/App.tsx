@@ -9,7 +9,7 @@ import Historico from './screens/pacient/Historico';
 import Hospitais from './screens/pacient/Hospitais';
 import Index from './screens/Index';
 import Inicio from './screens/pacient/Inicio';
-import InicioMedico from './screens/medic/iniciomedico';
+import InicioMedico from './screens/medic/InicioMedico';
 import Login from './screens/Login';
 import Logo1 from './screens/Logo1';
 import Medicamentos from './screens/pacient/Medicamentos';
@@ -18,6 +18,8 @@ import Informacoes from './screens/pacient/Informacoes';
 import Dados from './screens/pacient/Dados';
 import Seguranca from './screens/pacient/Seguranca';
 import Assec from './screens/pacient/Assec';
+import HistoricoMedico from './screens/medic/HistoricoMedico';
+import InformacoesMedico from './screens/medic/InformacoesMedico';
 
 const Stack = createNativeStackNavigator();
 
@@ -55,7 +57,8 @@ export default function App() {
 
         <Stack.Screen name="InicioMedico" component={InicioMedico} />
         <Stack.Screen name="CadastroMedico" component={CadastroMedico}/>
-        
+        <Stack.Screen name="HistoricoMedico" component={HistoricoMedico}/>
+        <Stack.Screen name="InformacoesMedico" component={InformacoesMedico} />
         <Stack.Screen 
           name="Config" 
           component={Config}
