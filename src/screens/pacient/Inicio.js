@@ -60,7 +60,7 @@ export default function Inicio() {
 
   return (
   <View style={[styles.container, {paddingHorizontal: 20, backgroundColor: "#1c2c41"}]}>
-        <StatusBar barStyle="dark-content" backgroundColor="#1c2c41" hidden={false} />
+    <StatusBar barStyle="light-content" backgroundColor="#1c2c41" hidden={false} />
         
     <View>  
       <TouchableOpacity onPress={navigateToconfig}>

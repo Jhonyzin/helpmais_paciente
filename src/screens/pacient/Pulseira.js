@@ -2,14 +2,19 @@ import React, { useEffect, useState } from 'react';
 import {
   View,
   Text,
-  TouchableOpacity,
   Alert,
   ActivityIndicator,
+  Image,
+  StatusBar,
 } from 'react-native';
 import NfcManager, { NfcTech } from 'react-native-nfc-manager';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Swiper from 'react-native-swiper';
 import styles from '../styles';
+import icons from '../../constants/icons';
+import Naotem from '../../components/Naotem';
+import Tempul from '../../components/Tempul';
 
 const API_URL = 'https://backend-811v.onrender.com';
 
@@ -20,7 +25,7 @@ export default function Pulseira() {
   const [fetchingStatus, setFetchingStatus] = useState(true);
   const [userToken, setUserToken] = useState(null);
   const [isSupported, setIsSupported] = useState(true);
-
+ 
   useEffect(() => {
     const init = async () => {
       try {
@@ -148,62 +153,46 @@ export default function Pulseira() {
   }
 
   return (
-    <View style={[styles.container, styles.fundo]}>
-      <Text style={[styles.textocinza, { marginTop: 30, fontSize: 20 }]}>
-        Gerenciamento da Pulseira NFC
-      </Text>
+    <View style={{backgroundColor: '#004aad', flex: 1}}>
+      <StatusBar barStyle="light-content" backgroundColor="#004aad" />
+      <View style={styles.medcontai}>
+        
+        {nfcStatus.hasNFC ? ( <Tempul/> ) : ( <Naotem isSupported = {isSupported} /> )}
 
-      {!isSupported && (
-        <Text style={[styles.textocinza, { color: 'red', marginTop: 10 }]}>
-          Este dispositivo não suporta NFC.
-        </Text>
-      )}
+        <Swiper autoplay={true} loop={true} showsPagination={false} autoplayTimeout={5}>
+          <View style={styles.inform}>
+            <Image source={icons.makt1} style={styles.mktimg} resizeMode='coontain'/>
+            <Text style={styles.informtext}>Monitore sua saúde de forma inteligente com sua nova pulseira!</Text>
+          </View>
 
-      <View style={{ marginVertical: 20 }}>
-        <Text style={styles.textocinza}>
-          Status: {nfcStatus.hasNFC ? 'Pulseira cadastrada' : 'Nenhuma pulseira cadastrada'}
-        </Text>
-        {nfcStatus.hasNFC && (
-          <Text style={styles.textocinza}>UID: {nfcStatus.uid}</Text>
-        )}
+          <View style={styles.inform}>
+            <Image source={icons.makt2} style={styles.mktimg} resizeMode='coontain'/>
+            <Text style={styles.informtext}>Tenha dados precisos do seu corpo na palma da mão!</Text>
+          </View>
+
+          <View style={styles.inform}>
+            <Image source={icons.makt4} style={styles.mktimg} resizeMode='coontain'/>
+            <Text style={styles.informtext}>Perdeu alguma informação? Com a pulseira, seu histórico fica salvo e acessível a qualquer hora.</Text>
+          </View>
+
+          <View style={styles.inform}>
+            <Image source={icons.makt3} style={styles.mktimg} resizeMode='coontain'/>
+            <Text style={styles.informtext}>Conectou, sincronizou, consultou!</Text>
+          </View>
+        </Swiper>
+
+
+
+
+
+
+
+
+
+
+
+
       </View>
-
-      <TouchableOpacity
-        style={[
-          styles.botao,
-          (!isSupported || registerLoading || nfcStatus.hasNFC) && styles.botaoDesabilitado,
-        ]}
-        onPress={cadastrarPulseira}
-        disabled={!isSupported || registerLoading || nfcStatus.hasNFC}
-      >
-        {registerLoading ? (
-          <ActivityIndicator color="#fff" />
-        ) : (
-          <Text style={styles.textoBotao}>
-            {nfcStatus.hasNFC ? 'Pulseira já cadastrada' : 'Cadastrar Pulseira'}
-          </Text>
-        )}
-      </TouchableOpacity>
-
-      <TouchableOpacity
-        style={[
-          styles.botao,
-          (removeLoading || !nfcStatus.hasNFC) && styles.botaoDesabilitado,
-          { marginTop: 20 },
-        ]}
-        onPress={removerNFC}
-        disabled={removeLoading || !nfcStatus.hasNFC}
-      >
-        {removeLoading ? (
-          <ActivityIndicator color="#fff" />
-        ) : (
-          <Text style={styles.textoBotao}>Remover Pulseira</Text>
-        )}
-      </TouchableOpacity>
-
-      <Text style={[styles.textocinza, { marginTop: 20, fontSize: 13 }]}>
-        Aproxime a pulseira do leitor quando solicitado.
-      </Text>
     </View>
   );
 }
