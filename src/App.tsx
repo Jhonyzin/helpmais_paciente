@@ -14,12 +14,13 @@ import Login from './screens/Login';
 import Logo1 from './screens/Logo1';
 import Medicamentos from './screens/pacient/Medicamentos';
 import Pulseira from './screens/pacient/Pulseira';
-import Informacoes from './screens/pacient/Informacoes';
+
 import Dados from './screens/pacient/Dados';
 import Seguranca from './screens/pacient/Seguranca';
 import Assec from './screens/pacient/Assec';
 import HistoricoMedico from './screens/medic/HistoricoMedico';
 import InformacoesMedico from './screens/medic/InformacoesMedico';
+import InformacoesConsulta from './screens/pacient/InformacoesConsulta';
 
 
 const Stack = createNativeStackNavigator();
@@ -30,6 +31,7 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator id="mainStack" initialRouteName="Logo1" screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Logo1" component={Logo1} />
+        <Stack.Screen name="InformacoesConsulta" component={InformacoesConsulta} />
         <Stack.Screen name="Index" component={Index} />
         <Stack.Screen name="Login" component={Login}
         options={{
@@ -123,18 +125,6 @@ export default function App() {
             headerTintColor: '#FFF',
           }} />
 
-          <Stack.Screen
-            name='Informacoes'
-            component={Informacoes}
-            options={{
-              headerShown: true,
-              title: 'Histórico',
-              headerStyle: { 
-                backgroundColor: '#004aad',
-              },
-              headerTintColor: '#FFF',              
-            }}
-          />
 
           <Stack.Screen
             name='Dados'

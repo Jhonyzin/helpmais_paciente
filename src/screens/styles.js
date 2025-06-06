@@ -1,4 +1,3 @@
-
 import { StyleSheet, Dimensions } from 'react-native';
 
 const { width, height } = Dimensions.get('window');
@@ -269,10 +268,9 @@ export const styles = StyleSheet.create({
     marginLeft: 55,
   },
   imghisto: {
-    width: '45%',
-    height: '45%',
-    marginTop: -70,
-    marginLeft: -30,
+    width: 60,
+    height: 60,
+    borderRadius: 30,
   },
   tipoBotao: {
     flex: 1,
@@ -446,8 +444,71 @@ export const styles = StyleSheet.create({
     gap: 10,
     marginLeft: 10,
   },
+  headerConsulta: {
+    backgroundColor: '#fff',
+    padding: 16,
+    borderBottomWidth: 1,
+    borderBottomColor: '#e0e0e0',
+    gap: 16,
+  },
+  headerInfo: {
+    gap: 8,
+  },
+  perfilContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+  },
+  infoContainer: {
+    flex: 1,
+  },
+  conteudoConsulta: {
+    padding: 16,
+    gap: 16,
+  },
+  secao: {
+    backgroundColor: '#fff',
+    padding: 16,
+    borderRadius: 8,
+    gap: 8,
+  },
+  tituloSecao: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#333',
+  },
+  textoConteudo: {
+    fontSize: 16,
+    color: '#666',
+    lineHeight: 24,
+  },
+  sintomasContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 8,
+  },
+  sintomaTag: {
+    backgroundColor: '#e3f2fd',
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 16,
+  },
+  textoSintoma: {
+    color: '#1976d2',
+    fontSize: 14,
+  },
+  receitaContainer: {
+    backgroundColor: '#f5f5f5',
+    padding: 12,
+    borderRadius: 8,
+    gap: 4,
+  },
+  medicamento: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#333',
+    marginBottom: 4,
+  },
 });
-  
 
-
-  export default styles;
+export default styles;

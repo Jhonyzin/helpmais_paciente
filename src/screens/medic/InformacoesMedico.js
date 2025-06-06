@@ -26,8 +26,56 @@ export default function InformacoesMedico() {
     if (consulta) {
       setNome(consulta.nome || '');
       setImagemPerfil(consulta.imagem_perfil || null);
+      buscarDadosConsulta();
     }
   }, [consulta]);
+
+  const buscarDadosConsulta = async () => {
+    try {
+      console.log('Iniciando busca dos dados da consulta:', consulta.id);
+      const token = await AsyncStorage.getItem('userToken');
+      console.log('Token obtido:', token ? 'Sim' : 'Não');
+
+      const response = await axios.get(
+        `https://backend-811v.onrender.com/consulta/dados/${consulta.id}`,
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+
+      console.log('Resposta da API:', response.data);
+
+      if (response.data.success) {
+        const dados = response.data.data;
+        console.log('Dados recebidos:', dados);
+        
+        setMotivo(dados.motivo || '');
+        setObservacoes(dados.observacoes || '');
+        setExames(dados.exames || '');
+        setDiagnostico(dados.diagnostico || '');
+        
+        // Se houver sintomas, atualiza o estado
+        if (dados.sintomas && Array.isArray(dados.sintomas)) {
+          console.log('Sintomas recebidos:', dados.sintomas);
+          setSintomas(dados.sintomas);
+        }
+
+        // Se houver receitas, atualiza o estado
+        if (dados.receitas && Array.isArray(dados.receitas)) {
+          console.log('Receitas recebidas:', dados.receitas);
+          setReceitas(dados.receitas);
+        }
+      } else {
+        console.error('Resposta sem sucesso:', response.data);
+      }
+    } catch (error) {
+      console.error('Erro detalhado ao buscar dados da consulta:', {
+        message: error.message,
+        response: error.response?.data,
+        status: error.response?.status,
+        headers: error.response?.headers
+      });
+      Alert.alert('Erro', 'Não foi possível carregar os dados da consulta.');
+    }
+  };
 
   const adicionarReceita = () => {
     setReceitas([...receitas, {
@@ -55,15 +103,18 @@ export default function InformacoesMedico() {
       setLoading(true);
       const token = await AsyncStorage.getItem('userToken');
 
+      // Extrai apenas os IDs dos sintomas para enviar ao backend
+      const sintomasIds = sintomas.map(s => s.id);
+
       await axios.post(
         'https://backend-811v.onrender.com/consulta/resultado',
         {
           id_consulta: consulta.id,
           motivo,
           observacoes,
-          exames,
+          exames: exames.split(',').map(e => e.trim()).filter(e => e),
           diagnostico,
-          sintomas: JSON.stringify(sintomas),
+          sintomas: sintomasIds,
           receitas
         },
         { headers: { Authorization: `Bearer ${token}` } }
@@ -106,7 +157,10 @@ export default function InformacoesMedico() {
 
       <Text style={{ fontSize: 16, fontWeight: 'bold' }}>Sintomas</Text>
       <View style={{ marginBottom: 16 }}>
-        <SintomasPicker onSubmit={setSintomas} />
+        <SintomasPicker 
+          onSubmit={setSintomas} 
+          initialSintomas={sintomas}
+        />
       </View>
 
       <Text style={{ fontSize: 16, fontWeight: 'bold' }}>Observações</Text>

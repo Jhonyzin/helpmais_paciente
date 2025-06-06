@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, TextInput, FlatList, TouchableOpacity, Text, Modal } from 'react-native';
 import axios from 'axios';
 
-const SintomasPicker = ({ onSubmit }) => {
+const SintomasPicker = ({ onSubmit, initialSintomas = [] }) => {
   const [sintomas, setSintomas] = useState([]);
   const [busca, setBusca] = useState('');
   const [selecionados, setSelecionados] = useState([]);
@@ -25,6 +25,19 @@ const SintomasPicker = ({ onSubmit }) => {
       });
   }, []);
 
+  // Efeito para atualizar os sintomas selecionados quando initialSintomas mudar
+  useEffect(() => {
+    if (initialSintomas && initialSintomas.length > 0) {
+      // Busca os detalhes dos sintomas selecionados
+      const sintomasDetalhados = sintomas.filter(s => 
+        initialSintomas.includes(s.id)
+      );
+      
+      setSelecionados(initialSintomas);
+      setSintomasSelecionados(sintomasDetalhados);
+    }
+  }, [initialSintomas, sintomas]);
+
   const toggleSelecionado = (id, nome) => {
     const atualizados = selecionados.includes(id)
       ? selecionados.filter(i => i !== id)
@@ -36,7 +49,7 @@ const SintomasPicker = ({ onSubmit }) => {
 
     setSelecionados(atualizados);
     setSintomasSelecionados(sintomasAtualizados);
-    onSubmit(atualizados);
+    onSubmit(sintomasAtualizados);
   };
 
   const removerSintoma = (id) => {
@@ -44,7 +57,7 @@ const SintomasPicker = ({ onSubmit }) => {
     const sintomasAtualizados = sintomasSelecionados.filter(s => s.id !== id);
     setSelecionados(atualizados);
     setSintomasSelecionados(sintomasAtualizados);
-    onSubmit(atualizados);
+    onSubmit(sintomasAtualizados);
   };
 
   const filtrar = sintomas.filter(s =>
@@ -75,7 +88,7 @@ const SintomasPicker = ({ onSubmit }) => {
                 alignItems: 'center'
               }}
             >
-              <Text style={{ marginRight: 4 }}>{sintoma.nome}</Text>
+              <Text style={{ marginRight: 4 }}>{sintoma.nome || sintoma.sintoma}</Text>
               <TouchableOpacity onPress={() => removerSintoma(sintoma.id)}>
                 <Text style={{ color: '#ff0000' }}>×</Text>
               </TouchableOpacity>
