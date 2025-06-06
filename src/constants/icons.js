@@ -21,6 +21,7 @@ import iconseta from "../assets/images/seta.png";
 import iconlogo1 from "../assets/images/logo1.png";
 import iconwifi from '../assets/images/configuracoes.png';
 import iconduvidas from "../assets/images/duvidas.png";
+import iconmaps from '../assets/images/hospitalicon.png';
 import logo1 from "../assets/images/slide1.png";
 import logo2 from "../assets/images/slide2.png";
 import logo3 from "../assets/images/slide3.png";
@@ -53,8 +54,8 @@ export default {
     iconseta,
     iconlogo1,
     iconwifi,
-    iconconfig,
     iconduvidas,
+    iconmaps,
     logo1,
     logo2,
     logo3,
