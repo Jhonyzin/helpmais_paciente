@@ -6,14 +6,15 @@ import {
   TouchableWithoutFeedback,
   TouchableOpacity,
   Modal,
+  
 } from 'react-native';
 import icons from '../constants/icons';
 import styles from '../screens/styles';
 
-export default function Naotem({isSupported}) {
+export default function Naotem({isSupported,onPress}) {
   const [visible, setvisible] = useState(false);
   const textonfc =
-    'Que pena! Seu dispositivo não tem suporte com NFC. Mas fique tranquilo(a) que  você poderá cadastrar sua pulseira a partir de um outro celular que tenha NFC.';
+    'Que pena! Seu dispositivo não tem suporte com NFC. Mas caso desejar, pode estar conectando a pulseira através de outro dispositivo que tenha NFC.'
 
   return (
     <View>
@@ -34,15 +35,12 @@ export default function Naotem({isSupported}) {
         </View>
       </TouchableOpacity>
 
-      <View style={{marginTop: 20}}>
-        <Text style={{fontSize: 20}}>Já tem sua pulseira?</Text>
-      </View>
-
+    
       {isSupported ? (
         <View style={{marginTop: 20}}>
           <Text style={{fontSize: 20}}>Já tem sua pulseira?</Text>
 
-          <TouchableOpacity>
+          <TouchableOpacity onPress={onPress}>
             <View style={styles.cadastrar}>
               <Image source={icons.iconpedir} style={{width: 55, height: 55}} />
               <Text

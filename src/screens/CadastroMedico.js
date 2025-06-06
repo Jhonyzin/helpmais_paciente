@@ -54,9 +54,6 @@ export default function CadastroMedico() {
     let formattedValue = value;
     
     switch(name) {
-      case 'crm':
-        formattedValue = formatarCPF(value);
-        break;
       case 'telefone':
         formattedValue = formatarTelefone(value);
         break;
@@ -101,10 +98,7 @@ export default function CadastroMedico() {
       return false;
     }
 
-    if (!validarCPF(form.crm)) {
-      Alert.alert('Erro', 'CPF inválido');
-      return false;
-    }
+   
 
     if (!validarEmail(form.email)) {
       Alert.alert('Erro', 'Email inválido');
@@ -204,7 +198,7 @@ export default function CadastroMedico() {
 
             <TextInput style={styles.input} placeholder="Nome Completo" placeholderTextColor="#ccc" value={form.nome} onChangeText={(text) => handleChange('nome', text)} accessibilityLabel="Campo para inserir nome completo" />
 
-            <TextInput style={styles.input} placeholder="CRM" placeholderTextColor="#ccc" value={form.crm} onChangeText={(text) => handleChange('crm', text)} keyboardType="numeric" maxLength={14} accessibilityLabel="Campo para inserir CPF" />
+            <TextInput style={styles.input} placeholder="CRM" placeholderTextColor="#ccc" value={form.crm} onChangeText={(text) => handleChange('crm', text)}  maxLength={14} accessibilityLabel="Campo para inserir CRM" />
 
             <TextInput style={styles.input} placeholder="Email" placeholderTextColor="#ccc" value={form.email} onChangeText={(text) => handleChange('email', text)} keyboardType="email-address" autoCapitalize="none" accessibilityLabel="Campo para inserir email" />
 

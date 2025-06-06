@@ -16,6 +16,7 @@ import icons from '../../constants/icons';
 import Naotem from '../../components/Naotem';
 import Tempul from '../../components/Tempul';
 
+
 const API_URL = 'https://backend-811v.onrender.com';
 
 export default function Pulseira() {
@@ -156,42 +157,7 @@ export default function Pulseira() {
     <View style={{backgroundColor: '#004aad', flex: 1}}>
       <StatusBar barStyle="light-content" backgroundColor="#004aad" />
       <View style={styles.medcontai}>
-        
-        {nfcStatus.hasNFC ? ( <Tempul/> ) : ( <Naotem isSupported = {isSupported} /> )}
-
-        <Swiper autoplay={true} loop={true} showsPagination={false} autoplayTimeout={5}>
-          <View style={styles.inform}>
-            <Image source={icons.makt1} style={styles.mktimg} resizeMode='coontain'/>
-            <Text style={styles.informtext}>Monitore sua saúde de forma inteligente com sua nova pulseira!</Text>
-          </View>
-
-          <View style={styles.inform}>
-            <Image source={icons.makt2} style={styles.mktimg} resizeMode='coontain'/>
-            <Text style={styles.informtext}>Tenha dados precisos do seu corpo na palma da mão!</Text>
-          </View>
-
-          <View style={styles.inform}>
-            <Image source={icons.makt4} style={styles.mktimg} resizeMode='coontain'/>
-            <Text style={styles.informtext}>Perdeu alguma informação? Com a pulseira, seu histórico fica salvo e acessível a qualquer hora.</Text>
-          </View>
-
-          <View style={styles.inform}>
-            <Image source={icons.makt3} style={styles.mktimg} resizeMode='coontain'/>
-            <Text style={styles.informtext}>Conectou, sincronizou, consultou!</Text>
-          </View>
-        </Swiper>
-
-
-
-
-
-
-
-
-
-
-
-
+        {nfcStatus.hasNFC ? ( <Tempul onPress={removerNFC} icon={icons.remover} /> ) : ( <Naotem onPress={cadastrarPulseira} isSupported={isSupported} /> )}
       </View>
     </View>
   );

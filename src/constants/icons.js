@@ -29,20 +29,22 @@ import makt1 from "../assets/images/imgdados.png";
 import makt2 from "../assets/images/imghist.png";
 import makt3 from '../assets/images/imgslog.png';
 import makt4 from '../assets/images/pedir.png';
+import remover from "../assets/images/remover.png";
 
 
 export default {
-    iconcancelar, 
-    iconlogo, 
-    iconmedicam, 
-    iconperfil, 
-    iconprinperfil, 
-    iconpulseiranfc, 
-    iconsenha, 
-    iconrelogio, 
-    iconlogodeitada, 
-    iconpulsiera, 
-    iconasse, 
+    iconcancelar,
+    iconlogo,
+    iconmedicam,
+    iconperfil,
+    iconprinperfil,
+    iconpulseiranfc,
+    iconsenha,
+    iconrelogio,
+    iconlogodeitada,
+    iconpulsiera,
+    iconasse,
+    adicionar,
     iconhospital, 
     iconsegu, 
     icontag, 
@@ -63,5 +65,6 @@ export default {
     makt2,
     makt3,
     makt4,
+    remover,
 
 }

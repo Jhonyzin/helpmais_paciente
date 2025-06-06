@@ -21,7 +21,7 @@ export default function Inicio() {
     navigation.navigate('Config'); 
   };
   const navigateToHistorico = () => {
-    navigation.navigate('Historico'); 
+    navigation.navigate('HistoricoMedico'); 
   };
   const navigateToPulseira = () => {
     navigation.navigate('Pulseira'); 
@@ -90,7 +90,7 @@ export default function Inicio() {
     {nome ? nome : 'Carregando...'}
   </Text>
   <Text
-    style={[styles.textodonome, { fontSize: 14 }]} // Adjust font size as needed
+    style={[styles.textodonome, { fontSize: 14 }]} 
     adjustsFontSizeToFit
     numberOfLines={1}
     minimumFontScale={0.7}
