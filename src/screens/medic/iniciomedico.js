@@ -11,11 +11,8 @@ const API_URL = 'https://backend-811v.onrender.com/medico';
 export default function Inicio() {
   const navigation = useNavigation();
   const [nome, setNome] = useState('');
-  const [imagem_perfil, setimagemperfil] = useState('null');
   const [especialidade, setEspecialidade] = useState('');
-
-
-  const [token, setToken] = useState(''); 
+  const [imagem_perfil, setimagemperfil] = useState('null');
 
   const navigateToconfig = () => {
     navigation.navigate('Config'); 

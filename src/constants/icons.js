@@ -29,6 +29,7 @@ import makt2 from "../assets/images/imghist.png";
 import makt3 from '../assets/images/imgslog.png';
 import makt4 from '../assets/images/pedir.png';
 import remover from "../assets/images/remover.png";
+import adicionar from "../assets/images/adicionar.png";
 
 
 export default {
@@ -55,7 +56,6 @@ export default {
     iconseta,
     iconlogo1,
     iconwifi,
-    iconconfig,
     iconduvidas,
     logo1,
     logo2,
@@ -65,5 +65,6 @@ export default {
     makt3,
     makt4,
     remover,
+    adicionar,
 
 }
