@@ -42,10 +42,20 @@ export const styles = StyleSheet.create({
     backgroundColor: '#1c2c41',
   },
   status: {
+<<<<<<< HEAD
     paddingHorizontal: 10,
     paddingVertical: 5,
     borderRadius: 12,
     alignSelf: 'flex-start',
+=======
+    width: 75,
+    height: 30,
+    borderRadius: 10,
+    marginTop: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: 10
+>>>>>>> df396284ddffb70f53002c02f5013bfa361b3ab4
   },
   botaoDesabilitado: {
     backgroundColor: '#cccccc',
@@ -209,7 +219,11 @@ export const styles = StyleSheet.create({
   },
   botaconsu: {
     width: '90%',
+<<<<<<< HEAD
     height: 120,
+=======
+    height: '20%',
+>>>>>>> df396284ddffb70f53002c02f5013bfa361b3ab4
     overflow: 'hidden',
     flexDirection: 'row',
     borderRadius: 15,
@@ -222,10 +236,18 @@ export const styles = StyleSheet.create({
     flex: 1,
   },
   imgconsul: {
+<<<<<<< HEAD
     height: 60,
     width: 60,
     borderRadius: 30,
     marginRight: 10,
+=======
+    height: 90,
+    width: 90,
+    marginTop: topo - 40,
+    borderRadius: 50,
+    marginLeft: 5
+>>>>>>> df396284ddffb70f53002c02f5013bfa361b3ab4
   },
   Bar: {
     width: 8,
@@ -264,7 +286,7 @@ export const styles = StyleSheet.create({
   },
   textosDistantes: {
     marginTop: 17,
-    marginLeft: 55,
+    marginLeft: 85,
   },
   imghisto: {
     width: 50,

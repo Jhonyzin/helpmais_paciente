@@ -91,6 +91,7 @@ export default function Botaoconsultas({nome, especialidade, tempo, horario, val
                     style={styles.imgconsul}
                 />
 
+<<<<<<< HEAD
                 <View style={{ flex: 1, flexDirection: 'column' }}>
                     <Text style={styles.textoconsul} numberOfLines={1}>
                         {nome || 'Carregando...'}
@@ -107,6 +108,20 @@ export default function Botaoconsultas({nome, especialidade, tempo, horario, val
                         <Text style={[styles.texto, { marginLeft: 15 }]}>
                             {tempo || 'Não definido'}
                         </Text>
+=======
+                    <View style={{ flexDirection: 'row', flex: 1}}>
+                        <View style={{flex: 1}}>
+                            <Text style={styles.textoconsul} adjustsFontSizeToFit numberOfLines={1}>{nome || 'Carregando...'}</Text>
+                            <Text style={styles.especialidadetext} adjustsFontSizeToFit numberOfLines={1}>{especialidade || 'Carregando...'}</Text>
+                        </View>
+
+                        {status && (
+                            <View style={[styles.status, { backgroundColor: cor(status), marginBottom: 4}]}>
+                                <Text style={styles.texto} adjustsFontSizeToFit numberOfLines={1}>{texto(status)}</Text>
+                            </View>
+                        )}
+                
+>>>>>>> df396284ddffb70f53002c02f5013bfa361b3ab4
                     </View>
                 </View>
 
