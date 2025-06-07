@@ -19,14 +19,18 @@ export default function Botaoconsultas({nome, especialidade, tempo, horario, val
                 <View style={[styles.dentrodobota, {gap: 10}]}>
                     <Image source={imagem_perfil || icons.iconprinperfil} resizeMode="contain" style={styles.imgconsul}/>
 
-                    <View style={{ flexDirection: 'column' }}>
+                    <View style={{ flexDirection: 'row', flex: 1}}>
+                        <View style={{flex: 1}}>
+                            <Text style={styles.textoconsul} adjustsFontSizeToFit numberOfLines={1}>{nome || 'Carregando...'}</Text>
+                            <Text style={styles.especialidadetext} adjustsFontSizeToFit numberOfLines={1}>{especialidade || 'Carregando...'}</Text>
+                        </View>
+
                         {status && (
-                            <View style={[styles.status, { backgroundColor: cor(status), alignSelf: 'flex-end', marginBottom: 4 }]}>
+                            <View style={[styles.status, { backgroundColor: cor(status), marginBottom: 4}]}>
                                 <Text style={styles.texto} adjustsFontSizeToFit numberOfLines={1}>{texto(status)}</Text>
                             </View>
                         )}
-                        <Text style={styles.textoconsul}>{nome || 'Carregando...'}</Text>
-                        <Text style={styles.especialidadetext}>{especialidade || 'Carregando...'}</Text>
+                
                     </View>
                 </View>
 

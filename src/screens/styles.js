@@ -41,13 +41,13 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   status: {
-    width: 70,
+    width: 75,
     height: 30,
     borderRadius: 10,
-    left: 5,
     marginTop: 10,
-    alignContent: 'center',
+    alignItems: 'center',
     justifyContent: 'center',
+    marginRight: 10
   },
   botaoDesabilitado: {
     backgroundColor: '#cccccc',
@@ -211,7 +211,7 @@ export const styles = StyleSheet.create({
     gap: 15,
   },
   botaconsu: {
-    width: '80%',
+    width: '90%',
     height: '20%',
     overflow: 'hidden',
     flexDirection: 'row',
@@ -225,6 +225,7 @@ export const styles = StyleSheet.create({
     width: 90,
     marginTop: topo - 40,
     borderRadius: 50,
+    marginLeft: 5
   },
 
   Bar: {
@@ -265,7 +266,7 @@ export const styles = StyleSheet.create({
   },
   textosDistantes: {
     marginTop: 17,
-    marginLeft: 55,
+    marginLeft: 85,
   },
   imghisto: {
     width: 60,

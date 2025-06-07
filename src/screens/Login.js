@@ -4,6 +4,7 @@ import { styles } from "./styles";
 import { View, Image, StatusBar, TouchableOpacity, Text, Alert } from 'react-native';
 import { TextInput } from 'react-native-paper';
 import icons from '../constants/icons';
+import Errin from '../components/errin';
 import NfcManager, { NfcTech } from 'react-native-nfc-manager';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -26,6 +27,10 @@ export default function Login() {
   const [tipoUsuario, setTipoUsuario] = useState('usuario');
   const [senha, setSenha] = useState('');
   const [senhaVisivel, setSenhaVisivel] = useState(false);
+  const [erroLogin, setErroLogin] = useState('');
+  const [erroCampoLogin, setErroCampoLogin] = useState(false);
+  const [erroCampoSenha, setErroCampoSenha] = useState(false);
+
 
   const navigateToinicio = () => navigation.navigate('Inicio');
   const navigateToinicioMedico = () => navigation.navigate('InicioMedico');
@@ -47,6 +52,18 @@ export default function Login() {
   };
 
   const handleLogin = async () => {
+    const campoLoginVazio = login.trim() === '';
+    const campoSenhaVazio = senha.trim() === '';
+
+    setErroCampoLogin(campoLoginVazio);
+    setErroCampoSenha(campoSenhaVazio);
+
+    if (campoLoginVazio || campoSenhaVazio) {
+      setErroLogin('Preencha todos os campos corretamente.');
+      Alert.alert('Erro', 'Preencha todos os campos corretamente.');
+      return;
+    }
+
     try {
       const payload =
         tipoUsuario === 'usuario'
@@ -64,8 +81,14 @@ export default function Login() {
         navigateToinicioMedico();
 }
     } catch (error) {
-      console.warn('Erro ao logar:', error);
-      Alert.alert('Erro no login', error.response?.data || 'Falha na requisição');
+      setErroCampoLogin(true); 
+      setErroCampoSenha(true);
+
+      const mensagem =
+        error.response?.data?.message || 'Usuário ou senha incorretos';
+      setErroLogin(mensagem);
+
+      Alert.alert('Erro no login', mensagem);
     }
   };
 
@@ -203,12 +226,13 @@ export default function Login() {
       <View style={styles.inputContainer}>
         <Image source={icons.iconperfil} style={styles.icon} resizeMode="contain" />
         <TextInput
-          style={styles.input}
+          style={[styles.input, erroCampoLogin && {borderColor: 'red', borderWidth: 1}]}
           placeholder="Usuário"
-          placeholderTextColor="#ccc"
-          onChangeText={(text) =>
-            setLogin(tipoUsuario === 'usuario' ? formatarCPF(text) : text)
-          }
+          placeholderTextColor={erroCampoLogin ? 'red' : '#ccc'}
+          onChangeText={(text) =>{
+            setErroCampoLogin(false);
+            setLogin(tipoUsuario === 'usuario' ? formatarCPF(text) : text);
+          }}
           value={login}
           keyboardType={tipoUsuario === 'usuario' ? 'numeric' : 'default'}
           maxLength={tipoUsuario === 'usuario' ? 14 : 15}
@@ -218,10 +242,13 @@ export default function Login() {
       <View style={styles.inputContainer}>
         <Image source={icons.iconsegu} style={styles.icon} resizeMode="contain" />
         <TextInput
-          style={[styles.input, { fontFamily: 'monospace' }]}
+          style={[styles.input, { fontFamily: 'monospace' }, erroCampoLogin && {borderColor: 'red', borderWidth: 1}]}
           placeholder="Senha"
-          placeholderTextColor="#ccc"
-          onChangeText={setSenha}
+          placeholderTextColor= {erroCampoSenha ? 'red' : '#ccc'}
+          onChangeText={(text) => {
+            setErroCampoLogin(false);
+            setSenha(text)
+          }}
           value={senha}
           secureTextEntry={!senhaVisivel}
         />
