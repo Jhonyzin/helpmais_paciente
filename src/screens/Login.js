@@ -4,7 +4,6 @@ import { styles } from "./styles";
 import { View, Image, StatusBar, TouchableOpacity, Text, Alert } from 'react-native';
 import { TextInput } from 'react-native-paper';
 import icons from '../constants/icons';
-import Errin from '../components/errin';
 import NfcManager, { NfcTech } from 'react-native-nfc-manager';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';

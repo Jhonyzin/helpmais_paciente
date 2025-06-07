@@ -16,9 +16,9 @@ export default function Logo(){
 
     
     return (
-      <View style={[styles.container, paddingHorizontal = 20]}>
+      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#fff'}}>
         <StatusBar backgroundColor="#004aad" />
-        <Image source={icons.iconlogo} style={styles.imagem} resizeMode="contain"/>
+        <Image source={icons.iconlogo} style={{width: 180, height: 180, resizeMode: 'contain'}} resizeMode="contain"/>
       </View>
     );
 }
