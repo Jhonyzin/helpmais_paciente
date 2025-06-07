@@ -14,7 +14,7 @@ import styles from '../screens/styles';
 export default function Naotem({isSupported,onPress}) {
   const [visible, setvisible] = useState(false);
   const textonfc =
-    'Que pena! Seu dispositivo não tem suporte com NFC. Mas caso desejar, pode estar conectando a pulseira através de outro dispositivo que tenha NFC.'
+    'Que pena! Seu dispositivo não tem suporte com NFC mas você ainda pode utilizar outro dispositivo que tenha suport NFC.'
 
   return (
     <View>

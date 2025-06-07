@@ -58,14 +58,23 @@ export default function Login() {
       const response = await axios.post(`${API_URL}${endpoint}`, payload);
       const { token } = response.data;
       await AsyncStorage.setItem('userToken', token);
+      await AsyncStorage.setItem('userType', tipoUsuario);
       if (tipoUsuario === 'usuario') {
         navigateToinicio();
       } else {
         navigateToinicioMedico();
-}
+      }
     } catch (error) {
       console.warn('Erro ao logar:', error);
-      Alert.alert('Erro no login', error.response?.data || 'Falha na requisição');
+      let mensagem = 'Falha na requisição';
+      if (error.response?.status === 401) {
+        mensagem = 'Usuário ou senha incorretos';
+      } else if (typeof error.response?.data === 'string') {
+        mensagem = error.response.data;
+      } else if (error.response?.data?.message) {
+        mensagem = error.response.data.message;
+      }
+      Alert.alert('Erro no login', mensagem);
     }
   };
 
@@ -116,7 +125,6 @@ export default function Login() {
 
     console.log('UID processado:', uid);
 
-    // 5. Enviar para o backend com tratamento especial
     const response = await axios.post(`${API_URL}/usuario/loginNfc`, {
       uid: uid
     }, {
@@ -200,7 +208,7 @@ export default function Login() {
         </TouchableOpacity>
       </View>
 
-      <View style={styles.inputContainer}>
+      <View style={[styles.inputContainer, { alignItems: 'center' }]}>
         <Image source={icons.iconperfil} style={styles.icon} resizeMode="contain" />
         <TextInput
           style={styles.input}

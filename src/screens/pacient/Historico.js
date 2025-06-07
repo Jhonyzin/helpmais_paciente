@@ -25,6 +25,7 @@ export default function Historico() {
         );
 
         const dados = response.data.map(item => ({
+          id: item.id,
           nome: item.nome,
           especialidade: item.especialidade,
           imagem_perfil: item.imagem_perfil ? { uri: item.imagem_perfil } : null,
@@ -33,6 +34,7 @@ export default function Historico() {
           tempo: calcularTempoPassado(item.data_hora),
           valor: item.valor || 'gratuita',
           corbarra: getCorBarra(item.status),
+          data_hora: item.data_hora
         }));
 
         setConsultas(dados);
@@ -58,8 +60,6 @@ export default function Historico() {
     </ScrollView>
   );
 }
-
-
 
 function formatarHorario(dataHoraStr) {
   const data = new Date(dataHoraStr);

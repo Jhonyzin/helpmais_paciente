@@ -28,24 +28,31 @@ const SintomasPicker = ({ onSubmit, initialSintomas = [] }) => {
   // Efeito para atualizar os sintomas selecionados quando initialSintomas mudar
   useEffect(() => {
     if (initialSintomas && initialSintomas.length > 0) {
-      // Busca os detalhes dos sintomas selecionados
-      const sintomasDetalhados = sintomas.filter(s => 
-        initialSintomas.includes(s.id)
-      );
+      // Se initialSintomas for um array de strings (nomes), converte para objetos
+      const sintomasDetalhados = initialSintomas.map(s => {
+        if (typeof s === 'string') {
+          const sintomaEncontrado = sintomas.find(sint => sint.sintoma === s);
+          return sintomaEncontrado || { id: s, sintoma: s };
+        }
+        return s;
+      });
       
-      setSelecionados(initialSintomas);
       setSintomasSelecionados(sintomasDetalhados);
+      setSelecionados(sintomasDetalhados.map(s => s.id));
     }
   }, [initialSintomas, sintomas]);
 
-  const toggleSelecionado = (id, nome) => {
+  const toggleSelecionado = (sintoma) => {
+    const id = sintoma.id;
+    const sintomaNome = sintoma.sintoma;
+    
     const atualizados = selecionados.includes(id)
       ? selecionados.filter(i => i !== id)
       : [...selecionados, id];
 
     const sintomasAtualizados = selecionados.includes(id)
       ? sintomasSelecionados.filter(s => s.id !== id)
-      : [...sintomasSelecionados, { id, nome }];
+      : [...sintomasSelecionados, { id, sintoma: sintomaNome }];
 
     setSelecionados(atualizados);
     setSintomasSelecionados(sintomasAtualizados);
@@ -88,7 +95,7 @@ const SintomasPicker = ({ onSubmit, initialSintomas = [] }) => {
                 alignItems: 'center'
               }}
             >
-              <Text style={{ marginRight: 4 }}>{sintoma.nome || sintoma.sintoma}</Text>
+              <Text style={{ marginRight: 4 }}>{sintoma.sintoma}</Text>
               <TouchableOpacity onPress={() => removerSintoma(sintoma.id)}>
                 <Text style={{ color: '#ff0000' }}>×</Text>
               </TouchableOpacity>
@@ -131,7 +138,7 @@ const SintomasPicker = ({ onSubmit, initialSintomas = [] }) => {
               keyExtractor={(item) => item?.id?.toString() || Math.random().toString()}
               renderItem={({ item }) => (
                 <TouchableOpacity 
-                  onPress={() => toggleSelecionado(item.id, item.sintoma)}
+                  onPress={() => toggleSelecionado(item)}
                   style={{
                     padding: 10,
                     backgroundColor: selecionados.includes(item.id) ? '#cce5ff' : '#fff',

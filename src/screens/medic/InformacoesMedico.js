@@ -104,15 +104,21 @@ export default function InformacoesMedico() {
       const token = await AsyncStorage.getItem('userToken');
 
       // Extrai apenas os IDs dos sintomas para enviar ao backend
-      const sintomasIds = sintomas.map(s => s.id);
+      const sintomasIds = sintomas.map(s => s.id || s);
+
+      // Trata os exames corretamente
+      const examesArray = typeof exames === 'string' 
+        ? exames.split(',').map(e => e.trim()).filter(e => e)
+        : Array.isArray(exames) 
+          ? exames 
+          : [];
 
       await axios.post(
-        'https://backend-811v.onrender.com/consulta/resultado',
+        `https://backend-811v.onrender.com/consulta/resultado/${consulta.id}`,
         {
-          id_consulta: consulta.id,
           motivo,
           observacoes,
-          exames: exames.split(',').map(e => e.trim()).filter(e => e),
+          exames: examesArray,
           diagnostico,
           sintomas: sintomasIds,
           receitas

@@ -31,7 +31,6 @@ export default function Inicio() {
   }
   
   useEffect(() => {
-
     async function buscarUsuario() {
       try {
         const userToken = await AsyncStorage.getItem('userToken');
@@ -39,18 +38,24 @@ export default function Inicio() {
           console.warn('Token não encontrado');
           return;
         }
-        setToken(userToken);
+        console.log('Token encontrado:', userToken);
+        console.log('Fazendo requisição para:', API_URL);
+        
         const response = await axios.get(`${API_URL}`, {
           headers: {
             Authorization: `Bearer ${userToken}`,
           },
         });
+        
+        console.log('Resposta da API:', response.data);
 
         setNome(response.data.nome || 'Usuário');
+        setEspecialidade(response.data.especialidade || '');
         setimagemperfil(response.data.imagem_perfil || null);
       } catch (error) {
-        console.warn('Erro ao buscar usuário:', error);
+        console.warn('Erro ao buscar usuário:', error.response?.data || error.message);
         setNome('Usuário');
+        setEspecialidade('');
       }
     }
 
