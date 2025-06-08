@@ -4,6 +4,8 @@ import icons from "../constants/icons";
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useState, useEffect } from 'react';
+import { format } from 'date-fns';
+import { ptBR } from 'date-fns/locale';
 
 export default function Botaoconsultas({nome, especialidade, tempo, horario, valor, imagem_perfil, status, corbarra, id, data_hora}) {
     const navigation = useNavigation();
@@ -69,16 +71,16 @@ export default function Botaoconsultas({nome, especialidade, tempo, horario, val
         if (!data_hora) return 'Horário não definido';
         try {
             const data = new Date(data_hora);
-            return data.toLocaleTimeString('pt-BR', { 
-                hour: '2-digit', 
-                minute: '2-digit',
-                hour12: false 
-            });
+            const dataFormatada = format(data, "dd/MM/yyyy", { locale: ptBR });
+            return dataFormatada;
         } catch (error) {
             console.error('[Botaoconsultas] Erro ao formatar horário:', error);
             return 'Horário inválido';
         }
     };
+
+    const dataConsulta = new Date(data_hora);
+    const dataHoraFormatada = format(dataConsulta, "dd/MM/yyyy HH:mm", { locale: ptBR });
 
     return(
         <TouchableOpacity style={[styles.botaconsu, { backgroundColor: '#2a3d57' }]} onPress={handlePress}>
@@ -99,14 +101,9 @@ export default function Botaoconsultas({nome, especialidade, tempo, horario, val
                         {especialidade || 'Carregando...'}
                     </Text>
                     
-                    <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 5 }}>
-                        <Image source={icons.iconrelohisto} style={styles.tempo2}/>
-                        <Text style={[styles.texto, styles.textos]}>
-                            {horario || formatarHorario(data_hora)}
-                        </Text>
-                        <Text style={[styles.texto, { marginLeft: 15 }]}>
-                            {tempo || 'Não definido'}
-                        </Text>
+                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                        <Image source={icons.relogio} style={styles.iconeRelogio} />
+                        <Text style={styles.horario}>{dataHoraFormatada}</Text>
                     </View>
                 </View>
 

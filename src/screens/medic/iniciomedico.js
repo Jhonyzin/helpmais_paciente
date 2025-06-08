@@ -23,15 +23,7 @@ export default function Inicio() {
   const navigateToHistorico = () => {
     navigation.navigate('Historico'); 
   };
-  const navigateToPulseira = () => {
-    navigation.navigate('Pulseira'); 
-  }
-  const navigateToMed = () => {
-    navigation.navigate('Medicamentos'); 
-  }
-  const navigateToHospit = () => {
-    navigation.navigate('Hospitais'); 
-  }
+
   
   useEffect(() => {
     async function buscarUsuario() {
@@ -42,17 +34,29 @@ export default function Inicio() {
           return;
         }
         setToken(userToken);
+        
+        console.log('Fazendo requisição para:', `${API_URL}`);
         const response = await axios.get(`${API_URL}`, {
           headers: {
             Authorization: `Bearer ${userToken}`,
           },
         });
 
-        setNome(response.data.nome || 'Usuário');
-        setimagemperfil(response.data.imagem_perfil || null);
+        console.log('Resposta da API:', response.data);
+
+        if (response.data) {
+          setNome(response.data.nome || '');
+          setEspecialidade(response.data.especialidade || '');
+          setimagemperfil(response.data.imagem_perfil || null);
+        } else {
+          console.warn('Dados do usuário não encontrados na resposta');
+          setNome('');
+          setEspecialidade('');
+        }
       } catch (error) {
-        console.warn('Erro ao buscar usuário:', error);
-        setNome('Usuário');
+        console.error('Erro detalhado ao buscar usuário:', error.response || error);
+        setNome('');
+        setEspecialidade('');
       }
     }
 
@@ -88,6 +92,14 @@ export default function Inicio() {
             >
               {nome ? nome : 'Carregando...'}
             </Text>
+            <Text
+              style={[styles.textodonome, { fontSize: 14, color: '#888' }]}
+              adjustsFontSizeToFit
+              numberOfLines={1}
+              minimumFontScale={0.7}
+            >
+              {especialidade ? especialidade : ''}
+            </Text>
           </View>
           <Image source={icons.iconlogodeitada} style={styles.icondeitada}/>
         </View>
@@ -100,37 +112,13 @@ export default function Inicio() {
           <View style={styles.opcoes}>
             <Image source={icons.iconmedicam} style={styles.img_options} resizeMode="contain" />
             <View style={styles.linha2} />
-            <Text style={styles.texto} adjustsFontSizeToFit numberOfLines={1}>Histórico de saúde</Text>
+            <Text style={styles.texto} adjustsFontSizeToFit numberOfLines={1}>Consultas</Text>
           </View>
         </TouchableOpacity>
       </View>
 
-      <TouchableOpacity onPress={navigateToPulseira}>
-        <View style={styles.opcoes}>
-          <Image source={icons.iconpulsiera} style={styles.img_options}/>
-          <View style={styles.linha2} />
-          <Text style={styles.texto} adjustsFontSizeToFit numberOfLines={1}>Minha Pulseira</Text>
-        </View>
-      </TouchableOpacity>
-    </View>
-
-    <View style={styles.linha}>
-      <TouchableOpacity onPress={navigateToMed}>
-        
-        <View style={styles.opcoes}>
-          <Image source={icons.iconmed} style={styles.img_options}/>
-          <View style={styles.linha2} />
-          <Text style={styles.texto} adjustsFontSizeToFit numberOfLines={1}>Meus Medicamentos</Text>
-        </View>
-      </TouchableOpacity>
-
-      <TouchableOpacity onPress={navigateToHospit}>
-        <View style={styles.opcoes}>
-          <Image source={icons.iconhospital} style={styles.img_options} resizeMode="contain" />
-          <View style={styles.linha2} />
-          <Text style={styles.texto} adjustsFontSizeToFit numberOfLines={1}>Hospitais Perto</Text>
-        </View>
-      </TouchableOpacity>
+      
+   
     </View>
   </View>
   );
