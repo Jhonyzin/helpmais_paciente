@@ -20,6 +20,7 @@ import Assec from './screens/pacient/Assec';
 import HistoricoMedico from './screens/medic/HistoricoMedico';
 import InformacoesMedico from './screens/medic/InformacoesMedico';
 import InformacoesConsulta from './screens/pacient/InformacoesConsulta';
+import DadosMedico from './screens/medic/DadosMedico';
 
 
 const Stack = createNativeStackNavigator();
@@ -61,6 +62,7 @@ export default function App() {
         <Stack.Screen name="CadastroMedico" component={CadastroMedico}/>
         <Stack.Screen name="HistoricoMedico" component={HistoricoMedico}/>
         <Stack.Screen name="InformacoesMedico" component={InformacoesMedico} />
+        <Stack.Screen name="DadosMedico" component={DadosMedico} />
         <Stack.Screen 
           name="Config" 
           component={Config}

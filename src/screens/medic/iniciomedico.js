@@ -17,13 +17,13 @@ export default function Inicio() {
 
   const [token, setToken] = useState(''); 
 
-  const navigateToconfig = () => {
-    navigation.navigate('Config'); 
-  };
+
   const navigateToHistorico = () => {
     navigation.navigate('Historico'); 
   };
-
+  const navigateToDados = () => {
+    navigation.navigate('DadosMedico');
+  };
   
   useEffect(() => {
     async function buscarUsuario() {
@@ -68,7 +68,7 @@ export default function Inicio() {
     <StatusBar barStyle="light-content" backgroundColor="#1c2c41" hidden={false} />
         
     <View>  
-      <TouchableOpacity onPress={navigateToconfig}>
+      <TouchableOpacity onPress={navigateToDados}>
         <View style={[styles.quadrado, { flexDirection: 'row', alignItems: 'center' }]}>
             {imagem_perfil ? (
               <Image
