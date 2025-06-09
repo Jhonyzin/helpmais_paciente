@@ -27,7 +27,7 @@ export default function Historico() {
         const dados = response.data.map(item => ({
           id: item.id,
           nome: item.nome,
-          especialidade: item.especialidade,
+          especialidade: item.especialidade || 'Não informado',
           imagem_perfil: item.imagem_perfil ? { uri: item.imagem_perfil } : null,
           status: item.status,
           horario: formatarHorario(item.data_hora),
@@ -54,8 +54,8 @@ export default function Historico() {
 
   return (
     <ScrollView contentContainerStyle={styles.historicocontainer}>
-      {consultas.map((consulta, index) => (
-        <Botaoconsultas key={index} {...consulta} />
+      {consultas.map((consulta) => (
+        <Botaoconsultas key={consulta.id} {...consulta} />
       ))}
     </ScrollView>
   );

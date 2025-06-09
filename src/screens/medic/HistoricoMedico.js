@@ -6,15 +6,19 @@ import { useNavigation } from '@react-navigation/native';
 import Botaoconsultas from '../../components/consultas';
 import { styles } from '../styles';
 
-export default function Historico() {
+export default function HistoricoMedico() {
   const navigation = useNavigation();
   const [consultas, setConsultas] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [isMedico, setIsMedico] = useState(false);
 
   useEffect(() => {
     async function carregarConsultas() {
+      console.log('Iniciando carregamento de consultas...');
       try {
         const token = await AsyncStorage.getItem('userToken');
+        const tipo = await AsyncStorage.getItem('userType');
+        console.log('Token encontrado:', token);
         if (!token) {
           console.warn('Token não encontrado');
           setLoading(false);
@@ -25,6 +29,8 @@ export default function Historico() {
           'https://backend-811v.onrender.com/consulta/medico',
           { headers: { Authorization: `Bearer ${token}` } }
         );
+
+        console.log('Consultas recebidas:', response.data);
 
         const dados = response.data.map(item => ({
           id: item.id,
@@ -39,6 +45,7 @@ export default function Historico() {
         }));
 
         setConsultas(dados);
+        setIsMedico(tipo === 'medico');
       } catch (error) {
         console.error('Erro ao carregar consultas:', error);
       } finally {
@@ -55,9 +62,9 @@ export default function Historico() {
 
   return (
     <ScrollView contentContainerStyle={styles.historicocontainer}>
-      {consultas.map((consulta, index) => (
+      {consultas.map((consulta) => (
         <Botaoconsultas
-          key={index}
+          key={consulta.id}
           {...consulta}
           onPress={() => navigation.navigate('InformacoesMedico', { consulta })}
         />

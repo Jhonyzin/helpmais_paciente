@@ -196,12 +196,19 @@ export default function Cadastro() {
         >
           <StatusBar barStyle="dark-content" backgroundColor="#004aad" />
           <View style={styles.container}>
-            <Image
-              source={icons.iconlogo}
-              style={styles.imagem}
-              resizeMode="contain"
-              accessibilityLabel="Logo do aplicativo"
-            />
+            <View style={{ 
+              alignItems: 'center', 
+              width: '100%', 
+              marginBottom: 20,
+              marginTop: 20 
+            }}>
+              <Image
+                source={icons.iconlogo}
+                style={styles.imagem}
+                resizeMode="contain"
+                accessibilityLabel="Logo do aplicativo"
+              />
+            </View>
 
             <TextInput style={styles.input} placeholder="Nome Completo" placeholderTextColor="#ccc" value={form.nome} onChangeText={(text) => handleChange('nome', text)} accessibilityLabel="Campo para inserir nome completo" />
 
@@ -290,7 +297,15 @@ export default function Cadastro() {
               {loading ? <ActivityIndicator color="#fff" /> : <Text style={styles.textoBotao}>Cadastrar</Text>}
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={navigateToLogin} accessibilityLabel="Link para fazer login">
+            <TouchableOpacity 
+              style={{ 
+                alignItems: 'center', 
+                width: '100%', 
+                marginTop: 10,
+                marginBottom: 20 
+              }}
+              onPress={navigateToLogin} 
+              accessibilityLabel="Link para fazer login">
               <Text style={styles.linkTexto}>Já tem conta? Fazer login</Text>
             </TouchableOpacity>
           </View>

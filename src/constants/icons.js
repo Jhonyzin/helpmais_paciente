@@ -32,7 +32,6 @@ import makt4 from '../assets/images/pedir.png';
 import remover from "../assets/images/remover.png";
 import adicionar from "../assets/images/adicionar.png";
 
-
 export default {
     iconcancelar,
     iconlogo,

@@ -97,9 +97,12 @@ export default function Botaoconsultas({nome, especialidade, tempo, horario, val
                     <Text style={styles.textoconsul} numberOfLines={1}>
                         {nome || 'Carregando...'}
                     </Text>
-                    <Text style={styles.especialidadetext} numberOfLines={1}>
-                        {especialidade || 'Carregando...'}
-                    </Text>
+                    
+                    {!isMedico && especialidade && (
+                        <Text style={[styles.texto, { fontSize: 12, color: '#666' }]} numberOfLines={1}>
+                            {especialidade}
+                        </Text>
+                    )}
                     
                     <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                         <Image source={icons.relogio} style={styles.iconeRelogio} />

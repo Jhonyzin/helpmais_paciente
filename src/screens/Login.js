@@ -186,7 +186,9 @@ export default function Login() {
     <View style={[styles.container, { paddingHorizontal: 20 }, styles.fundo]}>
       <StatusBar barStyle="light-content" backgroundColor="#004aad" />
 
-      <Image source={icons.iconlogo1} style={styles.imagem} resizeMode="contain" />
+      <View style={{ alignItems: 'center', width: '100%', marginBottom: 20 }}>
+        <Image source={icons.iconlogo1} style={styles.imagem} resizeMode="contain" />
+      </View>
 
       <View style={{ flexDirection: 'row', justifyContent: 'center', marginBottom: 20 }}>
         <TouchableOpacity
@@ -274,9 +276,14 @@ export default function Login() {
         <Text style={styles.textoBotao}>NFC</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={
-        tipoUsuario === 'usuario' ? navigateTocadastro : navigateTocadastroMedico
-      }>
+      <TouchableOpacity 
+        style={{ 
+          alignItems: 'center', 
+          width: '100%', 
+          marginTop: 10,
+          marginBottom: 20 
+        }}
+        onPress={tipoUsuario === 'usuario' ? navigateTocadastro : navigateTocadastroMedico}>
         <Text style={styles.linkTexto}>Não tem conta? Fazer cadastro</Text>
       </TouchableOpacity>
     </View>

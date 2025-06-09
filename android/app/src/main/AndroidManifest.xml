@@ -1,11 +1,21 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <!-- Permissões de Internet e Rede -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    
+    <!-- Permissões de Localização -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    
+    <!-- Outras Permissões -->
     <uses-permission android:name="android.permission.ACCESS_NFC" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />    
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    
+    <!-- Recursos Necessários -->
     <uses-feature android:name="android.hardware.nfc" android:required="true"/>
+    <uses-feature android:glEsVersion="0x00020000" android:required="true"/>
 
     <application
       android:name=".MainApplication"
@@ -15,6 +25,7 @@
       android:allowBackup="false"
       android:theme="@style/AppTheme"
       android:supportsRtl="true">
+      
       <activity
         android:name=".MainActivity"
         android:label="@string/app_name"
@@ -27,9 +38,16 @@
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
       </activity>
+
+      <!-- Google Maps API Key -->
       <meta-data 
         android:name="com.google.android.geo.API_KEY"
-        android:value="AIzaSyCFfwmr1Knx1geRlD4eipzbQ-GqLJQFmpE" />
+        android:value="AIzaSyBtYC7Alc8sZY0RplvMJJ_FNw2CHOlOvdQ" />
+      
+      <!-- Google Play Services Version -->
+      <meta-data
+        android:name="com.google.android.gms.version"
+        android:value="@integer/google_play_services_version" />
         
       <uses-library android:name="org.apache.http.legacy" android:required="false"/>
     </application>

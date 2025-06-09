@@ -19,7 +19,7 @@ export default function Inicio() {
 
 
   const navigateToHistorico = () => {
-    navigation.navigate('Historico'); 
+    navigation.navigate('HistoricoMedico'); 
   };
   const navigateToDados = () => {
     navigation.navigate('DadosMedico');
