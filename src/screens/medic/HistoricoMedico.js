@@ -33,7 +33,7 @@ export default function HistoricoMedico() {
         console.log('Consultas recebidas:', response.data);
 
         const dados = response.data.map(item => ({
-          id: item.id,
+          consulta_id: item.consulta_id,
           nome: item.nome,
           imagem_perfil: item.imagem_perfil ? { uri: item.imagem_perfil } : null,
           status: item.status,
@@ -64,7 +64,7 @@ export default function HistoricoMedico() {
     <ScrollView contentContainerStyle={styles.historicocontainer}>
       {consultas.map((consulta) => (
         <Botaoconsultas
-          key={consulta.id}
+          key={consulta.consulta_id}
           {...consulta}
           onPress={() => navigation.navigate('InformacoesMedico', { consulta })}
         />
@@ -95,14 +95,12 @@ function calcularTempoPassado(dataHoraStr) {
 
 function getCorBarra(status) {
   switch (status?.toLowerCase()) {
-    case 'concluida':
+    case 'concluída':
       return '#7ed957';
-    case 'em andamento':
+    case 'agendada':
       return '#ffde59';
-    case 'encerrada':
-      return '#ff0000';
     case 'cancelada':
-      return '#808080';
+      return '#ff0000';
     default:
       return '#a6a6a6';
   }

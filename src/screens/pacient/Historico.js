@@ -25,7 +25,7 @@ export default function Historico() {
         );
 
         const dados = response.data.map(item => ({
-          id: item.id,
+          consulta_id: item.consulta_id,
           nome: item.nome,
           especialidade: item.especialidade || 'Não informado',
           imagem_perfil: item.imagem_perfil ? { uri: item.imagem_perfil } : null,
@@ -55,7 +55,7 @@ export default function Historico() {
   return (
     <ScrollView contentContainerStyle={styles.historicocontainer}>
       {consultas.map((consulta) => (
-        <Botaoconsultas key={consulta.id} {...consulta} />
+        <Botaoconsultas key={consulta.consulta_id} {...consulta} />
       ))}
     </ScrollView>
   );
@@ -85,12 +85,10 @@ function getCorBarra(status) {
   switch (status?.toLowerCase()) {
     case 'concluida':
       return '#7ed957';
-    case 'em andamento':
-      return '#ffde59';
-    case 'encerrada':
-      return '#ff0000';
     case 'cancelada':
-      return '#808080';
+      return '#ff0000';
+    case 'agendada':
+      return '#ffff00';
     default:
       return '#a6a6a6';
   }

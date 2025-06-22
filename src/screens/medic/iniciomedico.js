@@ -15,16 +15,21 @@ export default function Inicio() {
   const [imagem_perfil, setimagemperfil] = useState('null');
 
 
-  const [token, setToken] = useState(''); 
+  const [token, setToken] = useState('');
 
 
   const navigateToHistorico = () => {
-    navigation.navigate('HistoricoMedico'); 
+    navigation.navigate('HistoricoMedico');
   };
+
+  const navigateToHistoricoPaciente = () => {
+    navigation.navigate('HistoricoPaciente');
+  };
+
   const navigateToDados = () => {
     navigation.navigate('DadosMedico');
   };
-  
+
   useEffect(() => {
     async function buscarUsuario() {
       try {
@@ -34,7 +39,7 @@ export default function Inicio() {
           return;
         }
         setToken(userToken);
-        
+
         console.log('Fazendo requisição para:', `${API_URL}`);
         const response = await axios.get(`${API_URL}`, {
           headers: {
@@ -64,62 +69,70 @@ export default function Inicio() {
   }, []);
 
   return (
-  <View style={[styles.container, {paddingHorizontal: 20, backgroundColor: "#1c2c41"}]}>
-    <StatusBar barStyle="light-content" backgroundColor="#1c2c41" hidden={false} />
-        
-    <View>  
-      <TouchableOpacity onPress={navigateToDados}>
-        <View style={[styles.quadrado, { flexDirection: 'row', alignItems: 'center' }]}>
+    <View style={[styles.container, { paddingHorizontal: 20, backgroundColor: "#1c2c41" }]}>
+      <StatusBar barStyle="light-content" backgroundColor="#1c2c41" hidden={false} />
+
+      <View>
+        <TouchableOpacity onPress={navigateToDados}>
+          <View style={[styles.quadrado, { flexDirection: 'row', alignItems: 'center' }]}>
             {imagem_perfil ? (
               <Image
                 source={{ uri: imagem_perfil }}
                 style={styles.image_ico_perfil}
                 resizeMode="cover"
               />
-                ) : (
+            ) : (
               <Image
                 source={icons.iconprinperfil}
                 style={styles.image_ico_perfil}
                 resizeMode="contain"
               />
             )}
-          <View style={{ marginLeft: -40 }}>
-            <Text
-              style={styles.textodonome}
-              adjustsFontSizeToFit
-              numberOfLines={1}
-              minimumFontScale={0.7}
-            >
-              {nome ? nome : 'Carregando...'}
-            </Text>
-            <Text
-              style={[styles.textodonome, { fontSize: 14, color: '#888' }]}
-              adjustsFontSizeToFit
-              numberOfLines={1}
-              minimumFontScale={0.7}
-            >
-              {especialidade ? especialidade : ''}
-            </Text>
-          </View>
-          <Image source={icons.iconlogodeitada} style={styles.icondeitada}/>
-        </View>
-      </TouchableOpacity>
-    </View>
-
-    <View style={styles.linha}>
-      <View style={styles.botaoComImagem}>
-        <TouchableOpacity onPress={navigateToHistorico}>
-          <View style={styles.opcoes}>
-            <Image source={icons.iconmedicam} style={styles.img_options} resizeMode="contain" />
-            <View style={styles.linha2} />
-            <Text style={styles.texto} adjustsFontSizeToFit numberOfLines={1}>Consultas</Text>
+            <View style={{ marginLeft: -40 }}>
+              <Text
+                style={styles.textodonome}
+                adjustsFontSizeToFit
+                numberOfLines={1}
+                minimumFontScale={0.7}
+              >
+                {nome ? nome : 'Carregando...'}
+              </Text>
+              <Text
+                style={[styles.textodonome, { fontSize: 14, color: '#888' }]}
+                adjustsFontSizeToFit
+                numberOfLines={1}
+                minimumFontScale={0.7}
+              >
+                {especialidade ? especialidade : ''}
+              </Text>
+            </View>
+            <Image source={icons.iconlogodeitada} style={styles.icondeitada} />
           </View>
         </TouchableOpacity>
       </View>
 
+      <View style={styles.linha}>
+        <View style={styles.botaoComImagem}>
+          <TouchableOpacity onPress={navigateToHistorico}>
+            <View style={styles.opcoes}>
+              <Image source={icons.iconmedicam} style={styles.img_options} resizeMode="contain" />
+              <View style={styles.linha2} />
+              <Text style={styles.texto} adjustsFontSizeToFit numberOfLines={1}>Consultas</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
       
+          <View style={styles.botaoComImagem}>
+            <TouchableOpacity onPress={navigateToHistoricoPaciente}>
+              <View style={styles.opcoes}>
+                <Image source={icons.iconpulseira} style={styles.img_options} resizeMode="contain" />
+                <View style={styles.linha2} />
+                <Text style={styles.texto} adjustsFontSizeToFit numberOfLines={1}>Historico de pacientes</Text>
+              </View>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </View>
    
-    </View>
-  </View>
   );
 }

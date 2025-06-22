@@ -7,7 +7,7 @@ import iconpulseiranfc from "../assets/images/pulseira_nfc.png";
 import iconrelogio from "../assets/images/relogio.png";
 import iconsenha from "../assets/images/senha.png";
 import iconlogodeitada from "../assets/images/icon_logo.png";
-import iconpulsiera from "../assets/images/pulseira.png";
+import iconpulseira from "../assets/images/pulseira.png";
 import iconasse from "../assets/images/acessibilidae.png";
 import iconhospital from "../assets/images/hospitais.png";
 import iconsegu from "../assets/images/seguranca.png";
@@ -42,7 +42,7 @@ export default {
     iconsenha,
     iconrelogio,
     iconlogodeitada,
-    iconpulsiera,
+    iconpulseira,
     iconasse,
     adicionar,
     iconhospital, 

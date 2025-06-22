@@ -19,14 +19,14 @@ export default function InformacoesConsulta() {
         console.log('[InformacoesConsulta] Parâmetros recebidos:', route.params);
         console.log('[InformacoesConsulta] Consulta recebida:', consulta);
         
-        if (consulta?.id) {
+        if (consulta?.consulta_id) {
             buscarDadosConsulta();
         } else {
             console.error('[InformacoesConsulta] ID da consulta não encontrado nos parâmetros');
             setLoading(false);
             setError('ID da consulta não encontrado');
         }
-    }, [consulta?.id]);
+    }, [consulta?.consulta_id]);
 
     const buscarDadosConsulta = async () => {
         try {
@@ -41,10 +41,10 @@ export default function InformacoesConsulta() {
                 throw new Error('Token não encontrado');
             }
 
-            console.log('[InformacoesConsulta] Buscando dados da consulta ID:', consulta.id);
+            console.log('[InformacoesConsulta] Buscando dados da consulta ID:', consulta.consulta_id);
 
             const response = await axios.get(
-                `https://backend-811v.onrender.com/consulta/dados/${consulta.id}`,
+                `https://backend-811v.onrender.com/consulta/dados/${consulta.consulta_id}`,
                 { 
                     headers: { Authorization: `Bearer ${token}` },
                     timeout: 10000 

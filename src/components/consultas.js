@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 
-export default function Botaoconsultas({nome, especialidade, tempo, horario, valor, imagem_perfil, status, corbarra, id, data_hora}) {
+export default function Botaoconsultas({nome, especialidade, tempo, horario, valor, imagem_perfil, status, corbarra, consulta_id, data_hora}) {
     const navigation = useNavigation();
     const [isMedico, setIsMedico] = useState(false);
 
@@ -28,7 +28,7 @@ export default function Botaoconsultas({nome, especialidade, tempo, horario, val
         console.log('[Botaoconsultas] Iniciando navegação');
         console.log('[Botaoconsultas] isMedico:', isMedico);
         console.log('[Botaoconsultas] Dados da consulta:', {
-            id,
+            consulta_id,
             nome,
             especialidade,
             imagem_perfil,
@@ -38,7 +38,7 @@ export default function Botaoconsultas({nome, especialidade, tempo, horario, val
         });
 
         const consulta = {
-            id,
+            consulta_id,
             nome,
             especialidade,
             imagem_perfil,
@@ -68,7 +68,7 @@ export default function Botaoconsultas({nome, especialidade, tempo, horario, val
     };
 
     const formatarHorario = (data_hora) => {
-        if (!data_hora) return 'Horário não definido';
+        if (!data_hora) return 'Horário não defino';
         try {
             const data = new Date(data_hora);
             const dataFormatada = format(data, "dd/MM/yyyy", { locale: ptBR });
@@ -85,7 +85,6 @@ export default function Botaoconsultas({nome, especialidade, tempo, horario, val
     return(
         <TouchableOpacity style={[styles.botaconsu, { backgroundColor: '#2a3d57' }]} onPress={handlePress}>
             <View style={[styles.Bar, {backgroundColor: corbarra || cor(status)}]}/>
-
             <View style={[styles.dentrodobota, {gap: 10, flex: 1}]}>
                 <Image 
                     source={imagem_perfil || icons.iconprinperfil} 
@@ -108,6 +107,10 @@ export default function Botaoconsultas({nome, especialidade, tempo, horario, val
                         <Image source={icons.relogio} style={styles.iconeRelogio} />
                         <Text style={styles.horario}>{dataHoraFormatada}</Text>
                     </View>
+                    
+                    <Text style={[styles.texto, { fontSize: 10, color: '#999', marginTop: 'auto' }]}>
+                        ID: {consulta_id}
+                    </Text>
                 </View>
 
                 <View style={{ justifyContent: 'space-between', height: '100%', paddingVertical: 10 }}>
@@ -132,7 +135,7 @@ function cor(status) {
     if (!status) return '#a6a6a6';
     
     switch(status.toLowerCase()) {
-        case 'concluida': return '#7ed957';
+        case 'concluída': return '#7ed957';
         case 'agendada': return '#ffde59';
         case 'cancelada': return '#ff0000';
         default: return '#a6a6a6';
@@ -143,7 +146,7 @@ function texto(status) {
     if (!status) return 'Sem status';
     
     switch(status.toLowerCase()) {
-        case 'concluida': return 'Concluída';
+        case 'concluída': return 'Concluída';
         case 'agendada': return 'Agendada';
         case 'cancelada': return 'Cancelada';
         default: return 'Sem dados';

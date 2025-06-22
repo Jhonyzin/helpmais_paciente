@@ -106,7 +106,7 @@ export default function Inicio() {
 
       <TouchableOpacity onPress={navigateToPulseira}>
         <View style={styles.opcoes}>
-          <Image source={icons.iconpulsiera} style={styles.img_options}/>
+          <Image source={icons.iconpulseira} style={styles.img_options}/>
           <View style={styles.linha2} />
           <Text style={styles.texto} adjustsFontSizeToFit numberOfLines={1}>Minha Pulseira</Text>
         </View>

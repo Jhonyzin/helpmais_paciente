@@ -32,12 +32,12 @@ export default function InformacoesMedico() {
 
   const buscarDadosConsulta = async () => {
     try {
-      console.log('Iniciando busca dos dados da consulta:', consulta.id);
+      console.log('Iniciando busca dos dados da consulta:', consulta.consulta_id);
       const token = await AsyncStorage.getItem('userToken');
       console.log('Token obtido:', token ? 'Sim' : 'Não');
 
       const response = await axios.get(
-        `https://backend-811v.onrender.com/consulta/dados/${consulta.id}`,
+        `https://backend-811v.onrender.com/consulta/dados/${consulta.consulta_id}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
@@ -114,7 +114,7 @@ export default function InformacoesMedico() {
           : [];
 
       await axios.post(
-        `https://backend-811v.onrender.com/consulta/resultado/${consulta.id}`,
+        `https://backend-811v.onrender.com/consulta/resultado/${consulta.consulta_id}`,
         {
           motivo,
           observacoes,
