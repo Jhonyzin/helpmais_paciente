@@ -1,12 +1,22 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { styles } from "./styles";
-import { View, Image, StatusBar, TouchableOpacity, Text, Alert } from 'react-native';
+import { 
+  View, 
+  Image, 
+  StatusBar, 
+  TouchableOpacity, 
+  Text, 
+  Alert, 
+  ActivityIndicator,
+  Modal,
+ } from 'react-native';
 import { TextInput } from 'react-native-paper';
 import icons from '../constants/icons';
 import NfcManager, { NfcTech } from 'react-native-nfc-manager';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Modallogin from '../components/Carregamentos';
 
 const formatarCPF = (texto) => {
   const numeros = texto.replace(/\D/g, '');
@@ -29,6 +39,7 @@ export default function Login() {
   const [erroLogin, setErroLogin] = useState('');
   const [erroCampoLogin, setErroCampoLogin] = useState(false);
   const [erroCampoSenha, setErroCampoSenha] = useState(false);
+  const [carregamento, setCarregamento] = useState(false);
 
 
   const navigateToinicio = () => navigation.navigate('Inicio');
@@ -40,7 +51,7 @@ export default function Login() {
   useEffect(() => {
     NfcManager.start();
   }, []);
-
+  
   const alternarusuario = () => {
     setLogin('');
     setTipoUsuario('usuario');
@@ -62,6 +73,7 @@ export default function Login() {
       Alert.alert('Erro', 'Preencha todos os campos corretamente.');
       return;
     }
+    setCarregamento(true);
 
     try {
       const payload =
@@ -93,6 +105,12 @@ export default function Login() {
       Alert.alert('Erro no login', mensagem);
     }
   };
+
+  if (carregamento){
+    return (
+      <Modallogin visible={true}/>
+    );
+  }
 
  const readNfc = async () => {
   try {
@@ -183,27 +201,34 @@ export default function Login() {
 
 
   return (
-    <View style={[styles.container, { paddingHorizontal: 20 }, styles.fundo]}>
+    <View style={[styles.container, {paddingHorizontal: 20}, styles.fundo]}>
       <StatusBar barStyle="light-content" backgroundColor="#004aad" />
 
-      <View style={{ alignItems: 'center', width: '100%', marginBottom: 20 }}>
-        <Image source={icons.iconlogo1} style={styles.imagem} resizeMode="contain" />
+      <View style={{alignItems: 'center', width: '100%', marginBottom: 20}}>
+        <Image
+          source={icons.iconlogo1}
+          style={styles.imagem}
+          resizeMode="contain"
+        />
       </View>
 
-      <View style={{ flexDirection: 'row', justifyContent: 'center', marginBottom: 20 }}>
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'center',
+          marginBottom: 20,
+        }}>
         <TouchableOpacity
           style={[
             styles.tipoBotao,
-            tipoUsuario === 'usuario' && styles.tipoBotaoAtivo
+            tipoUsuario === 'usuario' && styles.tipoBotaoAtivo,
           ]}
-          onPress={alternarusuario}
-        >
+          onPress={alternarusuario}>
           <Text
             style={[
               styles.tipoTexto,
-              tipoUsuario === 'usuario' && styles.tipoTextoAtivo
-            ]}
-          >
+              tipoUsuario === 'usuario' && styles.tipoTextoAtivo,
+            ]}>
             Paciente
           </Text>
         </TouchableOpacity>
@@ -211,28 +236,33 @@ export default function Login() {
         <TouchableOpacity
           style={[
             styles.tipoBotao,
-            tipoUsuario === 'medico' && styles.tipoBotaoAtivo
+            tipoUsuario === 'medico' && styles.tipoBotaoAtivo,
           ]}
-          onPress={alternarMedico}
-        >
+          onPress={alternarMedico}>
           <Text
             style={[
               styles.tipoTexto,
-              tipoUsuario === 'medico' && styles.tipoTextoAtivo
-            ]}
-          >
+              tipoUsuario === 'medico' && styles.tipoTextoAtivo,
+            ]}>
             Médico
           </Text>
         </TouchableOpacity>
       </View>
 
-      <View style={[styles.inputContainer, { alignItems: 'center' }]}>
-        <Image source={icons.iconperfil} style={styles.icon} resizeMode="contain" />
+      <View style={[styles.inputContainer, {alignItems: 'center'}]}>
+        <Image
+          source={icons.iconperfil}
+          style={styles.icon}
+          resizeMode="contain"
+        />
         <TextInput
-          style={[styles.input, erroCampoLogin && {borderColor: 'red', borderWidth: 1}]}
+          style={[
+            styles.input,
+            erroCampoLogin && {borderColor: 'red', borderWidth: 1},
+          ]}
           placeholder="Usuário"
           placeholderTextColor={erroCampoLogin ? 'red' : '#ccc'}
-          onChangeText={(text) =>{
+          onChangeText={text => {
             setErroCampoLogin(false);
             setLogin(tipoUsuario === 'usuario' ? formatarCPF(text) : text);
           }}
@@ -243,14 +273,22 @@ export default function Login() {
       </View>
 
       <View style={styles.inputContainer}>
-        <Image source={icons.iconsegu} style={styles.icon} resizeMode="contain" />
+        <Image
+          source={icons.iconsegu}
+          style={styles.icon}
+          resizeMode="contain"
+        />
         <TextInput
-          style={[styles.input, { fontFamily: 'monospace' }, erroCampoLogin && {borderColor: 'red', borderWidth: 1}]}
+          style={[
+            styles.input,
+            {fontFamily: 'monospace'},
+            erroCampoLogin && {borderColor: 'red', borderWidth: 1},
+          ]}
           placeholder="Senha"
-          placeholderTextColor= {erroCampoSenha ? 'red' : '#ccc'}
-          onChangeText={(text) => {
+          placeholderTextColor={erroCampoSenha ? 'red' : '#ccc'}
+          onChangeText={text => {
             setErroCampoLogin(false);
-            setSenha(text)
+            setSenha(text);
           }}
           value={senha}
           secureTextEntry={!senhaVisivel}
@@ -268,7 +306,7 @@ export default function Login() {
         <Text style={styles.textoBotao}>Entrar</Text>
       </TouchableOpacity>
 
-      <View style={{ alignItems: 'center', marginVertical: 10 }}>
+      <View style={{alignItems: 'center', marginVertical: 10}}>
         <Text style={styles.textocinza}>OU</Text>
       </View>
 
@@ -276,14 +314,18 @@ export default function Login() {
         <Text style={styles.textoBotao}>NFC</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity 
-        style={{ 
-          alignItems: 'center', 
-          width: '100%', 
+      <TouchableOpacity
+        style={{
+          alignItems: 'center',
+          width: '100%',
           marginTop: 10,
-          marginBottom: 20 
+          marginBottom: 20,
         }}
-        onPress={tipoUsuario === 'usuario' ? navigateTocadastro : navigateTocadastroMedico}>
+        onPress={
+          tipoUsuario === 'usuario'
+            ? navigateTocadastro
+            : navigateTocadastroMedico
+        }>
         <Text style={styles.linkTexto}>Não tem conta? Fazer cadastro</Text>
       </TouchableOpacity>
     </View>

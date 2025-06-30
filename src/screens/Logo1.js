@@ -1,4 +1,4 @@
-import { View, Image, StyleSheet, StatusBar } from "react-native";
+import { View, Image, StatusBar } from "react-native";
 import { useEffect } from "react";
 import icons from "../constants/icons.js"
 import { useNavigation } from '@react-navigation/native';
@@ -16,22 +16,9 @@ export default function Logo(){
 
     
     return (
-      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#fff'}}>
+      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#004aad'}}>
         <StatusBar backgroundColor="#004aad" />
-        <Image source={icons.iconlogo} style={{width: 180, height: 180, resizeMode: 'contain'}} resizeMode="contain"/>
+        <Image source={icons.iconlogo} style={{width: '60%', height: '60%', resizeMode: 'contain', flex: 1}} resizeMode="contain"/>
       </View>
     );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignContent: "center",
-    justifyContent: "center",
-    backgroundColor: "#004aad",
-  },
-  imagem: {
-    width: "100%",
-    height: "50%",
-  },
-});

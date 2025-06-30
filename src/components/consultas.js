@@ -4,7 +4,7 @@ import icons from "../constants/icons";
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useState, useEffect } from 'react';
-import { format } from 'date-fns';
+import {format} from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 
 export default function Botaoconsultas({nome, especialidade, tempo, horario, valor, imagem_perfil, status, corbarra, consulta_id, data_hora}) {

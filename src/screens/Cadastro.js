@@ -196,20 +196,7 @@ export default function Cadastro() {
         >
           <StatusBar barStyle="dark-content" backgroundColor="#004aad" />
           <View style={styles.container}>
-            <View style={{ 
-              alignItems: 'center', 
-              width: '100%', 
-              marginBottom: 20,
-              marginTop: 20 
-            }}>
-              <Image
-                source={icons.iconlogo}
-                style={styles.imagem}
-                resizeMode="contain"
-                accessibilityLabel="Logo do aplicativo"
-              />
-            </View>
-
+            
             <TextInput style={styles.input} placeholder="Nome Completo" placeholderTextColor="#ccc" value={form.nome} onChangeText={(text) => handleChange('nome', text)} accessibilityLabel="Campo para inserir nome completo" />
 
             <TextInput style={styles.input} placeholder="CPF" placeholderTextColor="#ccc" value={form.cpf} onChangeText={(text) => handleChange('cpf', text)} keyboardType="numeric" maxLength={14} accessibilityLabel="Campo para inserir CPF" />

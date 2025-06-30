@@ -6,7 +6,7 @@ const topo = 40;
 export const styles = StyleSheet.create({
   fundo: {
     flex: 1,
-    backgroundColor: '#ffff',
+    backgroundColor: '#FFF',
   },
 
   logos: {
@@ -495,6 +495,40 @@ export const styles = StyleSheet.create({
   cargotext: {
     fontSize: 14,
     color: '#a6a6a6',
+  },
+  loginesmodal: {
+    flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  loginesmodal2: {
+    width: '80%',
+    height: '15%',
+    backgroundColor: '#FFF',
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+  },
+  loginagu: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#004aad',
+    width: '100%',
+    height: '35%',
+    borderBottomLeftRadius: 15,
+    borderBottomRightRadius: 15,
+    marginTop: 35,
+  },
+  logintext1: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 20,
+    flexDirection: 'column',
+  },
+  logintext: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    textAlign: 'center',
   },
 });
 

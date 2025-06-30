@@ -9,7 +9,7 @@ import Historico from './screens/pacient/Historico';
 import Hospitais from './screens/pacient/Hospitais';
 import Index from './screens/Index';
 import Inicio from './screens/pacient/Inicio';
-import InicioMedico from "./screens/medic/InicioMedico";
+import Iniciomedico from  './screens/medic/Iniciomedico'
 import Login from './screens/Login';
 import Logo1 from './screens/Logo1';
 import Medicamentos from './screens/pacient/Medicamentos';
@@ -59,7 +59,7 @@ export default function App() {
 
         <Stack.Screen name="Inicio" component={Inicio} />
 
-        <Stack.Screen name="InicioMedico" component={InicioMedico} />
+        <Stack.Screen name="InicioMedico" component={Iniciomedico} />
         <Stack.Screen name="CadastroMedico" component={CadastroMedico}/>
         <Stack.Screen name="HistoricoMedico" component={HistoricoMedico}/>
         <Stack.Screen name="HistoricoPaciente" component={HistoricoPaciente}/>
