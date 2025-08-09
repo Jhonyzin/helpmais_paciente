@@ -56,16 +56,38 @@ export const styles = StyleSheet.create({
     height: 250,
     marginBottom: 30,
   },
+  containers2: {
+    flex: 1,
+    backgroundColor: '#004aad',
+    gap: 20,
+  },
   containers: {
-    justifyContent: 'center',
-    position: 'absolute',
-    top: '40%',
-    width: '80%',
-    left: '10%',
+    height: height,
+    width: width,
+    borderTopLeftRadius: 30,
+    borderTopRightRadius: 30,
+    gap: 20,
+  },
+  containersindex: {
+    flex: 1,
     alignItems: 'center',
-    backgroundColor: '#D0D9E7CC',
-    height: '20%',
-    borderRadius: 10,
+    justifyContent: 'flex-start',
+    marginTop: height * 0.15,
+  },
+  imgindex: {
+    width: width * 0.5,
+    height: height * 0.5,
+  },
+  indexprimeiro: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  indexbotao: {
+    flexDirection: 'row',
+    gap: 20,
+  },
+  indextext: {
+    marginTop: -50,
   },
   input: {
     flex: 1,
@@ -171,9 +193,6 @@ export const styles = StyleSheet.create({
     height: 105,
     marginTop: topo - 35,
   },
-  spacer: {
-    width: 20,
-  },
   linkTexto: {
     color: '#0000	',
     marginTop: 15,
@@ -181,7 +200,7 @@ export const styles = StyleSheet.create({
   },
   title: {
     color: '#FFF',
-    fontSize: 20,
+    fontSize: 25,
     fontWeight: 'bold',
   },
   butons: {
