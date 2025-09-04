@@ -1,21 +1,30 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity, Alert, StatusBar, ScrollView, KeyboardAvoidingView, Platform } from 'react-native';
-import { styles } from './styles'; 
+import React, {useState, useEffect} from 'react';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Alert,
+  StatusBar,
+  ScrollView,
+  KeyboardAvoidingView,
+  Platform,
+} from 'react-native';
+import {styles} from './styles';
 import axios from 'axios';
 import icons from '../constants/icons';
-import { Image, ActivityIndicator } from 'react-native';
-import { TextInput } from 'react-native-paper';
+import {Image, ActivityIndicator} from 'react-native';
+import {TextInput} from 'react-native-paper';
 import DropDownPicker from 'react-native-dropdown-picker';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 
-import { 
-  validarCPF, 
-  formatarCPF, 
-  formatarTelefone, 
-  formatarData, 
+import {
+  validarCPF,
+  formatarCPF,
+  formatarTelefone,
+  formatarData,
   formatarCep,
   dataValida,
-  validarEmail
+  validarEmail,
 } from '../utils/validacao';
 
 const API_URL = 'https://backend-811v.onrender.com/usuario';
@@ -35,7 +44,7 @@ export default function Cadastro() {
     bairro: '',
     logradouro: '',
     numero: '',
-    complemento: ''
+    complemento: '',
   });
   const [senhaVisivel, setSenhaVisivel] = useState(false);
   const [openEstado, setOpenEstado] = useState(false);
@@ -48,13 +57,13 @@ export default function Cadastro() {
   const navigation = useNavigation();
 
   const navigateToLogin = () => {
-    navigation.navigate('Login'); 
+    navigation.navigate('Login');
   };
 
   const handleChange = (name, value) => {
     let formattedValue = value;
-    
-    switch(name) {
+
+    switch (name) {
       case 'cpf':
         formattedValue = formatarCPF(value);
         break;
@@ -71,15 +80,17 @@ export default function Cadastro() {
         }
         break;
     }
-    
-    setForm(prev => ({ ...prev, [name]: formattedValue }));
+
+    setForm(prev => ({...prev, [name]: formattedValue}));
   };
 
-  const fetchAddressByCep = async (cep) => {
+  const fetchAddressByCep = async cep => {
     try {
       setLoadingCep(true);
-      const response = await axios.get(`https://viacep.com.br/ws/${cep.replace(/\D/g, '')}/json/`);
-      
+      const response = await axios.get(
+        `https://viacep.com.br/ws/${cep.replace(/\D/g, '')}/json/`,
+      );
+
       if (!response.data.erro) {
         setForm(prev => ({
           ...prev,
@@ -132,7 +143,7 @@ export default function Cadastro() {
 
   const handleCadastro = async () => {
     if (!validateForm()) return;
-    
+
     try {
       setLoading(true);
       const partesData = form.dataNascimento.split('/');
@@ -141,7 +152,7 @@ export default function Cadastro() {
       const response = await axios.post(`${API_URL}/cadastro`, {
         ...form,
         cpf: form.cpf.replace(/\D/g, ''),
-        telefone: form.telefone.replace(/\D/g, ''), 
+        telefone: form.telefone.replace(/\D/g, ''),
         dataNascimento: dataFormatada,
         cep: form.cep.replace(/\D/g, ''),
       });
@@ -157,7 +168,10 @@ export default function Cadastro() {
   };
 
   useEffect(() => {
-    axios.get('https://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome')
+    axios
+      .get(
+        'https://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome',
+      )
       .then(response => {
         const estadosFormatados = response.data.map(uf => ({
           label: uf.nome,
@@ -170,7 +184,10 @@ export default function Cadastro() {
 
   useEffect(() => {
     if (form.estado) {
-      axios.get(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${form.estado}/municipios`)
+      axios
+        .get(
+          `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${form.estado}/municipios`,
+        )
         .then(response => {
           const cidadesFormatadas = response.data.map(mun => ({
             label: mun.nome,
@@ -186,28 +203,77 @@ export default function Cadastro() {
     <View style={styles.fundo}>
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-        style={{ flex: 1 }}
-      >
+        style={{flex: 1}}>
         <ScrollView
-          contentContainerStyle={{ flexGrow: 1 }}
-          style={{ backgroundColor: '#004aad' }}
+          contentContainerStyle={{flexGrow: 1}}
+          style={{backgroundColor: '#004aad'}}
           keyboardShouldPersistTaps="handled"
-          showsVerticalScrollIndicator={false}
-        >
+          showsVerticalScrollIndicator={false}>
           <StatusBar barStyle="dark-content" backgroundColor="#004aad" />
           <View style={styles.container}>
-            
-            <TextInput style={styles.input} placeholder="Nome Completo" placeholderTextColor="#ccc" value={form.nome} onChangeText={(text) => handleChange('nome', text)} accessibilityLabel="Campo para inserir nome completo" />
+            <TextInput
+              style={styles.input}
+              placeholder="Nome Completo"
+              placeholderTextColor="#ccc"
+              value={form.nome}
+              onChangeText={text => handleChange('nome', text)}
+              accessibilityLabel="Campo para inserir nome completo"
+            />
 
-            <TextInput style={styles.input} placeholder="CPF" placeholderTextColor="#ccc" value={form.cpf} onChangeText={(text) => handleChange('cpf', text)} keyboardType="numeric" maxLength={14} accessibilityLabel="Campo para inserir CPF" />
+            <TextInput
+              style={styles.input}
+              placeholder="CPF"
+              placeholderTextColor="#ccc"
+              value={form.cpf}
+              onChangeText={text => handleChange('cpf', text)}
+              keyboardType="numeric"
+              maxLength={14}
+              accessibilityLabel="Campo para inserir CPF"
+            />
 
-            <TextInput style={styles.input} placeholder="Email" placeholderTextColor="#ccc" value={form.email} onChangeText={(text) => handleChange('email', text)} keyboardType="email-address" autoCapitalize="none" accessibilityLabel="Campo para inserir email" />
+            <TextInput
+              style={styles.input}
+              placeholder="Email"
+              placeholderTextColor="#ccc"
+              value={form.email}
+              onChangeText={text => handleChange('email', text)}
+              keyboardType="email-address"
+              autoCapitalize="none"
+              accessibilityLabel="Campo para inserir email"
+            />
 
-            <TextInput style={styles.input} placeholder="Telefone" placeholderTextColor="#ccc" value={form.telefone} onChangeText={(text) => handleChange('telefone', text)} keyboardType="phone-pad" maxLength={15} accessibilityLabel="Campo para inserir telefone" />
+            <TextInput
+              style={styles.input}
+              placeholder="Telefone"
+              placeholderTextColor="#ccc"
+              value={form.telefone}
+              onChangeText={text => handleChange('telefone', text)}
+              keyboardType="phone-pad"
+              maxLength={15}
+              accessibilityLabel="Campo para inserir telefone"
+            />
 
-            <TextInput style={styles.input} placeholder="Data de Nascimento (DD/MM/AAAA)" placeholderTextColor="#ccc" value={form.dataNascimento} onChangeText={(text) => handleChange('dataNascimento', text)} keyboardType="numeric" maxLength={10} accessibilityLabel="Campo para inserir data de nascimento" />
+            <TextInput
+              style={styles.input}
+              placeholder="Data de Nascimento (DD/MM/AAAA)"
+              placeholderTextColor="#ccc"
+              value={form.dataNascimento}
+              onChangeText={text => handleChange('dataNascimento', text)}
+              keyboardType="numeric"
+              maxLength={10}
+              accessibilityLabel="Campo para inserir data de nascimento"
+            />
 
-            <TextInput style={styles.input} placeholder="CEP" placeholderTextColor="#ccc" value={form.cep} onChangeText={(text) => handleChange('cep', text)} keyboardType="numeric" maxLength={9} accessibilityLabel="Campo para inserir CEP" />
+            <TextInput
+              style={styles.input}
+              placeholder="CEP"
+              placeholderTextColor="#ccc"
+              value={form.cep}
+              onChangeText={text => handleChange('cep', text)}
+              keyboardType="numeric"
+              maxLength={9}
+              accessibilityLabel="Campo para inserir CEP"
+            />
             {loadingCep && <ActivityIndicator size="small" color="#fff" />}
 
             <Text style={styles.label}>Estado</Text>
@@ -217,7 +283,7 @@ export default function Cadastro() {
               value={form.estado}
               items={itemsEstado}
               setOpen={setOpenEstado}
-              setValue={(value) => handleChange('estado', value())}
+              setValue={value => handleChange('estado', value())}
               setItems={setItemsEstado}
               placeholder="Selecione um estado"
               searchable={true}
@@ -234,7 +300,7 @@ export default function Cadastro() {
               value={form.cidade}
               items={itemsCidade}
               setOpen={setOpenCidade}
-              setValue={(value) => handleChange('cidade', value())}
+              setValue={value => handleChange('cidade', value())}
               setItems={setItemsCidade}
               placeholder="Selecione uma cidade"
               searchable={true}
@@ -245,23 +311,60 @@ export default function Cadastro() {
               accessibilityLabel="Selecionar cidade"
             />
 
-            <TextInput style={styles.input} placeholder="Bairro" placeholderTextColor="#ccc" value={form.bairro} onChangeText={(text) => handleChange('bairro', text)} accessibilityLabel="Campo para inserir bairro" />
-            <TextInput style={styles.input} placeholder="Logradouro" placeholderTextColor="#ccc" value={form.logradouro} onChangeText={(text) => handleChange('logradouro', text)} accessibilityLabel="Campo para inserir logradouro" />
-            <TextInput style={styles.input} placeholder="Número" placeholderTextColor="#ccc" value={form.numero} onChangeText={(text) => handleChange('numero', text)} keyboardType="numeric" accessibilityLabel="Campo para inserir número" />
-            <TextInput style={styles.input} placeholder="Complemento" placeholderTextColor="#ccc" value={form.complemento} onChangeText={(text) => handleChange('complemento', text)} accessibilityLabel="Campo para inserir complemento" />
+            <TextInput
+              style={styles.input}
+              placeholder="Bairro"
+              placeholderTextColor="#ccc"
+              value={form.bairro}
+              onChangeText={text => handleChange('bairro', text)}
+              accessibilityLabel="Campo para inserir bairro"
+            />
+            <TextInput
+              style={styles.input}
+              placeholder="Logradouro"
+              placeholderTextColor="#ccc"
+              value={form.logradouro}
+              onChangeText={text => handleChange('logradouro', text)}
+              accessibilityLabel="Campo para inserir logradouro"
+            />
+            <TextInput
+              style={styles.input}
+              placeholder="Número"
+              placeholderTextColor="#ccc"
+              value={form.numero}
+              onChangeText={text => handleChange('numero', text)}
+              keyboardType="numeric"
+              accessibilityLabel="Campo para inserir número"
+            />
+            <TextInput
+              style={styles.input}
+              placeholder="Complemento"
+              placeholderTextColor="#ccc"
+              value={form.complemento}
+              onChangeText={text => handleChange('complemento', text)}
+              accessibilityLabel="Campo para inserir complemento"
+            />
 
             <View style={styles.inputContainer}>
               <TextInput
                 style={styles.input}
                 placeholder="Senha"
                 placeholderTextColor="#ccc"
-                onChangeText={(text) => handleChange('senha', text)}
+                onChangeText={text => handleChange('senha', text)}
                 value={form.senha}
                 secureTextEntry={!senhaVisivel}
                 accessibilityLabel="Campo para inserir senha"
               />
-              <TouchableOpacity onPress={() => setSenhaVisivel(!senhaVisivel)} accessibilityLabel={senhaVisivel ? "Ocultar senha" : "Mostrar senha"}>
-                <Image source={senhaVisivel ? icons.iconver : icons.iconocul} style={styles.iconEye} resizeMode="contain" />
+              <TouchableOpacity
+                onPress={() => setSenhaVisivel(!senhaVisivel)}
+                accessibilityLabel={
+                  senhaVisivel ? 'Ocultar senha' : 'Mostrar senha'
+                }>
+                <Image
+                  source={senhaVisivel ? icons.iconver : icons.iconocul}
+                  style={styles.iconEye}
+                  resizeMode="contain"
+                />
               </TouchableOpacity>
             </View>
 
@@ -270,28 +373,44 @@ export default function Cadastro() {
                 style={styles.input}
                 placeholder="Confirmar Senha"
                 placeholderTextColor="#ccc"
-                onChangeText={(text) => handleChange('confirmarSenha', text)}
+                onChangeText={text => handleChange('confirmarSenha', text)}
                 value={form.confirmarSenha}
                 secureTextEntry={!senhaVisivel}
                 accessibilityLabel="Campo para confirmar senha"
               />
-              <TouchableOpacity onPress={() => setSenhaVisivel(!senhaVisivel)} accessibilityLabel={senhaVisivel ? "Ocultar senha" : "Mostrar senha"}>
-                <Image source={senhaVisivel ? icons.iconver : icons.iconocul} style={styles.iconEye} resizeMode="contain" />
+              <TouchableOpacity
+                onPress={() => setSenhaVisivel(!senhaVisivel)}
+                accessibilityLabel={
+                  senhaVisivel ? 'Ocultar senha' : 'Mostrar senha'
+                }>
+                <Image
+                  source={senhaVisivel ? icons.iconver : icons.iconocul}
+                  style={styles.iconEye}
+                  resizeMode="contain"
+                />
               </TouchableOpacity>
             </View>
 
-            <TouchableOpacity style={styles.botao} onPress={handleCadastro} disabled={loading} accessibilityLabel="Botão para cadastrar">
-              {loading ? <ActivityIndicator color="#fff" /> : <Text style={styles.textoBotao}>Cadastrar</Text>}
+            <TouchableOpacity
+              style={styles.botao}
+              onPress={handleCadastro}
+              disabled={loading}
+              accessibilityLabel="Botão para cadastrar">
+              {loading ? (
+                <ActivityIndicator color="#fff" />
+              ) : (
+                <Text style={styles.textoBotao}>Cadastrar</Text>
+              )}
             </TouchableOpacity>
 
-            <TouchableOpacity 
-              style={{ 
-                alignItems: 'center', 
-                width: '100%', 
+            <TouchableOpacity
+              style={{
+                alignItems: 'center',
+                width: '100%',
                 marginTop: 10,
-                marginBottom: 20 
+                marginBottom: 20,
               }}
-              onPress={navigateToLogin} 
+              onPress={navigateToLogin}
               accessibilityLabel="Link para fazer login">
               <Text style={styles.linkTexto}>Já tem conta? Fazer login</Text>
             </TouchableOpacity>

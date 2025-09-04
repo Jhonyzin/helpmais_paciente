@@ -73,9 +73,8 @@ export default function Hospitais() {
     <View
       style={[
         styles.container,
-        {paddingHorizontal: 20, backgroundColor: '#1c2c41'},
-      ]}>
-
+        { backgroundColor: '#1c2c41'},
+    ]}>
       {location && (
         <MapView
           style={styles.maps}
@@ -90,12 +89,11 @@ export default function Hospitais() {
           showsMyLocationButton={true}
           zoomEnabled={true}
           zoomControlEnabled={true}>
-
           {/* Marcador da localização atual */}
           <Marker
             coordinate={{
               latitude: location.latitude,
-              longitude: location.longitude
+              longitude: location.longitude,
             }}
             title="Sua localização"
             pinColor="blue"
@@ -111,13 +109,14 @@ export default function Hospitais() {
                   coordinate={{latitude: lat, longitude: lng}}
                   title={hosp.name}
                   description={hosp.vicinity}>
-                  <View style={{ 
-                    backgroundColor: '#fff', 
-                    padding: 5, 
-                    borderRadius: 20,
-                    borderWidth: 2,
-                    borderColor: '#ff0000'
-                  }}>
+                  <View
+                    style={{
+                      backgroundColor: '#fff',
+                      padding: 5,
+                      borderRadius: 20,
+                      borderWidth: 2,
+                      borderColor: '#ff0000',
+                    }}>
                     <Image
                       source={icons.iconmaps}
                       style={{height: 24, width: 24}}
@@ -125,30 +124,33 @@ export default function Hospitais() {
                     />
                   </View>
                   <Callout tooltip>
-                    <View style={{ 
-                      padding: 10, 
-                      width: 200,
-                      backgroundColor: 'white',
-                      borderRadius: 6,
-                      borderWidth: 1,
-                      borderColor: '#ccc'
-                    }}>
-                      <Text style={{ 
-                        fontSize: 16,
-                        fontWeight: 'bold',
-                        color: '#000',
-                        textAlign: 'left',
-                        width: '100%'
+                    <View
+                      style={{
+                        padding: 10,
+                        width: 200,
+                        backgroundColor: 'white',
+                        borderRadius: 6,
+                        borderWidth: 1,
+                        borderColor: '#ccc',
                       }}>
+                      <Text
+                        style={{
+                          fontSize: 16,
+                          fontWeight: 'bold',
+                          color: '#000',
+                          textAlign: 'left',
+                          width: '100%',
+                        }}>
                         {hosp.name}
                       </Text>
-                      <Text style={{
-                        fontSize: 14,
-                        color: '#666',
-                        marginTop: 4,
-                        textAlign: 'left',
-                        width: '100%'
-                      }}>
+                      <Text
+                        style={{
+                          fontSize: 14,
+                          color: '#666',
+                          marginTop: 4,
+                          textAlign: 'left',
+                          width: '100%',
+                        }}>
                         {hosp.vicinity}
                       </Text>
                     </View>

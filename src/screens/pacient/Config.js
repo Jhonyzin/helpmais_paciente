@@ -18,23 +18,26 @@ export default function Config() {
 
      return (
        <View style={styles.configura}>
-           <Botaoconfig
-             texto="Dados Pessoais"
-             imagem={icons.iconperfil}
-             press={navigateTodados}
-           />
+         <Botaoconfig
+           texto="Dados Pessoais"
+           imagem={icons.iconperfil}
+           press={navigateTodados}
+           config={{width: '100%'}}
+         />
 
-           <Botaoconfig
-             texto="Acessibilidade"
-             imagem={icons.iconasse}
-             press={navigateToAssec}
-           />
+         <Botaoconfig
+           texto="Acessibilidade"
+           imagem={icons.iconasse}
+           press={navigateToAssec}
+           config={{width: '100%'}}
+         />
 
-           <Botaoconfig
-             texto="Segurança"
-             imagem={icons.iconsegu}
-             press={navigateToSegu}
-           />
+         <Botaoconfig
+           texto="Segurança"
+           imagem={icons.iconsegu}
+           press={navigateToSegu}
+           config={{width: '100%'}}
+         />
        </View>
      );
 }

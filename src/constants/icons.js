@@ -22,50 +22,45 @@ import iconlogo1 from "../assets/images/logo1.png";
 import iconwifi from '../assets/images/configuracoes.png';
 import iconduvidas from "../assets/images/duvidas.png";
 import iconmaps from '../assets/images/hospitalicon.png';
-import logo1 from "../assets/images/slide1.png";
-import logo2 from "../assets/images/slide2.png";
-import logo3 from "../assets/images/slide3.png";
 import makt1 from "../assets/images/imgdados.png";
 import makt2 from "../assets/images/imghist.png";
 import makt3 from '../assets/images/imgslog.png';
 import makt4 from '../assets/images/pedir.png';
 import remover from "../assets/images/remover.png";
 import adicionar from "../assets/images/adicionar.png";
+import iconsaudemaleta from '../assets/images/maletasaude.png';
 
 export default {
-    iconcancelar,
-    iconlogo,
-    iconmedicam,
-    iconperfil,
-    iconprinperfil,
-    iconpulseiranfc,
-    iconsenha,
-    iconrelogio,
-    iconlogodeitada,
-    iconpulseira,
-    iconasse,
-    adicionar,
-    iconhospital, 
-    iconsegu, 
-    icontag, 
-    icontemp,
-    iconmed,
-    iconver,
-    iconocul,
-    iconrelohisto,
-    iconseta,
-    iconlogo1,
-    iconwifi,
-    iconduvidas,
-    iconmaps,
-    logo1,
-    logo2,
-    logo3,
-    makt1,
-    makt2,
-    makt3,
-    makt4,
-    remover,
-    adicionar,
-
-}
+  iconcancelar,
+  iconlogo,
+  iconmedicam,
+  iconperfil,
+  iconprinperfil,
+  iconpulseiranfc,
+  iconsenha,
+  iconrelogio,
+  iconlogodeitada,
+  iconpulseira,
+  iconasse,
+  adicionar,
+  iconhospital,
+  iconsegu,
+  icontag,
+  icontemp,
+  iconmed,
+  iconver,
+  iconocul,
+  iconrelohisto,
+  iconseta,
+  iconlogo1,
+  iconwifi,
+  iconduvidas,
+  iconmaps,
+  makt1,
+  makt2,
+  makt3,
+  makt4,
+  remover,
+  adicionar,
+  iconsaudemaleta,
+};

@@ -8,17 +8,32 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#FFF',
   },
-
+  cadastroimg: {
+    width: 45,
+    height: 45,
+  },
+  cadastrobotoes: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
   logos: {
     width: '100%',
     height: '100%',
   },
-
+  cadstrods: {
+    width,
+    alignItems: 'center',
+  },
   iconEye: {
     width: 24,
     height: 24,
   },
-
+  cadastroanim: {
+    width: width / 2,
+    height: width / 2,
+    resizeMode: 'contain',
+  },
   inputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -40,6 +55,35 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#1c2c41',
+  },
+  logoindex: {
+    flexDirection: 'column',
+    width: width,
+    gap: 20,
+  },
+  logoindicator: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: 10,
+    position: 'absolute',
+    bottom: height * 0.5,
+    left: 0,
+    right: 0
+  },
+  styindicator: {
+    width: 10,
+    height: 10,
+    borderRadius: 5,
+    backgroundColor: '#FFF',
+  },
+  squares: {
+    width: width  * 0.8,
+    height: height * 0.4,
+    borderRadius: 30,
+    position: 'absolute',
+    marginTop: -width * 0.37,
+    marginLeft: width * 0.05
   },
   status: {
     paddingHorizontal: 10,
@@ -67,6 +111,8 @@ export const styles = StyleSheet.create({
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
     gap: 20,
+    marginTop: width,
+    position: 'absolute'
   },
   containersindex: {
     flex: 1,
@@ -320,10 +366,9 @@ export const styles = StyleSheet.create({
   },
   botaoconfigura: {
     marginTop: 20,
+    flexDirection: 'row',
     borderRadius: 15,
     height: 70,
-    width: '100%',
-    flexDirection: 'row',
     backgroundColor: '#004aad',
     alignItems: 'center',
     paddingHorizontal: 20,
