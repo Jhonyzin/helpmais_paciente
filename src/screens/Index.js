@@ -10,12 +10,13 @@ import {
   Dimensions
  } from "react-native";
 import { useNavigation } from '@react-navigation/native';
-import React, { useRef, useCallback } from "react";
+import React, { useRef, useCallback, useState } from "react";
 import { useFocusEffect } from "@react-navigation/native";
 
 import { styles } from './styles'; 
+import Login from "./Login";
 import icons from "../constants/icons.js"
-import { SuDe } from "../utils/Animations";
+import { SuDe, Loginani } from "../utils/Animations";
 
 export default function Index() {
   const navigation = useNavigation();
@@ -23,6 +24,7 @@ export default function Index() {
   const translateY = useRef(new Animated.Value(0)).current;
   const scrollX = React.useRef(new Animated.Value(0)).current;
   const { width, height } = Dimensions.get('window')
+  const [showLogin, setShowLogin] = useState(false)
   
   // const bgs será as backgrounds que ficarão atrás da imagem, 
   // cada cor está de acordo com as imagens, estão respectivamente. 
@@ -127,9 +129,9 @@ export default function Index() {
   const navigateToLogin = () => {
     SuDe(translateY, bgColor, () => {
       setTimeout(() => {
-        navigation.navigate('Login'); 
-      }, 150)
-    })
+        setShowLogin(true)
+      }, 150);
+    });
   };
 
   const navigateTocadastro = () => {
@@ -153,7 +155,6 @@ export default function Index() {
   return (
     <View style={styles.containers2}>
       <StatusBar barStyle={'dark-content'} />
-
       <Square scrollX={scrollX} />
       {/*PARTE 1*/}
       <Animated.FlatList
@@ -176,7 +177,13 @@ export default function Index() {
               </View>
 
               <View>
-                <Text style={{fontWeight: '800', color: '#FFF', fontSize: 22, marginLeft: 7}}>
+                <Text
+                  style={{
+                    fontWeight: '800',
+                    color: '#FFF',
+                    fontSize: 22,
+                    marginLeft: 7,
+                  }}>
                   {item.title}
                 </Text>
                 <Text
@@ -191,9 +198,7 @@ export default function Index() {
           );
         }}
       />
-      
       <Indicator scrollX={scrollX} />
-
       {/*PARTE 2*/}
       <Animated.View
         style={[
@@ -224,6 +229,15 @@ export default function Index() {
           </View>
         </View>
       </Animated.View>
+
+      {showLogin && (
+        <Animated.View
+          style={[StyleSheet.absoluteFill, {transform: [{translateY}]}]}>
+          <Login Voltar={() => {
+            Loginani(translateY, bgColor, () => setShowLogin(false));
+          }}/>
+        </Animated.View>
+      )}
     </View>
   );
 

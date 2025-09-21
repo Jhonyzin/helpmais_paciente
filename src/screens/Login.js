@@ -29,7 +29,7 @@ const formatarCPF = (texto) => {
 
 const API_URL = 'https://backend-811v.onrender.com';
 
-export default function Login() {
+export default function Login({ Voltar }) {
   const navigation = useNavigation();
 
   const [login, setLogin] = useState('');
@@ -201,8 +201,14 @@ export default function Login() {
 
 
   return (
-    <View style={[styles.container, {paddingHorizontal: 20}, styles.fundo]}>
+    <View style={[styles.containerlogin, {paddingHorizontal: 20}]}>
       <StatusBar barStyle="light-content" backgroundColor="#004aad" />
+      
+      <TouchableOpacity onPress={Voltar}>
+        <View>
+          <Text>x</Text>
+        </View>
+      </TouchableOpacity>
 
       <View style={{alignItems: 'center', width: '100%', marginBottom: 20}}>
         <Image

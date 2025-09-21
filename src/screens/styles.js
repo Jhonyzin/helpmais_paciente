@@ -4,10 +4,6 @@ const { width, height } = Dimensions.get('window');
 const topo = 40;
 
 export const styles = StyleSheet.create({
-  fundo: {
-    flex: 1,
-    backgroundColor: '#FFF',
-  },
   cadastroimg: {
     width: 45,
     height: 45,
@@ -55,6 +51,13 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#1c2c41',
+  },
+  containerlogin: {
+    backgroundColor: '#FFF',
+    width: width,
+    height: height * 0.9,
+    borderRadius: 30,
+    marginTop: width * 0.2
   },
   logoindex: {
     flexDirection: 'column',
