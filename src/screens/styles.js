@@ -55,9 +55,9 @@ export const styles = StyleSheet.create({
   containerlogin: {
     backgroundColor: '#FFF',
     width: width,
-    height: height * 0.9,
     borderRadius: 30,
-    marginTop: width * 0.2
+    marginTop: width * 0.3,
+    height: height * 0.9,
   },
   logoindex: {
     flexDirection: 'column',
@@ -72,7 +72,7 @@ export const styles = StyleSheet.create({
     position: 'absolute',
     bottom: height * 0.5,
     left: 0,
-    right: 0
+    right: 0,
   },
   styindicator: {
     width: 10,
@@ -81,12 +81,12 @@ export const styles = StyleSheet.create({
     backgroundColor: '#FFF',
   },
   squares: {
-    width: width  * 0.8,
+    width: width * 0.8,
     height: height * 0.4,
     borderRadius: 30,
     position: 'absolute',
     marginTop: -width * 0.37,
-    marginLeft: width * 0.05
+    marginLeft: width * 0.05,
   },
   status: {
     paddingHorizontal: 10,
@@ -99,8 +99,8 @@ export const styles = StyleSheet.create({
     opacity: 0.7,
   },
   imagem: {
-    width: 250,
-    height: 250,
+    width: 200,
+    height: 200,
     marginBottom: 30,
   },
   containers2: {
@@ -115,7 +115,7 @@ export const styles = StyleSheet.create({
     borderTopRightRadius: 30,
     gap: 20,
     marginTop: width,
-    position: 'absolute'
+    position: 'absolute',
   },
   containersindex: {
     flex: 1,

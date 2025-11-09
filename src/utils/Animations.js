@@ -25,12 +25,12 @@ export const Loginani = (translateY, bgColor, onComplete = () => {}) => {
     Animated.timing(translateY, {
       toValue: 0,
       duration: 700,
-      useNativeDriver: false
+      useNativeDriver: false,
     }),
     Animated.timing(bgColor, {
       toValue: 0,
       duration: 700,
-      useNativeDriver: false
-    }).start(onComplete)
-  ])
+      useNativeDriver: false,
+    }),
+  ]).start(onComplete);
 }

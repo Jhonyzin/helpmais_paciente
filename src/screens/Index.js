@@ -18,12 +18,15 @@ import Login from "./Login";
 import icons from "../constants/icons.js"
 import { SuDe, Loginani } from "../utils/Animations";
 
+
+
 export default function Index() {
+
   const navigation = useNavigation();
   const bgColor = useRef(new Animated.Value(0)).current;
   const translateY = useRef(new Animated.Value(0)).current;
   const scrollX = React.useRef(new Animated.Value(0)).current;
-  const { width, height } = Dimensions.get('window')
+  const {width, height} = Dimensions.get('window');
   const [showLogin, setShowLogin] = useState(false)
   
   // const bgs será as backgrounds que ficarão atrás da imagem, 
@@ -135,11 +138,8 @@ export default function Index() {
   };
 
   const navigateTocadastro = () => {
-    SuDe(translateY, bgColor, () => {
-      setTimeout(() => {
-        navigation.navigate('Cadastro'); 
-      }, 150)
-    })
+      setShowLogin(false);
+      navigation.navigate('Cadastro'); 
   };
 
   // resetar a animação
@@ -232,10 +232,17 @@ export default function Index() {
 
       {showLogin && (
         <Animated.View
-          style={[StyleSheet.absoluteFill, {transform: [{translateY}]}]}>
-          <Login Voltar={() => {
-            Loginani(translateY, bgColor, () => setShowLogin(false));
-          }}/>
+          style={{
+            height: height * 0.8,
+            transform: [{translateY}],
+          }}>
+          <Login
+            Voltar={() => {
+              Loginani(translateY, bgColor, () => {
+                setShowLogin(false);
+              });
+            }}
+          />
         </Animated.View>
       )}
     </View>

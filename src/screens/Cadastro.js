@@ -200,7 +200,7 @@ export default function Cadastro() {
   }, [form.estado]);
 
   return (
-    <View style={styles.fundo}>
+    <View style={styles.containers2}>
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         style={{flex: 1}}>
